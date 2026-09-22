@@ -85,6 +85,20 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 @media(max-width:1000px){.fact-chips{gap:10px}.fact-chips li{padding:12px 14px;gap:11px}.fact-icon{flex-basis:40px;width:40px;height:40px}.fact-icon svg{width:20px;height:20px}.fact-text strong{font-size:14px}.fact-text small{font-size:11px}}
 @media(max-width:760px){.fact-chips{grid-template-columns:1fr;margin:22px 0 24px;gap:8px}}
 
+/* On wide screens the section navigation moves to a fixed rail on the left. */
+.side-nav{display:none}
+@media(min-width:1380px){
+  .site-header nav{display:none}
+  .side-nav{display:flex;flex-direction:column;gap:20px;position:fixed;left:30px;top:50%;transform:translateY(-50%);z-index:30}
+  .side-nav:before{content:"";position:absolute;left:4px;top:10px;bottom:10px;width:1px;background:#d3d7c9}
+  .side-nav a{position:relative;display:flex;align-items:center;gap:9px;padding-left:20px;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--muted);white-space:nowrap;transition:color .15s}
+  .side-nav a:hover{text-decoration:none;color:var(--ink)}
+  .side-nav a:before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;border-radius:50%;border:1.5px solid #b6bca9;background:var(--paper);transform:translateY(-50%);transition:background .15s,border-color .15s,transform .15s}
+  .side-nav a span{font-size:10px;color:#a0a794;font-variant-numeric:tabular-nums}
+  .side-nav a.active{color:var(--ink)}
+  .side-nav a.active:before{background:var(--gold);border-color:var(--gold-dark);transform:translateY(-50%) scale(1.15)}
+  .side-nav a.active span{color:var(--gold-dark)}
+}
 .footer-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .site-footer .footer-credit{margin-top:16px}
 

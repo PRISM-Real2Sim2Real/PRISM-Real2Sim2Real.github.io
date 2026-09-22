@@ -488,7 +488,7 @@
     $('#reading-progress').style.width = `${total > 0 ? Math.min(100, window.scrollY / total * 100) : 0}%`;
     const sections = ['generalization','motivation','method','v2v'];
     const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
-    $$('.site-header nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
+    $$('.site-header nav a, .side-nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;
   }
   window.addEventListener('scroll', () => { if (!scrollPending) {scrollPending = true; window.requestAnimationFrame(updateProgress);} }, {passive:true});
