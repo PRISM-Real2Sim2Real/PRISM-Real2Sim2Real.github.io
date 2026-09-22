@@ -1,6 +1,6 @@
 # PRISM research website
 
-Public site: https://prism-dreal2sim2real.github.io/prism/
+Public site: https://prism-real2sim2real.github.io/
 
 This repository contains the static PRISM research page, interactive V2V challenge,
 method explorer, real-world result galleries, and 48 prerecorded video clips.
