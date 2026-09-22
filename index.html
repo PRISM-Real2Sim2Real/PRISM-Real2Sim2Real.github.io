@@ -11,9 +11,9 @@
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Generalizable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl26f">
-  <script src="assets/content.js?v=corl26f" defer></script>
-  <script src="assets/app.js?v=corl26f" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl26g">
+  <script src="assets/content.js?v=corl26g" defer></script>
+  <script src="assets/app.js?v=corl26g" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
@@ -79,11 +79,7 @@
     <div class="motivation-copy"><p class="lead">Starting from a few real videos, PRISM generates new objects together with <em>the human motions to match.</em></p><p class="idea-summary">We reconstruct these interactions in 3D and train in simulation, so one humanoid policy can pick, carry, and drop unfamiliar objects in the real world.</p></div>
   </div>
   <div class="idea-line"><span>REAL VIDEOS</span><b aria-hidden="true">→</b><span>GENERATED INTERACTIONS</span><b aria-hidden="true">→</b><span>SIMULATION TRAINING</span><b aria-hidden="true">→</b><span class="highlight-label">REAL ROBOT SKILLS</span></div>
-</section>
-<section class="section-shell section-space" id="method" aria-labelledby="method-title">
-  <div class="section-label"><span>03</span> THE METHOD</div>
-  <h2 class="section-title" id="method-title">From imagined interactions<br><em>to a real robot.</em></h2>
-  <p class="section-intro narrow">The video model supplies diverse possibilities. Contact anchors carry the interaction through reconstruction, retargeting, and policy learning.</p>
+  <div class="method-explorer-head"><h3 class="method-subtitle">From imagined interactions <em>to a real robot.</em></h3><p class="section-intro narrow">The video model supplies diverse possibilities. Contact anchors carry the interaction through reconstruction, retargeting, and policy learning.</p></div>
   <figure class="multiply" aria-labelledby="multiply-caption">
     <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
       <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
@@ -98,6 +94,9 @@
       <p id="multiply-caption">Start from one real recording of a person carrying a box.</p>
     </figcaption>
   </figure>
+</section>
+<section class="section-shell section-space" id="method" aria-labelledby="method-label">
+  <div class="section-label" id="method-label"><span>03</span> THE METHOD</div>
   <figure class="method-figure">
     <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train a co-tracking teacher that is distilled into a depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
     <figcaption><strong>PRISM overview.</strong> Contact anchors carry the interaction from reconstruction through retargeting to a depth-based policy deployed zero-shot on the real robot.</figcaption>

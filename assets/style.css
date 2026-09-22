@@ -103,6 +103,7 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 .site-footer .footer-credit{margin-top:16px}
 
 /* The paper's method figure closes the idea & method section. */
+.section-label+.method-figure{margin-top:0}
 .method-figure{margin-top:56px;padding:22px 22px 18px;background:#fff;border:1px solid #dfe4d6;border-radius:14px}
 .method-figure img{display:block;width:100%;height:auto}
 .method-figure figcaption{margin-top:16px;font-size:13px;line-height:1.65;color:var(--muted)}
