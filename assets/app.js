@@ -249,37 +249,6 @@
     $('#sample-options').append(button);
   });
 
-  // ----- Pipeline stage explorer. -----
-  const stages = [
-    {title: 'Scale a handful of real videos.', description: 'Use a real interaction as an anchor. V2V generation samples different objects together with the human motions that interact with them.', detail: '4 real seed videos → 256 counterfactual interaction videos', media: [{id:'demo-10', caption:'Counterfactual video bank · presentation slide 14'}]},
-    {title: 'Recover a shared 3D interaction.', description: 'Reconstruct the human, object, and camera in a shared frame. Contact anchors connect object motion to the human when contact begins, and release it when contact ends.', detail: 'Initialize object geometry → infer contact events → anchor object motion', media: [{id:'demo-11', caption:'Generated human–object video'},{id:'demo-12', caption:'Reconstructed human and object'}]},
-    {title: 'Preserve contact—not reconstruction noise.', description: 'Retarget the reconstructed interaction to the humanoid. Contact anchors help turn imperfect human–object reconstructions into physically plausible robot training references.', detail: 'Comparison: OmniRetarget on the left · PRISM on the right', media: [{id:'demo-13', caption:'Retargeting comparison · presentation slide 21'}]},
-    {title: 'Learn in simulation. Deploy in reality.', description: 'Train a privileged co-tracking teacher, then a depth-based student. The same policy performs pick, carry, and drop in the real world without real-world fine-tuning.', detail: 'Policy observations: onboard depth + proprioception. High-level steering: joystick commands.', media: [{id:'demo-15', caption:'Tracking in simulation'},{id:'demo-48', caption:'One policy across real-world objects'}]}
-  ];
-  function setStage(index) {
-    const stage = stages[index]; if (!stage) return;
-    $$('.method-tabs [role="tab"]').forEach((button, i) => {
-      button.setAttribute('aria-selected', String(i === index)); button.tabIndex = i === index ? 0 : -1;
-    });
-    $('#method-panel').setAttribute('aria-labelledby', `stage-tab-${index}`);
-    $('#method-index').textContent = `${String(index + 1).padStart(2, '0')} / 04`;
-    $('#method-stage-title').textContent = stage.title;
-    $('#method-stage-description').textContent = stage.description;
-    $('#method-detail').textContent = stage.detail;
-    const visual = $('#method-visual');
-    $$('video', visual).forEach(v => v.pause()); visual.replaceChildren();
-    visual.classList.toggle('split', stage.media.length > 1);
-    stage.media.forEach(item => {
-      const figure = document.createElement('figure');
-      const video = document.createElement('video'); setMedia(video, item.id, item.caption);
-      const caption = document.createElement('figcaption'); caption.textContent = item.caption;
-      figure.append(video, caption); visual.append(figure);
-    });
-    updateGroup(groups.get('method'));
-  }
-  $$('.method-tabs [data-stage]').forEach(button => button.addEventListener('click', () => setStage(Number(button.dataset.stage))));
-  setStage(0);
-
   // ----- Four independent videos per generalization view. -----
   // Multi-page categories become one tab per page, e.g. "In-domain (1/2)".
   const views = [];

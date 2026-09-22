@@ -30,8 +30,8 @@
   <p class="eyebrow centered"><span class="tiny-line"></span> REAL-to-SIM-to-REAL <span class="tiny-line"></span></p>
   <div class="hero-wordmark" aria-hidden="true">PRISM<span class="wordmark-dot">.</span></div>
   <h1 id="paper-title">Counterfactual Video Generation <em class="title-for">for</em><br class="desktop-break"> Generalizable Humanoid Loco-Manipulation</h1>
-  <p class="venue"><img src="assets/corl-2026-logo.png" alt="CoRL 2026" width="1280" height="450"><span>Conference on Robot Learning (CoRL 2026)</span></p>
   <p class="hero-deck">Sample rich interactions. Learn one policy.<br class="mobile-break"> Generalize to unseen objects.</p>
+  <p class="venue"><img src="assets/corl-2026-logo.png" alt="CoRL 2026" width="1280" height="450"><span>Conference on Robot Learning (CoRL 2026)</span></p>
   <div class="authors" aria-label="Authors"><div class="author-row primary-authors"><a href="https://z1hanw.github.io/" target="_blank" rel="noopener noreferrer">Zihan Wang<sup>1,2</sup></a>
 <a href="https://zhenwu061.github.io/" target="_blank" rel="noopener noreferrer">Zhen Wu<sup>1</sup></a></div>
 <div class="author-row co-lead-authors">
@@ -91,10 +91,10 @@
       <p id="multiply-caption">Start from one real recording of a person carrying a box.</p>
     </figcaption>
   </figure>
-  <div class="method-explorer-head"><h3 class="method-subtitle">From imagined interactions <em>to a real robot.</em></h3><p class="section-intro narrow">The video model supplies diverse possibilities. Contact anchors carry the interaction through reconstruction, retargeting, and policy learning.</p></div>
-  <div class="method-tabs" role="tablist" aria-label="PRISM pipeline stages"><button role="tab" id="stage-tab-0" aria-selected="true" aria-controls="method-panel" data-stage="0"><span>01</span> Generate</button><button role="tab" id="stage-tab-1" aria-selected="false" aria-controls="method-panel" data-stage="1" tabindex="-1"><span>02</span> Reconstruct</button><button role="tab" id="stage-tab-2" aria-selected="false" aria-controls="method-panel" data-stage="2" tabindex="-1"><span>03</span> Retarget</button><button role="tab" id="stage-tab-3" aria-selected="false" aria-controls="method-panel" data-stage="3" tabindex="-1"><span>04</span> Learn &amp; deploy</button></div>
-  <div class="method-panel media-group" id="method-panel" role="tabpanel" aria-labelledby="stage-tab-0" data-group="method"><div class="method-visual" id="method-visual"></div><div class="method-copy"><span class="method-index" id="method-index">01 / 04</span><h3 id="method-stage-title"></h3><p id="method-stage-description"></p><div class="method-detail" id="method-detail"></div><div class="controls"><button class="button button-small" data-toggle-group="method">Play stage</button><button class="button button-small" data-restart-group="method">Replay</button></div></div></div>
-  <p class="figure-note">Reconstruction builds on <a href="https://crisp-real2sim.github.io/CRISP-Real2Sim/" target="_blank" rel="noopener noreferrer">CRISP</a>. Explore the generated videos, reconstructed interactions, and robot rollouts at each stage.</p>
+  <figure class="method-figure">
+    <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train a co-tracking teacher that is distilled into a depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
+    <figcaption><strong>PRISM overview.</strong> Contact anchors carry the interaction from reconstruction through retargeting to a depth-based policy deployed zero-shot on the real robot.</figcaption>
+  </figure>
 </section>
 <section class="tinted section-space" id="v2v" aria-labelledby="quiz-title">
   <div class="section-shell">
