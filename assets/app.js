@@ -125,7 +125,7 @@
   // Only like-duration V2V clips are continually time-aligned.
   // Real-world experiments have different durations and loop independently.
   window.setInterval(() => {
-    ['quiz', 'samples'].forEach(name => {
+    ['quiz', 'samples', 'multiply'].forEach(name => {
       const group = groups.get(name);
       if (!group || !group.visible || !group.playing || document.hidden || dialogOpen) return;
       const videos = $$('video', group.element).filter(v => !v.paused && v.readyState >= 2 && !v.seeking);
@@ -281,29 +281,37 @@
   setStage(0);
 
   // ----- Four independent videos per generalization view. -----
-  let categoryIndex = 0; let pageIndex = 0;
-  content.groups.forEach((category, index) => {
+  // Multi-page categories become one tab per page, e.g. "In-domain (1/2)".
+  const views = [];
+  content.groups.forEach(category => category.pages.forEach((clips, page) => views.push({
+    id: `${category.id}-${page + 1}`, category, page, clips,
+    count: category.pages.length > 1 ? `${page + 1}/${category.pages.length}` : ''
+  })));
+  let viewIndex = 0;
+  views.forEach((view, index) => {
     const button = document.createElement('button');
-    button.type = 'button'; button.id = `result-tab-${category.id}`;
+    button.type = 'button'; button.id = `result-tab-${view.id}`;
     button.setAttribute('role', 'tab'); button.setAttribute('aria-controls', 'generalization-panel');
-    button.textContent = category.name;
-    button.addEventListener('click', () => {categoryIndex = index; pageIndex = 0; renderResults();});
+    button.append(view.category.name);
+    if (view.count) {
+      const count = document.createElement('span'); count.className = 'tab-count'; count.textContent = `(${view.count})`;
+      button.append(' ', count);
+    }
+    button.addEventListener('click', () => {viewIndex = index; renderResults();});
     $('#result-tabs').append(button);
   });
   function renderResults() {
-    const category = content.groups[categoryIndex];
-    const clips = category.pages[pageIndex];
+    const view = views[viewIndex];
+    const category = view.category;
+    const clips = view.clips;
+    const pageIndex = view.page;
     $$('#result-tabs [role="tab"]').forEach((button, i) => {
-      button.setAttribute('aria-selected', String(i === categoryIndex)); button.tabIndex = i === categoryIndex ? 0 : -1;
+      button.setAttribute('aria-selected', String(i === viewIndex)); button.tabIndex = i === viewIndex ? 0 : -1;
     });
-    $('#generalization-panel').setAttribute('aria-labelledby', `result-tab-${category.id}`);
+    $('#generalization-panel').setAttribute('aria-labelledby', `result-tab-${view.id}`);
     $('#gallery-title').textContent = category.title;
     $('#gallery-description').textContent = category.description;
     $('#gallery-source').textContent = category.source;
-    $('#gallery-page').textContent = `${pageIndex + 1} / ${category.pages.length}`;
-    $('#page-controls').hidden = category.pages.length < 2;
-    $('#gallery-prev').disabled = pageIndex === 0;
-    $('#gallery-next').disabled = pageIndex === category.pages.length - 1;
     const grid = $('#result-grid');
     $$('video', grid).forEach(v => v.pause()); grid.replaceChildren();
     clips.forEach((clip, index) => {
@@ -324,9 +332,122 @@
     });
     updateGroup(groups.get('results'));
   }
-  $('#gallery-prev').addEventListener('click', () => {if (pageIndex > 0) {pageIndex--; renderResults();}});
-  $('#gallery-next').addEventListener('click', () => {if (pageIndex < content.groups[categoryIndex].pages.length - 1) {pageIndex++; renderResults();}});
   renderResults();
+
+  // ----- One real video → nine samples → 256 counterfactual videos. -----
+  (() => {
+    const grid = $('#multiply-grid'); const stage = $('#multiply-stage');
+    if (!grid || !stage) return;
+    const N = 16; const block = [7, 8, 9]; // 3×3 live videos around the seed tile at (8, 8)
+    const generated = content.choices.filter(choice => !choice.real).map(choice => choice.id);
+    const seed = content.choices.find(choice => choice.real);
+    const live = [...generated.slice(0, 4), seed.id, ...generated.slice(4, 8)];
+    const fragment = document.createDocumentFragment();
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+      const tile = document.createElement('div'); tile.className = 'multiply-tile';
+      if (block.includes(r) && block.includes(c)) {
+        const id = live[(r - block[0]) * 3 + (c - block[0])];
+        const video = document.createElement('video'); setMedia(video, id);
+        tile.append(video); tile.classList.add(id === seed.id ? 'is-seed' : 'is-live');
+      } else {
+        const id = generated[(r * 5 + c * 3 + (r * c) % 7) % generated.length];
+        const img = document.createElement('img'); img.src = assets[id].poster; img.alt = ''; img.decoding = 'async';
+        tile.append(img);
+      }
+      fragment.append(tile);
+    }
+    grid.append(fragment);
+
+    // Zoom about the seed/block center (8.5/16 of the grid) so each stage fills the stage exactly.
+    const focus = 8.5 / N;
+    const zoom = s => s === 1 ? 'none' : `translate(${(0.5 - s * focus) * 100}%, ${(0.5 - s * focus) * 100}%) scale(${s})`;
+    // Three zoom levels of the video grid, then two full-frame layers that fade in over it.
+    const phases = {
+      1: {transform: zoom(N), count: 1, label: 'REAL SEED VIDEO', caption: 'Start from one real recording of a person carrying a box.'},
+      9: {transform: zoom(N / 3), count: 9, label: 'COUNTERFACTUAL SAMPLES', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
+      256: {transform: zoom(1), count: 256, label: 'COUNTERFACTUAL VIDEOS', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
+      objects: {transform: zoom(1), label: 'DIVERSE 3D OBJECTS', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
+      motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'}
+    };
+    const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
+    const sequence = [[1, 2600], [9, 4400], [256, 4800], ['objects', 6200], ['motion', 8400]];
+    let phase = 1; let step = 0; let timer = 0; let countFrame = 0; let auto = true; let inView = false;
+    const counter = $('#multiply-count'); const overlay = counter.parentElement;
+    const tiles = groups.get('multiply');
+    const layers = {objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]')};
+    // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
+    // and never recover. Keep only the visible stage loaded — nine tiles for the grid phases,
+    // one full-frame clip otherwise — and release the rest.
+    function unload(video) {
+      video.pause(); video.removeAttribute('src'); video.load(); delete video.dataset.loadedAsset;
+    }
+    function syncMedia() {
+      const wanted = inView && !document.hidden ? layers[phase] : null;
+      Object.values(layers).forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
+      if (wanted) {
+        loadMedia(wanted);
+        if (wanted.paused) wanted.play().catch(() => {});
+      }
+      tiles.playing = !layers[phase] && !reducedMotion.matches;
+      updateGroup(tiles);
+      if (layers[phase]) $$('video', tiles.element).forEach(video => { if (video.dataset.loadedAsset) unload(video); });
+    }
+    function setPhase(next, animateCount = true) {
+      const from = phase; phase = next;
+      const spec = phases[next];
+      grid.style.transform = spec.transform;
+      stage.dataset.phase = String(next);
+      syncMedia();
+      $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
+      $('#multiply-label').textContent = spec.label;
+      $('#multiply-caption').textContent = spec.caption;
+      overlay.classList.toggle('no-count', spec.count === undefined);
+      window.cancelAnimationFrame(countFrame);
+      const fromCount = phases[from].count;
+      if (spec.count === undefined) { counter.textContent = ''; return; }
+      if (!animateCount || reducedMotion.matches || fromCount === undefined) { counter.textContent = String(spec.count); return; }
+      const start = performance.now();
+      const tick = now => {
+        const t = Math.min(1, (now - start) / 1500); const eased = 1 - Math.pow(1 - t, 3);
+        counter.textContent = String(Math.round(fromCount + (spec.count - fromCount) * eased));
+        if (t < 1) countFrame = window.requestAnimationFrame(tick);
+      };
+      countFrame = window.requestAnimationFrame(tick);
+    }
+    function jumpTo(next) {
+      stage.classList.add('instant'); setPhase(next, false);
+      void stage.offsetWidth; stage.classList.remove('instant');
+    }
+    function run() {
+      window.clearTimeout(timer);
+      if (!auto || !inView || document.hidden || dialogOpen || reducedMotion.matches) return;
+      const [next, hold] = sequence[step];
+      step = (step + 1) % sequence.length;
+      if (next === 1 && phase !== 1) {
+        // Loop back with a short fade rather than a reverse zoom.
+        stage.classList.add('is-resetting');
+        timer = window.setTimeout(() => {
+          jumpTo(1); stage.classList.remove('is-resetting');
+          timer = window.setTimeout(run, hold);
+        }, 420);
+        return;
+      }
+      setPhase(next, next !== 1);
+      timer = window.setTimeout(run, hold);
+    }
+    $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {
+      auto = false; window.clearTimeout(timer); setPhase(parsePhase(button.dataset.multiplyPhase));
+    }));
+    $('#multiply-replay').addEventListener('click', () => { auto = true; step = 0; run(); });
+    new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting && !inView) {
+        inView = true; syncMedia(); run();
+      } else if (!entry.isIntersecting && inView) { inView = false; window.clearTimeout(timer); syncMedia(); }
+    }), {threshold: 0.35}).observe(stage);
+    document.addEventListener('visibilitychange', () => { syncMedia(); if (document.hidden) window.clearTimeout(timer); else run(); });
+    if (reducedMotion.matches) jumpTo(256);
+    reducedMotion.addEventListener('change', event => { if (event.matches) { window.clearTimeout(timer); jumpTo(256); } });
+  })();
 
   // Roving tab focus, including Home/End. Selection follows focus.
   $$('[role="tablist"]').forEach(tablist => tablist.addEventListener('keydown', event => {
@@ -389,7 +510,7 @@
   function updateProgress() {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     $('#reading-progress').style.width = `${total > 0 ? Math.min(100, window.scrollY / total * 100) : 0}%`;
-    const sections = ['motivation','v2v','method','generalization'];
+    const sections = ['generalization','motivation','v2v','method'];
     const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
     $$('.site-header nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;

@@ -239,6 +239,16 @@ window.PRISM_ASSETS = {
     "src": "assets/videos/v2v-09.mp4",
     "poster": "assets/posters/v2v-09.jpg",
     "duration": 8.033
+  },
+  "objects-01": {
+    "src": "assets/videos/objects-01.mp4",
+    "poster": "assets/posters/objects-01.jpg",
+    "duration": 6.0
+  },
+  "kinematics-01": {
+    "src": "assets/videos/kinematics-01.mp4",
+    "poster": "assets/posters/kinematics-01.jpg",
+    "duration": 8.607
   }
 };
 window.PRISM_CONTENT = {
@@ -465,41 +475,6 @@ window.PRISM_CONTENT = {
             "id": "demo-41",
             "title": "Initial pose 04",
             "note": "A changed object configuration",
-            "speed": "2\u00d7"
-          }
-        ]
-      ]
-    },
-    {
-      "id": "robustness",
-      "name": "Robustness",
-      "title": "When execution does not go to plan.",
-      "description": "Selected stress-test demonstrations show recovery and adaptation. These clips illustrate observed behaviors; they are not a guarantee of recovery in every trial.",
-      "source": "Presentation \u00b7 slide 35",
-      "pages": [
-        [
-          {
-            "id": "demo-44",
-            "title": "Fall recovery",
-            "note": "Recover after a fall",
-            "speed": "Mixed"
-          },
-          {
-            "id": "demo-45",
-            "title": "Dropped-object recovery",
-            "note": "Respond to a dropped object",
-            "speed": "Mixed"
-          },
-          {
-            "id": "demo-46",
-            "title": "Articulation adaptation",
-            "note": "Interact with a changing geometry",
-            "speed": "2\u00d7"
-          },
-          {
-            "id": "demo-47",
-            "title": "Miscalibrated robot",
-            "note": "The orange G1 configuration",
             "speed": "2\u00d7"
           }
         ]
