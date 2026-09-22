@@ -85,6 +85,13 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 @media(max-width:1000px){.fact-chips{gap:10px}.fact-chips li{padding:12px 14px;gap:11px}.fact-icon{flex-basis:40px;width:40px;height:40px}.fact-icon svg{width:20px;height:20px}.fact-text strong{font-size:14px}.fact-text small{font-size:11px}}
 @media(max-width:760px){.fact-chips{grid-template-columns:1fr;margin:22px 0 24px;gap:8px}}
 
+/* No top bar: the mark sits inline with the hero wordmark. */
+html{scroll-padding-top:28px}
+.hero{padding-top:64px}
+.hero-wordmark{display:flex;align-items:center;justify-content:center;gap:.16em;padding-right:0}
+.hero-wordmark .prism-mark{width:.6em;height:.66em;flex:0 0 auto;margin-top:-.04em}
+@media(max-width:760px){.hero{padding-top:40px}}
+
 /* On wide screens the section navigation moves to a fixed rail on the left. */
 .side-nav{display:none}
 @media(min-width:1380px){
