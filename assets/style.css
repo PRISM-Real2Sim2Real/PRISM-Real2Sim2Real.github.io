@@ -72,7 +72,15 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 .result-tabs button{padding:12px 10px;font-size:12.5px}
 .tab-count{color:#98a089;font-weight:500;font-variant-numeric:tabular-nums}
 .result-tabs button[aria-selected=true] .tab-count{color:var(--gold-dark)}
-@media(max-width:760px){.site-header nav a:first-child{display:inline}.site-header nav a:nth-child(2){display:none}}
+@media(max-width:760px){.site-header nav a:first-child{display:inline}}
+
+/* Idea and method share one section: idea copy, the pipeline animation, then the stage explorer. */
+.method-explorer-head{margin-top:76px}
+.method-subtitle{font-size:clamp(26px,3vw,36px);font-weight:600;line-height:1.15;letter-spacing:-.035em}
+.method-subtitle em{font-family:var(--serif);font-weight:400;color:var(--gold-dark);letter-spacing:-.04em}
+.method-explorer-head .section-intro{margin-top:14px;font-size:16px}
+.multiply{margin-top:52px}
+@media(max-width:760px){.method-explorer-head{margin-top:50px}.method-subtitle{font-size:26px}.multiply{margin-top:34px}}
 
 /* One video → nine → 256. A 16×16 grid is zoomed with a single transform; the
    origin sits on the seed tile so both zoom steps stay perfectly framed. */

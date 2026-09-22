@@ -310,8 +310,6 @@
     });
     $('#generalization-panel').setAttribute('aria-labelledby', `result-tab-${view.id}`);
     $('#gallery-title').textContent = category.title;
-    $('#gallery-description').textContent = category.description;
-    $('#gallery-source').textContent = category.source;
     const grid = $('#result-grid');
     $$('video', grid).forEach(v => v.pause()); grid.replaceChildren();
     clips.forEach((clip, index) => {
@@ -523,7 +521,7 @@
   function updateProgress() {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     $('#reading-progress').style.width = `${total > 0 ? Math.min(100, window.scrollY / total * 100) : 0}%`;
-    const sections = ['generalization','motivation','v2v','method'];
+    const sections = ['generalization','method','v2v'];
     const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
     $$('.site-header nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;
