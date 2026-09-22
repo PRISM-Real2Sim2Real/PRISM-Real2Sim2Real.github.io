@@ -363,12 +363,12 @@
     const phases = {
       1: {transform: zoom(N), count: 1, label: 'REAL SEED VIDEO', caption: 'Start from one real recording of a person carrying a box.'},
       9: {transform: zoom(N / 3), count: 9, label: 'COUNTERFACTUAL SAMPLES', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
-      256: {transform: zoom(1), count: 256, label: 'COUNTERFACTUAL VIDEOS', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
+      256: {transform: zoom(N / 3), count: 256, label: 'COUNTERFACTUAL VIDEOS', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
       objects: {transform: zoom(1), label: 'DIVERSE 3D OBJECTS', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
       motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [9, 4400], [256, 6200], ['objects', 6200], ['motion', 8400]];
+    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 6200], ['motion', 8400]];
     let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
@@ -385,16 +385,11 @@
       window.clearTimeout(mediaTimer);
       const wanted = inView && !document.hidden ? layers[phase] : null;
       Object.values(layers).forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
-      if (phase === 256 && wanted && !reducedMotion.matches) {
-        // Let the zoom-out finish on live tiles before dissolving into the video bank.
-        tiles.playing = true; updateGroup(tiles);
-        mediaTimer = window.setTimeout(() => { tiles.playing = false; updateGroup(tiles); unloadTiles(); showLayer(wanted); }, 1600);
-        return;
-      }
       if (wanted) showLayer(wanted);
       tiles.playing = !layers[phase] && !reducedMotion.matches;
       updateGroup(tiles);
-      if (layers[phase]) unloadTiles();
+      // Release the tiles once the layer has faded in over them.
+      if (layers[phase]) mediaTimer = window.setTimeout(unloadTiles, 1000);
     }
     function setPhase(next, animateCount = true) {
       const from = phase; phase = next;
