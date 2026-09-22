@@ -47,24 +47,24 @@
 @media(max-width:760px){.idea-summary{font-size:14px;margin-top:16px}}
 
 /* Venue badge. Color sampled from the CoRL 2026 wordmark. */
-.venue{display:flex;align-items:center;justify-content:center;gap:16px;width:max-content;max-width:100%;margin:26px auto 0;padding:10px 22px 10px 14px;border:1px solid rgba(188,84,0,.3);border-radius:100px;background:rgba(188,84,0,.05);color:#bc5400;font-weight:700;font-size:17px;letter-spacing:.005em}
+.venue{display:flex;align-items:center;justify-content:center;gap:16px;margin:26px auto 0;color:#bc5400;font-weight:700;font-size:17px;letter-spacing:.005em}
 .venue img{height:46px;width:auto;display:block}
-@media(max-width:760px){.venue{gap:10px;font-size:13px;margin-top:18px;padding:8px 16px 8px 10px}.venue img{height:34px}}
+@media(max-width:760px){.venue{gap:10px;font-size:13px;margin-top:18px}.venue img{height:34px}}
 
-/* A fuller masthead: larger title, deck and byline, plus a one-sentence summary. */
+/* A fuller masthead: larger title, deck and byline. All author names share one size. */
 h1{font-size:clamp(28px,3.9vw,46px)}
+.title-for{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.7em;color:var(--muted);letter-spacing:0;margin-left:.08em}
 .hero-deck{margin-top:26px;font-size:clamp(18px,1.6vw,21px);color:var(--ink);font-weight:500;letter-spacing:-.01em}
-.hero-summary{max-width:780px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.7;color:var(--muted)}
+.primary-authors{font-size:inherit;font-weight:inherit}
+.affiliation-note{white-space:nowrap}
 @media(min-width:761px){
-  .authors{margin-top:30px;font-size:16px;gap:14px}
-  .primary-authors{font-size:19px;font-weight:600;column-gap:56px}
-  .author-row{column-gap:32px}
+  .authors{margin-top:30px;font-size:16px;gap:12px}
+  .author-row,.primary-authors{column-gap:32px}
   .authors sup{font-size:10px}
-  .affiliations{font-size:14px;margin-top:18px;column-gap:40px}
-  .author-note{font-size:12px;margin-top:10px}
+  .affiliations{font-size:14px;margin-top:18px;column-gap:34px}
   .hero-actions.resource-links{margin-top:30px}
 }
-@media(max-width:760px){.hero-deck{font-size:17px;margin-top:20px}.hero-summary{font-size:14px;line-height:1.65}.authors{font-size:13px;margin-top:24px}.primary-authors{font-size:15px;font-weight:600}.affiliations{font-size:12px}}
+@media(max-width:760px){.hero-deck{font-size:17px;margin-top:20px}.authors{font-size:13px;margin-top:24px}.affiliations{font-size:12px}}
 
 /* Results follow the hero directly; avoid a doubled rule. */
 .hero+.results-section{border-top:0}
