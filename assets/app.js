@@ -365,14 +365,15 @@
       9: {transform: zoom(N / 3), count: 9, label: 'COUNTERFACTUAL SAMPLES', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
       256: {transform: zoom(N / 3), count: 256, label: 'COUNTERFACTUAL VIDEOS', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
       objects: {transform: zoom(1), label: 'DIVERSE 3D OBJECTS', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
-      motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'}
+      motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'},
+      sim2real: {transform: zoom(1), label: 'ZERO-SHOT SIM-TO-REAL', caption: 'One unified policy, trained in simulation and deployed on the real robot across dozens of objects.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 6200], ['motion', 8400]];
+    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 4100], ['motion', 8400], ['sim2real', 7400]];
     let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
-    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]')};
+    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]'), sim2real: $('.multiply-layer[data-layer="sim2real"]')};
     // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
     // and never recover. Keep only the visible stage loaded — nine tiles for the grid phases,
     // one full-frame clip otherwise — and release the rest.

@@ -105,6 +105,7 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 .multiply-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;pointer-events:none;z-index:2}
 .multiply-stage[data-phase="objects"] .multiply-layer[data-layer="objects"],.multiply-stage[data-phase="motion"] .multiply-layer[data-layer="motion"]{opacity:1}
 .multiply-stage[data-phase="256"] .multiply-layer[data-layer="256"]{opacity:1}
+.multiply-stage[data-phase="sim2real"] .multiply-layer[data-layer="sim2real"]{opacity:1}
 .multiply-stage.is-resetting .multiply-layer{opacity:0;transition-duration:.4s;transition-delay:0s}
 .multiply-overlay{transition:opacity .3s ease}
 .multiply-stage.is-resetting .multiply-overlay{opacity:0}
