@@ -411,7 +411,7 @@
       window.clearTimeout(timer);
       step = (index + 1) % sequence.length;
       setPhase(next);
-      timer = window.setTimeout(run, sequence[index][1] + 2500);
+      timer = window.setTimeout(run, sequence[index][1] + 800);
     }));
     // Coming back into view or to the tab resumes from the current stage instead of skipping ahead.
     function resume(delay) { window.clearTimeout(timer); timer = window.setTimeout(run, delay); }
