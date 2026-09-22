@@ -74,6 +74,14 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 .result-tabs button[aria-selected=true] .tab-count{color:var(--gold-dark)}
 @media(max-width:760px){.site-header nav a:first-child{display:inline}.site-header nav a:nth-child(2){display:none}}
 
+/* A compact results header: one-line title, one-line intro. */
+.section-heading-row.compact{margin-bottom:6px}
+.section-heading-row.compact .section-title{font-size:clamp(28px,3vw,38px)}
+.section-heading-row.compact .section-intro{margin-top:12px;font-size:16px}
+#generalization .section-label{margin-bottom:22px}
+#generalization .fact-chips{margin:22px 0 22px}
+@media(max-width:760px){.section-heading-row.compact .section-title{font-size:28px}.section-heading-row.compact .section-intro{font-size:14px}}
+
 /* Deployment facts as icon cards instead of a quiet caps line. */
 .fact-chips{list-style:none;margin:30px 0 32px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .fact-chips li{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--paper);border:1px solid #dfe4d6;border-radius:12px;min-width:0}
