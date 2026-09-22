@@ -74,6 +74,17 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 .result-tabs button[aria-selected=true] .tab-count{color:var(--gold-dark)}
 @media(max-width:760px){.site-header nav a:first-child{display:inline}}
 
+/* Deployment facts as icon cards instead of a quiet caps line. */
+.fact-chips{list-style:none;margin:30px 0 32px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fact-chips li{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--paper);border:1px solid #dfe4d6;border-radius:12px;min-width:0}
+.fact-icon{flex:0 0 46px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#f3e6c2;color:var(--gold-dark)}
+.fact-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fact-text{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fact-text strong{font-size:15px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.fact-text small{font-size:12px;color:var(--muted);line-height:1.45}
+@media(max-width:1000px){.fact-chips{gap:10px}.fact-chips li{padding:12px 14px;gap:11px}.fact-icon{flex-basis:40px;width:40px;height:40px}.fact-icon svg{width:20px;height:20px}.fact-text strong{font-size:14px}.fact-text small{font-size:11px}}
+@media(max-width:760px){.fact-chips{grid-template-columns:1fr;margin:22px 0 24px;gap:8px}}
+
 /* Idea and method share one section: idea copy, the pipeline animation, then the stage explorer. */
 .method-explorer-head{margin-top:76px}
 .method-subtitle{font-size:clamp(26px,3vw,36px);font-weight:600;line-height:1.15;letter-spacing:-.035em}
