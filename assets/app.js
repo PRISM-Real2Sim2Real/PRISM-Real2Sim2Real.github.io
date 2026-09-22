@@ -486,7 +486,7 @@
   function updateProgress() {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     $('#reading-progress').style.width = `${total > 0 ? Math.min(100, window.scrollY / total * 100) : 0}%`;
-    const sections = ['generalization','method','v2v'];
+    const sections = ['generalization','motivation','method','v2v'];
     const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
     $$('.site-header nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;

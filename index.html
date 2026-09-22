@@ -11,16 +11,16 @@
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Generalizable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl26c">
-  <script src="assets/content.js?v=corl26c" defer></script>
-  <script src="assets/app.js?v=corl26c" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl26d">
+  <script src="assets/content.js?v=corl26d" defer></script>
+  <script src="assets/app.js?v=corl26d" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
 <header class="site-header">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="PRISM home"><span class="prism-mark" aria-hidden="true"></span>PRISM<span class="brand-sub">RESEARCH</span></a>
-    <nav aria-label="Main navigation"><a href="#generalization">Results</a><a href="#method">Idea &amp; method</a><a href="#v2v">V2V challenge</a></nav>
+    <nav aria-label="Main navigation"><a href="#generalization">Results</a><a href="#motivation">The idea</a><a href="#method">Method</a><a href="#v2v">V2V challenge</a></nav>
     <a class="repo-link" href="https://github.com/PRISM-Real2Sim2Real/PRISM-Real2Sim2Real.github.io" target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
   </div>
   <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -71,12 +71,18 @@
     </div>
   </div>
 </section>
-<section class="motivation section-shell section-space" id="method" aria-labelledby="method-title">
-  <div class="section-label"><span>02</span> THE IDEA &amp; THE METHOD</div>
+<section class="motivation section-shell section-space" id="motivation" aria-labelledby="motivation-title">
+  <div class="section-label"><span>02</span> THE IDEA</div>
   <div class="editorial-grid">
-    <div><h2 class="section-title" id="method-title">New objects.<br>New ways<br><em>to interact.</em></h2></div>
+    <div><h2 class="section-title" id="motivation-title">New objects.<br>New ways<br><em>to interact.</em></h2></div>
     <div class="motivation-copy"><p class="lead">Starting from a few real videos, PRISM generates new objects together with <em>the human motions to match.</em></p><p class="idea-summary">We reconstruct these interactions in 3D and train in simulation, so one humanoid policy can pick, carry, and drop unfamiliar objects in the real world.</p></div>
   </div>
+  <div class="idea-line"><span>REAL VIDEOS</span><b aria-hidden="true">→</b><span>GENERATED INTERACTIONS</span><b aria-hidden="true">→</b><span>SIMULATION TRAINING</span><b aria-hidden="true">→</b><span class="highlight-label">REAL ROBOT SKILLS</span></div>
+</section>
+<section class="section-shell section-space" id="method" aria-labelledby="method-title">
+  <div class="section-label"><span>03</span> THE METHOD</div>
+  <h2 class="section-title" id="method-title">From imagined interactions<br><em>to a real robot.</em></h2>
+  <p class="section-intro narrow">The video model supplies diverse possibilities. Contact anchors carry the interaction through reconstruction, retargeting, and policy learning.</p>
   <figure class="multiply" aria-labelledby="multiply-caption">
     <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
       <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
@@ -98,7 +104,7 @@
 </section>
 <section class="tinted section-space" id="v2v" aria-labelledby="quiz-title">
   <div class="section-shell">
-    <div class="section-label"><span>03</span> VIDEO-TO-VIDEO GENERATION</div>
+    <div class="section-label"><span>04</span> VIDEO-TO-VIDEO GENERATION</div>
     <div class="section-heading-row"><div><h2 class="section-title" id="quiz-title">A simple test.<br><em>Which video is real?</em></h2><p class="section-intro">Watch these four interactions. One was recorded; three were generated.<br>Click the one you think is real to reveal the answer.</p></div></div>
     <div class="quiz-panel media-group" data-group="quiz">
       <div class="player-toolbar"><div class="controls"><button class="button button-small" data-toggle-group="quiz">Play all</button><button class="button button-small" data-restart-group="quiz">Replay together</button></div></div>
@@ -116,7 +122,7 @@
   </div>
 </section>
 <section class="section-shell closing section-space" id="about" aria-labelledby="closing-title">
-  <div class="section-label"><span>04</span> THE TAKEAWAY</div>
+  <div class="section-label"><span>05</span> THE TAKEAWAY</div>
   <h2 id="closing-title">Sample interactions.<br><em>Ground them in physics.</em><br>Transfer the skill.</h2>
   <p>PRISM uses the diversity of generated human–object interactions to train a single humanoid policy for pick, carry, and drop. The aim is not simply to imitate more videos—it is to acquire a skill that adapts to the next object.</p>
   <div class="closing-links"><a class="button button-dark" href="https://github.com/PRISM-Real2Sim2Real/PRISM-Real2Sim2Real.github.io" target="_blank" rel="noopener noreferrer">Project repository <span aria-hidden="true">↗</span></a><button class="button button-outline" id="open-citation">Cite this project</button><a class="text-link" href="#v2v">Try the V2V challenge again ↑</a></div>
