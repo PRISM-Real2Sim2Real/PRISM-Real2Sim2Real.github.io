@@ -370,27 +370,33 @@
       motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [9, 4400], [256, 4800], ['objects', 6200], ['motion', 8400]];
-    let phase = 1; let step = 0; let timer = 0; let countFrame = 0; let auto = true; let inView = false;
+    const sequence = [[1, 2600], [9, 4400], [256, 6200], ['objects', 6200], ['motion', 8400]];
+    let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
-    const layers = {objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]')};
+    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]')};
     // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
     // and never recover. Keep only the visible stage loaded — nine tiles for the grid phases,
     // one full-frame clip otherwise — and release the rest.
     function unload(video) {
       video.pause(); video.removeAttribute('src'); video.load(); delete video.dataset.loadedAsset;
     }
+    function unloadTiles() { $$('video', tiles.element).forEach(video => { if (video.dataset.loadedAsset) unload(video); }); }
+    function showLayer(video) { loadMedia(video); if (video.paused) video.play().catch(() => {}); }
     function syncMedia() {
+      window.clearTimeout(mediaTimer);
       const wanted = inView && !document.hidden ? layers[phase] : null;
       Object.values(layers).forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
-      if (wanted) {
-        loadMedia(wanted);
-        if (wanted.paused) wanted.play().catch(() => {});
+      if (phase === 256 && wanted && !reducedMotion.matches) {
+        // Let the zoom-out finish on live tiles before dissolving into the video bank.
+        tiles.playing = true; updateGroup(tiles);
+        mediaTimer = window.setTimeout(() => { tiles.playing = false; updateGroup(tiles); unloadTiles(); showLayer(wanted); }, 1600);
+        return;
       }
+      if (wanted) showLayer(wanted);
       tiles.playing = !layers[phase] && !reducedMotion.matches;
       updateGroup(tiles);
-      if (layers[phase]) $$('video', tiles.element).forEach(video => { if (video.dataset.loadedAsset) unload(video); });
+      if (layers[phase]) unloadTiles();
     }
     function setPhase(next, animateCount = true) {
       const from = phase; phase = next;
@@ -420,7 +426,7 @@
     }
     function run() {
       window.clearTimeout(timer);
-      if (!auto || !inView || document.hidden || dialogOpen || reducedMotion.matches) return;
+      if (!inView || document.hidden || dialogOpen || reducedMotion.matches) return;
       const [next, hold] = sequence[step];
       step = (step + 1) % sequence.length;
       if (next === 1 && phase !== 1) {
@@ -435,16 +441,23 @@
       setPhase(next, next !== 1);
       timer = window.setTimeout(run, hold);
     }
+    // A manual choice lingers on that stage a little longer, then the sequence continues from it.
     $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {
-      auto = false; window.clearTimeout(timer); setPhase(parsePhase(button.dataset.multiplyPhase));
+      const next = parsePhase(button.dataset.multiplyPhase);
+      const index = sequence.findIndex(([name]) => name === next);
+      window.clearTimeout(timer);
+      step = (index + 1) % sequence.length;
+      setPhase(next);
+      timer = window.setTimeout(run, sequence[index][1] + 2500);
     }));
-    $('#multiply-replay').addEventListener('click', () => { auto = true; step = 0; run(); });
+    // Coming back into view or to the tab resumes from the current stage instead of skipping ahead.
+    function resume(delay) { window.clearTimeout(timer); timer = window.setTimeout(run, delay); }
     new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting && !inView) {
-        inView = true; syncMedia(); run();
+        inView = true; syncMedia(); resume(step === 0 ? 0 : 1200);
       } else if (!entry.isIntersecting && inView) { inView = false; window.clearTimeout(timer); syncMedia(); }
     }), {threshold: 0.35}).observe(stage);
-    document.addEventListener('visibilitychange', () => { syncMedia(); if (document.hidden) window.clearTimeout(timer); else run(); });
+    document.addEventListener('visibilitychange', () => { syncMedia(); if (document.hidden) window.clearTimeout(timer); else resume(1200); });
     if (reducedMotion.matches) jumpTo(256);
     reducedMotion.addEventListener('change', event => { if (event.matches) { window.clearTimeout(timer); jumpTo(256); } });
   })();

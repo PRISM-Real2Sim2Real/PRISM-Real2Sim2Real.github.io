@@ -76,19 +76,6 @@
     <div><h2 class="section-title" id="motivation-title">New objects.<br>New ways<br><em>to interact.</em></h2></div>
     <div class="motivation-copy"><p class="lead">Starting from a few real videos, PRISM generates new objects together with <em>the human motions to match.</em></p><p class="idea-summary">We reconstruct these interactions in 3D and train in simulation, so one humanoid policy can pick, carry, and drop unfamiliar objects in the real world.</p></div>
   </div>
-  <figure class="multiply" aria-labelledby="multiply-caption">
-    <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
-      <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
-      <video class="multiply-layer" data-layer="objects" data-asset="objects-01" muted playsinline loop preload="none" poster="assets/posters/objects-01.jpg"></video>
-      <video class="multiply-layer" data-layer="motion" data-asset="kinematics-01" muted playsinline loop preload="none" poster="assets/posters/kinematics-01.jpg"></video>
-      <div class="multiply-overlay"><span class="multiply-count" id="multiply-count">1</span><span class="multiply-label" id="multiply-label">REAL SEED VIDEO</span></div>
-    </div>
-    <figcaption class="multiply-foot">
-      <div class="multiply-steps" role="group" aria-label="Choose a pipeline stage"><button type="button" class="multiply-step" data-multiply-phase="1" aria-pressed="true"><strong>1</strong> real video</button><button type="button" class="multiply-step" data-multiply-phase="9" aria-pressed="false"><strong>9</strong> samples</button><button type="button" class="multiply-step" data-multiply-phase="256" aria-pressed="false"><strong>256</strong> videos</button><button type="button" class="multiply-step" data-multiply-phase="objects" aria-pressed="false"><strong>3D</strong> objects</button><button type="button" class="multiply-step" data-multiply-phase="motion" aria-pressed="false"><strong>Robot</strong> kinematics</button></div>
-      <p id="multiply-caption">Start from one real recording of a person carrying a box.</p>
-      <div class="controls"><button class="button button-small" id="multiply-replay">Replay animation</button></div>
-    </figcaption>
-  </figure>
   <div class="idea-line"><span>REAL VIDEOS</span><b aria-hidden="true">→</b><span>GENERATED INTERACTIONS</span><b aria-hidden="true">→</b><span>SIMULATION TRAINING</span><b aria-hidden="true">→</b><span class="highlight-label">REAL ROBOT SKILLS</span></div>
 </section>
 <section class="tinted section-space" id="v2v" aria-labelledby="quiz-title">
@@ -114,6 +101,19 @@
   <div class="section-label"><span>04</span> THE METHOD</div>
   <h2 class="section-title" id="method-title">From imagined interactions<br><em>to a real robot.</em></h2>
   <p class="section-intro narrow">The video model supplies diverse possibilities. Contact anchors carry the interaction through reconstruction, retargeting, and policy learning.</p>
+  <figure class="multiply" aria-labelledby="multiply-caption">
+    <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
+      <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
+      <video class="multiply-layer" data-layer="256" data-asset="demo-10" muted playsinline loop preload="none" poster="assets/posters/demo-10.jpg"></video>
+      <video class="multiply-layer" data-layer="objects" data-asset="objects-01" muted playsinline loop preload="none" poster="assets/posters/objects-01.jpg"></video>
+      <video class="multiply-layer" data-layer="motion" data-asset="kinematics-01" muted playsinline loop preload="none" poster="assets/posters/kinematics-01.jpg"></video>
+      <div class="multiply-overlay"><span class="multiply-count" id="multiply-count">1</span><span class="multiply-label" id="multiply-label">REAL SEED VIDEO</span></div>
+    </div>
+    <figcaption class="multiply-foot">
+      <div class="multiply-steps" role="group" aria-label="Choose a pipeline stage"><button type="button" class="multiply-step" data-multiply-phase="1" aria-pressed="true"><strong>1</strong> real video</button><button type="button" class="multiply-step" data-multiply-phase="9" aria-pressed="false"><strong>9</strong> samples</button><button type="button" class="multiply-step" data-multiply-phase="256" aria-pressed="false"><strong>256</strong> videos</button><button type="button" class="multiply-step" data-multiply-phase="objects" aria-pressed="false"><strong>3D</strong> objects</button><button type="button" class="multiply-step" data-multiply-phase="motion" aria-pressed="false"><strong>Robot</strong> kinematics</button></div>
+      <p id="multiply-caption">Start from one real recording of a person carrying a box.</p>
+    </figcaption>
+  </figure>
   <div class="method-tabs" role="tablist" aria-label="PRISM pipeline stages"><button role="tab" id="stage-tab-0" aria-selected="true" aria-controls="method-panel" data-stage="0"><span>01</span> Generate</button><button role="tab" id="stage-tab-1" aria-selected="false" aria-controls="method-panel" data-stage="1" tabindex="-1"><span>02</span> Reconstruct</button><button role="tab" id="stage-tab-2" aria-selected="false" aria-controls="method-panel" data-stage="2" tabindex="-1"><span>03</span> Retarget</button><button role="tab" id="stage-tab-3" aria-selected="false" aria-controls="method-panel" data-stage="3" tabindex="-1"><span>04</span> Learn &amp; deploy</button></div>
   <div class="method-panel media-group" id="method-panel" role="tabpanel" aria-labelledby="stage-tab-0" data-group="method"><div class="method-visual" id="method-visual"></div><div class="method-copy"><span class="method-index" id="method-index">01 / 04</span><h3 id="method-stage-title"></h3><p id="method-stage-description"></p><div class="method-detail" id="method-detail"></div><div class="controls"><button class="button button-small" data-toggle-group="method">Play stage</button><button class="button button-small" data-restart-group="method">Replay</button></div></div></div>
   <p class="figure-note">Reconstruction builds on <a href="https://crisp-real2sim.github.io/CRISP-Real2Sim/" target="_blank" rel="noopener noreferrer">CRISP</a>. Explore the generated videos, reconstructed interactions, and robot rollouts at each stage.</p>
