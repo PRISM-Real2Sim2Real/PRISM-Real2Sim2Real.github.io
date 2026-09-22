@@ -89,7 +89,7 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 html{scroll-padding-top:28px}
 .hero{padding-top:64px}
 .hero-wordmark{display:flex;align-items:center;justify-content:center;gap:.16em;padding-right:0}
-.hero-wordmark .prism-mark{width:.6em;height:.66em;flex:0 0 auto;margin-top:-.04em}
+.hero-wordmark .prism-mark{width:.86em;height:.94em;flex:0 0 auto;margin-top:-.06em}
 @media(max-width:760px){.hero{padding-top:40px}}
 
 /* On wide screens the section navigation moves to a fixed rail on the left. */

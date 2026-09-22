@@ -249,6 +249,11 @@ window.PRISM_ASSETS = {
     "src": "assets/videos/kinematics-01.mp4",
     "poster": "assets/posters/kinematics-01.jpg",
     "duration": 8.607
+  },
+  "demo-hero": {
+    "src": "assets/videos/demo-hero.mp4",
+    "poster": "assets/posters/demo-hero.jpg",
+    "duration": 14.0
   }
 };
 window.PRISM_CONTENT = {
