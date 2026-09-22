@@ -85,6 +85,9 @@ h1{font-size:clamp(28px,3.9vw,46px)}
 @media(max-width:1000px){.fact-chips{gap:10px}.fact-chips li{padding:12px 14px;gap:11px}.fact-icon{flex-basis:40px;width:40px;height:40px}.fact-icon svg{width:20px;height:20px}.fact-text strong{font-size:14px}.fact-text small{font-size:11px}}
 @media(max-width:760px){.fact-chips{grid-template-columns:1fr;margin:22px 0 24px;gap:8px}}
 
+.footer-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.site-footer .footer-credit{margin-top:16px}
+
 /* The paper's method figure closes the idea & method section. */
 .method-figure{margin-top:56px;padding:22px 22px 18px;background:#fff;border:1px solid #dfe4d6;border-radius:14px}
 .method-figure img{display:block;width:100%;height:auto}
