@@ -369,7 +369,7 @@
       sim2real: {transform: zoom(1), label: 'ZERO-SHOT SIM-TO-REAL', caption: 'One unified policy, trained in simulation and deployed on the real robot across dozens of objects.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 4100], ['motion', 8400], ['sim2real', 7400]];
+    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
     let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
