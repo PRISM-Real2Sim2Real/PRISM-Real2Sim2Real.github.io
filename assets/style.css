@@ -48,7 +48,8 @@
 
 /* Venue badge. Color sampled from the CoRL 2026 wordmark. */
 .venue{display:flex;align-items:center;justify-content:center;gap:20px;margin:26px auto 0;color:#bc5400;font-weight:700;font-size:21px;letter-spacing:.005em}
-.venue img{height:76px;width:auto;display:block}
+.venue img{flex:0 0 auto;height:76px;width:auto;max-width:none;object-fit:contain;display:block}
+.venue span{min-width:0}
 @media(max-width:760px){.venue{gap:12px;font-size:15px;margin-top:20px}.venue img{height:50px}}
 
 /* A fuller masthead: larger title, deck and byline. All author names share one size. */
