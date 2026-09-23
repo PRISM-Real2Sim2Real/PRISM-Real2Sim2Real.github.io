@@ -203,3 +203,7 @@ html{scroll-padding-top:28px}
 
 /* Frame the input so the feet sit at the same height as in the other two panels. */
 .pipeline-step:first-child video{object-position:50% 62%}
+
+/* The idea title matches the compact results heading. */
+.motivation .section-title{font-size:clamp(28px,3vw,38px)}
+@media(max-width:760px){.motivation .section-title{font-size:28px}}
