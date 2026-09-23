@@ -211,3 +211,8 @@ html{scroll-padding-top:28px}
 
 
 .section-heading-row.compact .controls{margin-bottom:10px}
+
+/* Brand marks inside the resource buttons. */
+.resource-placeholder{gap:8px}
+.btn-icon{width:16px;height:16px;fill:currentColor;flex:0 0 auto}
+@media(max-width:440px){.btn-icon{width:14px;height:14px}}
