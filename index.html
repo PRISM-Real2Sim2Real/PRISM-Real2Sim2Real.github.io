@@ -11,9 +11,9 @@
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Generalizable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl26w">
-  <script src="assets/content.js?v=corl26w" defer></script>
-  <script src="assets/app.js?v=corl26w" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl26y">
+  <script src="assets/content.js?v=corl26y" defer></script>
+  <script src="assets/app.js?v=corl26y" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
@@ -107,6 +107,13 @@
 </section>
 <section class="section-shell section-space" id="method" aria-labelledby="method-label">
   <div class="section-label" id="method-label"><span>04</span> THE METHOD</div>
+  <figure class="pipeline media-group" data-group="pipeline" id="pipeline" aria-label="From an input video to a reconstructed interaction to a retargeted humanoid motion.">
+    <div class="pipeline-step" style="--i:0"><div class="pipeline-frame"><video data-asset="demo-11" muted playsinline loop preload="none" poster="assets/posters/demo-11.jpg" aria-label="Generated human–object video: a person lifts and carries a gray bin."></video></div><figcaption><span>01</span>Input video</figcaption></div>
+    <span class="pipeline-arrow" style="--i:1" aria-hidden="true">→</span>
+    <div class="pipeline-step" style="--i:2"><div class="pipeline-frame"><video data-asset="demo-12" muted playsinline loop preload="none" poster="assets/posters/demo-12.jpg" aria-label="Reconstructed human mesh and object with contact anchors."></video></div><figcaption><span>02</span>Reconstruction</figcaption></div>
+    <span class="pipeline-arrow" style="--i:3" aria-hidden="true">→</span>
+    <div class="pipeline-step" style="--i:4"><div class="pipeline-frame"><video data-asset="retarget-01" muted playsinline loop preload="none" poster="assets/posters/retarget-01.jpg" aria-label="The interaction retargeted to the humanoid robot."></video></div><figcaption><span>03</span>Retargeted motion</figcaption></div>
+  </figure>
   <figure class="method-figure">
     <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train a co-tracking teacher that is distilled into a depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
     <figcaption><strong>PRISM overview.</strong> Contact anchors carry the interaction from reconstruction through retargeting to a depth-based policy deployed zero-shot on the real robot.</figcaption>
@@ -126,7 +133,7 @@
 <section class="section-shell section-space closing-notes" id="acknowledgements" aria-labelledby="ack-label">
   <div class="section-label" id="ack-label"><span>06</span> ACKNOWLEDGEMENTS</div>
   <div class="ack-block">
-    <p>We thank our colleagues at Amazon FAR, UC Berkeley, Stanford University, and Carnegie Mellon University for their support and feedback. Video-to-video generation builds on Seedance 2.0, and human–object reconstruction builds on <a href="https://crisp-real2sim.github.io/CRISP-Real2Sim/" target="_blank" rel="noopener noreferrer">CRISP</a>.</p>
+    <p>We thank Qitao, Yen-Jen Wang, Sirui Chen, Chaile Cheng, Jiashun Wang, and Jacob Berg, and our colleagues at Amazon FAR, for their support and feedback. Video-to-video generation builds on Seedance 2.0, and human–object reconstruction builds on <a href="https://crisp-real2sim.github.io/CRISP-Real2Sim/" target="_blank" rel="noopener noreferrer">CRISP</a>.</p>
   </div>
 </section>
 </main>

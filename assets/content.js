@@ -254,6 +254,11 @@ window.PRISM_ASSETS = {
     "src": "assets/videos/demo-hero.mp4",
     "poster": "assets/posters/demo-hero.jpg",
     "duration": 14.0
+  },
+  "retarget-01": {
+    "src": "assets/videos/retarget-01.mp4",
+    "poster": "assets/posters/retarget-01.jpg",
+    "duration": 6.4
   }
 };
 window.PRISM_CONTENT = {

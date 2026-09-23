@@ -425,6 +425,15 @@
     reducedMotion.addEventListener('change', event => { if (event.matches) { window.clearTimeout(timer); jumpTo(256); } });
   })();
 
+  // ----- Method pipeline: reveal the three stages left to right once in view. -----
+  const pipeline = $('#pipeline');
+  if (pipeline) {
+    new IntersectionObserver((entries, io) => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      pipeline.classList.add('is-in'); io.disconnect();
+    }), {threshold: 0.3}).observe(pipeline);
+  }
+
   // Roving tab focus, including Home/End. Selection follows focus.
   $$('[role="tablist"]').forEach(tablist => tablist.addEventListener('keydown', event => {
     if (!['ArrowRight','ArrowLeft','Home','End'].includes(event.key)) return;
