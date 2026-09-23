@@ -199,7 +199,8 @@ html{scroll-padding-top:28px}
 .closing-notes+.closing-notes{padding-top:0;border-top:0}
 
 /* The input clip faces the other way; mirror it to match the reconstruction. */
-.pipeline-step:first-child video{transform:scaleX(-1)}
+/* Mirrored and zoomed about the feet line so the person reads as tall as the mesh and robot. */
+.pipeline-step:first-child video{transform:scale(-1.14,1.14);transform-origin:50% 86%}
 
 /* Frame the input so the feet sit at the same height as in the other two panels. */
 .pipeline-step:first-child video{object-position:50% 62%}
