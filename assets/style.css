@@ -182,3 +182,6 @@ html{scroll-padding-top:28px}
 #multiply-caption{font-size:13px;color:var(--muted);flex:1;min-width:240px;line-height:1.6}
 @media(max-width:760px){.multiply{margin-top:28px}.multiply-stage{border-radius:9px}.multiply-overlay{left:12px;bottom:11px;padding:7px 11px 8px;gap:8px}.multiply-label{font-size:8px}.multiply-overlay.no-count .multiply-label{font-size:9px}.multiply-foot{gap:12px}.multiply-steps{max-width:100%;flex-wrap:wrap}.multiply-step{padding:8px 10px;font-size:11px;flex:0 0 auto}.multiply-step strong{font-size:12px}#multiply-caption{font-size:12px;order:3;flex-basis:100%;min-width:0}}
 @media(prefers-reduced-motion:reduce){.multiply-grid{transform:none}}
+.citation-block{max-width:820px}
+.ack-block{max-width:820px}
+.closing-notes+.closing-notes{padding-top:0;border-top:0}
