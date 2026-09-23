@@ -11,9 +11,9 @@
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Generalizable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl27f">
-  <script src="assets/content.js?v=corl27f" defer></script>
-  <script src="assets/app.js?v=corl27f" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl27g">
+  <script src="assets/content.js?v=corl27g" defer></script>
+  <script src="assets/app.js?v=corl27g" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
@@ -69,7 +69,6 @@
     <div class="section-label"><span>02</span> VIDEO-TO-VIDEO GENERATION</div>
     <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title"><em>Which video is real?</em></h2><p class="section-intro">One was recorded; three were generated. Click the one you think is real.</p></div></div>
     <div class="quiz-panel media-group" data-group="quiz">
-      <div class="player-toolbar"><div class="controls"><button class="button button-small" data-toggle-group="quiz">Play all</button><button class="button button-small" data-restart-group="quiz">Replay together</button></div></div>
       <div class="quiz-grid" id="quiz-grid" role="group" aria-label="Four video choices. Exactly one is a real recording."></div>
       <div class="quiz-action-row"><p id="quiz-selection" role="status" aria-live="polite">Select the clip you think is real.</p><div class="controls"><button class="button button-quiet" id="shuffle-quiz">New round <span aria-hidden="true">↻</span></button></div></div>
       <div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite" hidden></div>
@@ -79,7 +78,6 @@
       <div class="sample-explorer-head"><h3>What does a sample change?</h3><p>Look beyond the texture. Compare the paired object and human motion.</p></div>
       <div class="sample-options" id="sample-options" role="group" aria-label="Select a pre-generated counterfactual example"></div>
       <div class="sample-pair media-group" data-group="samples"><figure><div class="video-frame"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="The real cardboard-box seed interaction."></video><span class="corner-label">REAL SEED</span></div><figcaption>A recorded box interaction</figcaption></figure><span class="pair-arrow" aria-hidden="true">→</span><figure><div class="video-frame"><video id="sample-video" data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A generated alternative interaction."></video><span class="corner-label gold-label">V2V SAMPLE</span></div><figcaption id="sample-caption">A rounded object invites a different two-handed hold.</figcaption></figure></div>
-      <div class="sample-foot"><div class="controls"><button class="button button-small" data-toggle-group="samples">Play comparison</button><button class="button button-small" data-restart-group="samples">Replay together</button></div></div>
     </div>
   </div>
 </section>
