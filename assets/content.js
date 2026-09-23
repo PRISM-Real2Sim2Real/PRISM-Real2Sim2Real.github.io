@@ -258,7 +258,7 @@ window.PRISM_ASSETS = {
   "retarget-01": {
     "src": "assets/videos/retarget-01.mp4",
     "poster": "assets/posters/retarget-01.jpg",
-    "duration": 6.4
+    "duration": 5.4
   }
 };
 window.PRISM_CONTENT = {

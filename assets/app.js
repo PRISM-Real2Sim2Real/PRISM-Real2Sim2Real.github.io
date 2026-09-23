@@ -125,7 +125,7 @@
   // Only like-duration V2V clips are continually time-aligned.
   // Real-world experiments have different durations and loop independently.
   window.setInterval(() => {
-    ['quiz', 'samples', 'multiply'].forEach(name => {
+    ['quiz', 'samples', 'multiply', 'pipeline'].forEach(name => {
       const group = groups.get(name);
       if (!group || !group.visible || !group.playing || document.hidden || dialogOpen) return;
       const videos = $$('video', group.element).filter(v => !v.paused && v.readyState >= 2 && !v.seeking);
