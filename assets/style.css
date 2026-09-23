@@ -200,3 +200,6 @@ html{scroll-padding-top:28px}
 
 /* The input clip faces the other way; mirror it to match the reconstruction. */
 .pipeline-step:first-child video{transform:scaleX(-1)}
+
+/* Frame the input so the feet sit at the same height as in the other two panels. */
+.pipeline-step:first-child video{object-position:50% 62%}
