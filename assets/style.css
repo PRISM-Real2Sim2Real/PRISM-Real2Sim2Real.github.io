@@ -207,3 +207,7 @@ html{scroll-padding-top:28px}
 /* The idea title matches the compact results heading. */
 .motivation .section-title{font-size:clamp(28px,3vw,38px)}
 @media(max-width:760px){.motivation .section-title{font-size:28px}}
+
+/* One-line summary under the idea grid. */
+.motivation>.idea-summary{margin-top:26px;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:760px){.motivation>.idea-summary{white-space:normal;font-size:14px;margin-top:18px}}
