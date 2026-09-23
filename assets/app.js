@@ -484,7 +484,7 @@
   // Reading progress is purely local; no scroll data are transmitted.
   let scrollPending = false;
   function updateProgress() {
-    const sections = ['generalization','motivation','method','v2v'];
+    const sections = ['generalization','v2v','motivation','method'];
     const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
     $$('.site-header nav a, .side-nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;
