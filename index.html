@@ -11,13 +11,13 @@
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Generalizable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl27i">
-  <script src="assets/content.js?v=corl27i" defer></script>
-  <script src="assets/app.js?v=corl27i" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl27j">
+  <script src="assets/content.js?v=corl27j" defer></script>
+  <script src="assets/app.js?v=corl27j" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
-<nav class="side-nav" aria-label="Sections"><a href="#generalization"><span>01</span>Results</a><a href="#v2v"><span>02</span>V2V challenge</a><a href="#motivation"><span>03</span>The idea</a><a href="#method"><span>04</span>Method</a><a href="#citation"><span>05</span>BibTeX</a><a href="#acknowledgements"><span>06</span>Acknowledgements</a></nav>
+<nav class="side-nav" aria-label="Sections"><a href="#generalization"><span>01</span>Results</a><a href="#v2v"><span>02</span>V2V challenge</a><a href="#motivation"><span>03</span>The idea</a><a href="#method"><span>04</span>Method</a><a href="#citation"><span>05</span>BibTeX</a></nav>
 <main id="main">
 <section class="hero section-shell" id="top" aria-labelledby="paper-title">
   <p class="eyebrow centered"><span class="tiny-line"></span> REAL-to-SIM-to-REAL <span class="tiny-line"></span></p>
@@ -67,13 +67,11 @@
 <section class="tinted section-space" id="v2v" aria-labelledby="quiz-title">
   <div class="section-shell">
     <div class="section-label"><span>02</span> VIDEO-TO-VIDEO GENERATION</div>
-    <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title"><em>Which video is real?</em></h2><p class="section-intro">One was recorded; three were generated. Click the one you think is real.</p></div></div>
+    <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title"><em>Which video is real?</em></h2><p class="section-intro">One was recorded; three were generated. Click the one you think is real.</p></div><div class="controls"><button class="button button-small" id="shuffle-quiz" type="button">New round <span aria-hidden="true">↻</span></button></div></div>
     <div class="quiz-panel media-group" data-group="quiz">
       <div class="quiz-grid" id="quiz-grid" role="group" aria-label="Four video choices. Exactly one is a real recording."></div>
-      <div class="quiz-action-row"><p id="quiz-selection" role="status" aria-live="polite">Select the clip you think is real.</p><div class="controls"><button class="button button-quiet" id="shuffle-quiz">New round <span aria-hidden="true">↻</span></button></div></div>
       <div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite" hidden></div>
     </div>
-    <p class="figure-note">An interactive introduction to V2V generation. Visual realism alone does not establish physical validity.</p>
     <div class="sample-explorer" id="sample-explorer" hidden>
       <div class="sample-explorer-head"><h3>What does a sample change?</h3><p>Look beyond the texture. Compare the paired object and human motion.</p></div>
       <div class="sample-options" id="sample-options" role="group" aria-label="Select a pre-generated counterfactual example"></div>

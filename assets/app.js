@@ -164,7 +164,6 @@
     selected = null; revealed = false;
     $('#quiz-feedback').hidden = true;
     $('#quiz-feedback').replaceChildren();
-    $('#quiz-selection').textContent = 'Select the clip you think is real.';
     $('#sample-explorer').hidden = true; // Do not spoil the seed before the reveal.
     grid.replaceChildren();
     order.forEach((choice, index) => {
@@ -225,7 +224,6 @@
     const caution = document.createElement('span');
     caution.textContent = 'Photorealism alone does not establish physical validity. PRISM reconstructs and grounds these interactions before learning in simulation. Click any revealed tile to inspect it.';
     feedback.replaceChildren(title, explanation, caution); feedback.hidden = false;
-    $('#quiz-selection').textContent = 'Green marks the real seed. Every other clip is V2V-generated.';
     $('#sample-explorer').hidden = false;
   }
   $('#shuffle-quiz').addEventListener('click', renderQuiz);
@@ -492,7 +490,7 @@
   // Reading progress is purely local; no scroll data are transmitted.
   let scrollPending = false;
   function updateProgress() {
-    const sections = ['generalization','v2v','motivation','method','citation','acknowledgements'];
+    const sections = ['generalization','v2v','motivation','method','citation'];
     const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     const active = atBottom ? sections[sections.length - 1]
       : sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();

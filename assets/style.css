@@ -208,3 +208,5 @@ html{scroll-padding-top:28px}
 .motivation .section-title{font-size:clamp(28px,3vw,38px)}
 @media(max-width:760px){.motivation .section-title{font-size:28px}}
 
+
+.section-heading-row.compact .controls{margin-bottom:10px}
