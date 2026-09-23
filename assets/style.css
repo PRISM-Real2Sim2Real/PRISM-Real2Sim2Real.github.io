@@ -197,3 +197,6 @@ html{scroll-padding-top:28px}
 .citation-block{max-width:none}
 .ack-block{max-width:none}
 .closing-notes+.closing-notes{padding-top:0;border-top:0}
+
+/* The input clip faces the other way; mirror it to match the reconstruction. */
+.pipeline-step:first-child video{transform:scaleX(-1)}
