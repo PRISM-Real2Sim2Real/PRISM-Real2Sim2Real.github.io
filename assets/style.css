@@ -115,6 +115,16 @@ html{scroll-padding-top:28px}
   .side-nav a.active:before{background:var(--gold);border-color:var(--gold-dark);transform:translateY(-50%) scale(1.15)}
   .side-nav a.active span{color:var(--gold-dark)}
 }
+/* Closing notes: citation and acknowledgements side by side. */
+.closing-notes{border-top:1px solid var(--line)}
+.closing-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start}
+.closing-grid h3{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+.citation-block pre{font-size:12.5px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--wash);border:1px solid #e3e6da;border-radius:8px;padding:18px 20px;margin:0}
+.citation-block .controls{margin-top:12px}
+#copy-status{font-size:12px;color:var(--muted)}
+.ack-block p{font-size:15px;line-height:1.75;color:var(--muted)}
+.ack-block a{border-bottom:1px solid #b1b79e}
+@media(max-width:760px){.closing-grid{grid-template-columns:1fr;gap:28px}.closing-grid h3{font-size:18px}.citation-block pre{font-size:11px;padding:14px}.ack-block p{font-size:14px}}
 .footer-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .site-footer .footer-credit{margin-top:16px}
 

@@ -469,7 +469,6 @@
     });
   });
   $$('[data-close-dialog]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.closeDialog).close()));
-  $('#open-citation').addEventListener('click', () => showDialog($('#citation-dialog')));
   $('#copy-citation').addEventListener('click', async () => {
     const text = $('#citation-text').textContent;
     try {
@@ -484,8 +483,10 @@
   // Reading progress is purely local; no scroll data are transmitted.
   let scrollPending = false;
   function updateProgress() {
-    const sections = ['generalization','v2v','motivation','method'];
-    const active = sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
+    const sections = ['generalization','v2v','motivation','method','citation'];
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const active = atBottom ? sections[sections.length - 1]
+      : sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
     $$('.site-header nav a, .side-nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
     scrollPending = false;
   }
