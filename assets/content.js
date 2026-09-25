@@ -256,7 +256,7 @@ window.PRISM_CONTENT = {
     {
       "id": "in-domain",
       "name": "In-domain",
-      "title": "Familiar categories. Unseen instances.",
+      "title": "New objects from categories seen in training",
       "description": "Pick, carry, and drop across new instances of the object categories covered by training. Different geometries call for different contacts\u2014not a separate policy.",
       "pages": [
         [
@@ -316,7 +316,7 @@ window.PRISM_CONTENT = {
     {
       "id": "out-of-domain",
       "name": "Out-of-domain",
-      "title": "Beyond the training categories.",
+      "title": "Objects from categories never seen in training",
       "description": "The same policy encounters everyday objects outside its training categories. Explore held-out object interactions, without switching policies or fine-tuning on the real robot.",
       "pages": [
         [
@@ -376,7 +376,7 @@ window.PRISM_CONTENT = {
     {
       "id": "scale",
       "name": "Scale",
-      "title": "A skill that spans scales.",
+      "title": "Boxes of very different sizes and shapes",
       "description": "Object size changes where to reach, how far to bend, and how to carry. These examples use the same policy across a substantial range of object dimensions.",
       "pages": [
         [
@@ -410,7 +410,7 @@ window.PRISM_CONTENT = {
     {
       "id": "strategy",
       "name": "Strategy",
-      "title": "Different situations. Different approaches.",
+      "title": "Objects placed within reach, far away, or off to the side",
       "description": "The policy adapts its approach and grasp to the object\u2019s position and orientation. Watch the setup\u2014not just the final lift.",
       "pages": [
         [
@@ -444,7 +444,7 @@ window.PRISM_CONTENT = {
     {
       "id": "pose",
       "name": "Pose",
-      "title": "When the object starts differently.",
+      "title": "Objects that start upright, on their side, or tipped over",
       "description": "Changing the initial pose changes the reachable surfaces. The policy responds through perception rather than assuming a fixed object configuration.",
       "pages": [
         [

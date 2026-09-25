@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="PRISM turns a handful of real human videos into diverse counterfactual interactions and a unified humanoid policy. Explore V2V generation and zero-shot real-world generalization.">
+  <meta name="description" content="PRISM turns a few real videos of people carrying objects into hundreds of generated interactions, and trains one humanoid policy on them that works zero-shot on real objects it has never seen.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation">
-  <meta property="og:description" content="Sample rich interactions. Learn one policy. Generalize to unseen objects. An interactive research story with real video evidence.">
+  <meta property="og:description" content="From one real video to a humanoid robot, end to end: new objects and matching human motion are generated from the video, then used to train one policy that picks up real objects it has never seen.">
   <meta property="og:image" content="assets/posters/demo-48.jpg">
   <title>PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=corl28e">
-  <script src="assets/content.js?v=corl28e" defer></script>
-  <script src="assets/app.js?v=corl28e" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=corl28f">
+  <script src="assets/content.js?v=corl28f" defer></script>
+  <script src="assets/app.js?v=corl28f" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the research</a>
@@ -23,7 +23,7 @@
   <p class="kicker hero-kicker">Real-to-Sim-to-Real</p>
   <div class="hero-wordmark" aria-hidden="true"><span class="prism-mark"></span>PRISM</div>
   <h1 id="paper-title">Counterfactual Video Generation <em class="title-for">for</em><br class="desktop-break"> Scalable Humanoid Loco-Manipulation</h1>
-  <p class="hero-deck">Sample rich interactions. Learn one policy.<br class="mobile-break"> Generalize to unseen objects.</p>
+  <p class="hero-deck">From one real video to a humanoid robot, end to end: PRISM generates new objects and matching human motion, then trains one policy that picks up real objects it has never seen.</p>
   <p class="venue"><img src="assets/corl-2026-logo.png" alt="CoRL 2026" width="1280" height="450"><span>Conference on Robot Learning (CoRL 2026)</span></p>
   <div class="authors" aria-label="Authors"><div class="author-row primary-authors"><a href="https://z1hanw.github.io/" target="_blank" rel="noopener noreferrer">Zihan Wang<sup>1,2</sup></a>
 <a href="https://zhenwu061.github.io/" target="_blank" rel="noopener noreferrer">Zhen Wu<sup>1</sup></a></div>
@@ -49,11 +49,11 @@
 <section class="section-space band" id="generalization" aria-labelledby="generalization-title">
   <div class="section-shell">
     <p class="kicker">Real-world generalization</p>
-    <div class="section-heading-row compact"><div><h2 class="section-title" id="generalization-title">Generalizing to unseen objects</h2><p class="section-intro">One policy, deployed zero-shot on the real robot: new objects within and beyond the training categories, at different scales, poses, and approach strategies.</p></div></div>
+    <div class="section-heading-row compact"><div><h2 class="section-title" id="generalization-title">Generalizing to unseen objects</h2><p class="section-intro">Every clip below is the same policy running on the real robot, with no real-world fine-tuning.</p></div></div>
     <ul class="fact-chips" aria-label="How the policy is deployed">
-      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16"/><circle cx="12" cy="12" r="2.2"/><path d="M12 6.5a5.5 5.5 0 0 1 5.5 5.5M6.5 12A5.5 5.5 0 0 1 12 6.5"/></svg></span><span class="fact-text"><strong>Driven by onboard depth</strong><small>No mocap, no reference.</small></span></li>
-      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 5h9a5 5 0 0 1 5 5v1.8a3.3 3.3 0 0 1-5.9 2l-.7-.9H9.1l-.7.9a3.3 3.3 0 0 1-5.9-2V10a5 5 0 0 1 5-5z"/><path d="M6.2 9.6h3.6M8 7.8v3.6"/><circle cx="15.3" cy="8.9" r=".9" fill="currentColor" stroke="none"/><circle cx="17.6" cy="10.8" r=".9" fill="currentColor" stroke="none"/></svg></span><span class="fact-text"><strong>Autonomous policy</strong><small>Joystick steering only.</small></span></li>
-      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M7.5 4.5v15M16.5 4.5v15M3 9h4.5M3 15h4.5M16.5 9H21M16.5 15H21"/><path d="m10.6 9.4 3.6 2.6-3.6 2.6z" fill="currentColor" stroke="none"/></svg></span><span class="fact-text"><strong>Pure video data</strong><small>Zero-shot sim-to-real.</small></span></li>
+      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16"/><circle cx="12" cy="12" r="2.2"/><path d="M12 6.5a5.5 5.5 0 0 1 5.5 5.5M6.5 12A5.5 5.5 0 0 1 12 6.5"/></svg></span><span class="fact-text"><strong>Onboard depth only</strong><small>No motion capture or reference trajectory at test time.</small></span></li>
+      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 5h9a5 5 0 0 1 5 5v1.8a3.3 3.3 0 0 1-5.9 2l-.7-.9H9.1l-.7.9a3.3 3.3 0 0 1-5.9-2V10a5 5 0 0 1 5-5z"/><path d="M6.2 9.6h3.6M8 7.8v3.6"/><circle cx="15.3" cy="8.9" r=".9" fill="currentColor" stroke="none"/><circle cx="17.6" cy="10.8" r=".9" fill="currentColor" stroke="none"/></svg></span><span class="fact-text"><strong>Autonomous</strong><small>A person only steers it with a joystick.</small></span></li>
+      <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M7.5 4.5v15M16.5 4.5v15M3 9h4.5M3 15h4.5M16.5 9H21M16.5 15H21"/><path d="m10.6 9.4 3.6 2.6-3.6 2.6z" fill="currentColor" stroke="none"/></svg></span><span class="fact-text"><strong>Trained from video alone</strong><small>No real-robot data; deployed zero-shot from simulation.</small></span></li>
     </ul>
     <div class="result-tabs" id="result-tabs" role="tablist" aria-label="Generalization categories"></div>
     <div id="generalization-panel" class="media-group" role="tabpanel" data-group="results">
@@ -71,7 +71,7 @@
       <div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite" hidden></div>
     </div>
     <div class="sample-explorer" id="sample-explorer" hidden>
-      <div class="sample-explorer-head"><h3>What does a sample change?</h3><p>Look beyond the texture. Compare the paired object and human motion.</p></div>
+      <div class="sample-explorer-head"><h3>What changes in a generated video?</h3><p>Both the object and the way the person moves. Pick an object to compare it with the real recording.</p></div>
       <div class="sample-options" id="sample-options" role="group" aria-label="Select a pre-generated counterfactual example"></div>
       <div class="sample-pair media-group" data-group="samples"><figure><div class="video-frame"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="The real cardboard-box seed interaction."></video><span class="corner-label">Real seed</span></div><figcaption>A recorded box interaction</figcaption></figure><span class="pair-arrow" aria-hidden="true">→</span><figure><div class="video-frame"><video id="sample-video" data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A generated alternative interaction."></video><span class="corner-label">Generated</span></div><figcaption id="sample-caption">A rounded object invites a different two-handed hold.</figcaption></figure></div>
     </div>
@@ -82,7 +82,7 @@
   <p class="kicker">The idea</p>
   <div class="editorial-grid">
     <div><h2 class="section-title" id="motivation-title">Sample new objects,<br>with new ways to interact.</h2></div>
-    <div class="motivation-copy"><p class="lead">Starting from a few real videos, PRISM generates new objects together with the human motions to match.</p><p class="idea-summary">Reconstruct in 3D. Train in simulation. Deploy for real.</p></div>
+    <div class="motivation-copy"><p class="lead">Starting from a few real videos, PRISM generates new objects together with the human motions to match.</p><p class="idea-summary">We then rebuild each generated interaction in 3D and train the robot on it in simulation.</p></div>
   </div>
   <figure class="multiply" aria-labelledby="multiply-caption">
     <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
@@ -112,7 +112,7 @@
   </figure>
   <figure class="method-figure">
     <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train a co-tracking teacher that is distilled into a depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
-    <figcaption><strong>PRISM overview.</strong> Contact anchors carry the interaction from reconstruction through retargeting to a depth-based policy deployed zero-shot on the real robot.</figcaption>
+    <figcaption><strong>PRISM overview.</strong> From each video we reconstruct the person, the object, and where they touch; retarget the motion to the humanoid while keeping those contact points; and train a depth-based policy in simulation that runs zero-shot on the real robot.</figcaption>
   </figure>
 </div>
 </section>

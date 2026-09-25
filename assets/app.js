@@ -329,11 +329,11 @@
     // Three zoom levels of the video grid, then two full-frame layers that fade in over it.
     const phases = {
       1: {transform: zoom(N), count: 1, label: 'Real seed video', caption: 'Start from one real recording of a person carrying a box.'},
-      9: {transform: zoom(N / 3), count: 9, label: 'Counterfactual samples', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
-      256: {transform: zoom(N / 3), count: 256, label: 'Counterfactual videos', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
-      objects: {transform: zoom(1), label: 'Diverse 3D objects', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
-      motion: {transform: zoom(1), label: 'High-quality kinematics', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'},
-      sim2real: {transform: zoom(1), label: 'Zero-shot sim-to-real', caption: 'One unified policy, trained in simulation and deployed on the real robot across dozens of objects.'}
+      9: {transform: zoom(N / 3), count: 9, label: 'Counterfactual samples', caption: 'Video-to-video generation swaps in new objects, and the person’s motion changes to fit each one.'},
+      256: {transform: zoom(N / 3), count: 256, label: 'Counterfactual videos', caption: 'From four real videos we generate 256, and all of them become training data for a single policy.'},
+      objects: {transform: zoom(1), label: 'Diverse 3D objects', caption: 'Each generated video gives us a 3D object, covering a wide range of everyday shapes and sizes.'},
+      motion: {transform: zoom(1), label: 'High-quality kinematics', caption: 'Each reconstructed interaction is retargeted to the humanoid, giving it motions it can follow in simulation.'},
+      sim2real: {transform: zoom(1), label: 'Zero-shot sim-to-real', caption: 'The same policy, trained only in simulation, running on the real robot.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
     const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];

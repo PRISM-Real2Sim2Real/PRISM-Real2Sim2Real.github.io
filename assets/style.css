@@ -276,3 +276,5 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
   *,*:before,*:after{transition:none!important;animation:none!important}
   .pipeline-step,.pipeline-arrow{opacity:1;transform:none}
 }
+
+.hero-deck{max-width:840px;margin-left:auto;margin-right:auto;line-height:1.55}
