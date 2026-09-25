@@ -176,7 +176,7 @@
       // A video inside an answer button is decorative; the button owns the accessible name.
       video.setAttribute('aria-hidden', 'true');
       const number = document.createElement('span');
-      number.className = 'quiz-number'; number.textContent = String(index + 1).padStart(2, '0');
+      number.className = 'quiz-number'; number.textContent = String(index + 1);
       const answer = document.createElement('span'); answer.className = 'quiz-answer';
       tile.append(video, number, answer);
       tile.addEventListener('click', () => {
@@ -211,19 +211,17 @@
       tile.classList.add('revealed');
       tile.classList.toggle('is-real', isReal);
       tile.classList.remove('is-wrong');
-      $('.quiz-answer', tile).textContent = isReal ? 'REAL · original seed' : 'V2V · generated';
+      $('.quiz-answer', tile).textContent = isReal ? 'Real' : 'Generated';
       tile.setAttribute('aria-label', `Inspect clip ${index + 1}: ${isReal ? 'original real recording' : 'V2V-generated'}, ${order[index].object}`);
     });
     const feedback = $('#quiz-feedback');
     const title = document.createElement('strong');
     title.textContent = selected === realIndex
-      ? `Correct! Clip ${realIndex + 1} is the real recording.`
-      : `Your pick was generated. Clip ${realIndex + 1} is the real recording.`;
+      ? `Correct. Clip ${realIndex + 1} is the real recording.`
+      : `Clip ${realIndex + 1} is the real recording.`;
     const explanation = document.createElement('p');
-    explanation.textContent = 'The cardboard-box interaction is the seed. The other three videos are generated alternatives: not only different objects, but paired changes in the human’s reach, hand placement, and carrying motion.';
-    const caution = document.createElement('span');
-    caution.textContent = 'Photorealism alone does not establish physical validity. PRISM reconstructs and grounds these interactions before learning in simulation. Click any revealed tile to inspect it.';
-    feedback.replaceChildren(title, explanation, caution); feedback.hidden = false;
+    explanation.textContent = 'The other three were generated from it: new objects, with the human motion to match.';
+    feedback.replaceChildren(title, explanation); feedback.hidden = false;
     $('#sample-explorer').hidden = false;
   }
   $('#shuffle-quiz').addEventListener('click', renderQuiz);
@@ -279,20 +277,22 @@
     $('#gallery-title').textContent = category.title;
     const grid = $('#result-grid');
     $$('video', grid).forEach(v => v.pause()); grid.replaceChildren();
+    // Pages may hold any number of clips, so number them from the clips on earlier pages.
+    const offset = category.pages.slice(0, pageIndex).reduce((n, page) => n + page.length, 0);
     clips.forEach((clip, index) => {
       const card = document.createElement('figure'); card.className = 'result-card';
       const frame = document.createElement('div'); frame.className = 'video-frame';
       const video = document.createElement('video'); setMedia(video, clip.id, `Real robot demonstration: ${clip.title}`);
       const speed = document.createElement('span'); speed.className = 'speed-badge';
-      speed.textContent = clip.speed === 'Mixed' ? 'PRESENTATION · VARIABLE SPEED' : `PRESENTATION · ${clip.speed}`;
+      speed.textContent = clip.speed === '1×' ? 'Real time' : `${clip.speed} speed`;
       const expand = document.createElement('button'); expand.type = 'button'; expand.className = 'expand-video';
-      expand.textContent = 'Expand ↗'; expand.setAttribute('aria-label', `Expand ${clip.title} video`);
+      expand.setAttribute('aria-label', `Enlarge ${clip.title} video`);
       expand.addEventListener('click', () => openVideo(clip));
       frame.append(video, speed, expand);
       const caption = document.createElement('figcaption'); const text = document.createElement('div');
       const title = document.createElement('h4'); title.textContent = clip.title;
       const note = document.createElement('p'); note.textContent = clip.note;
-      const count = document.createElement('span'); count.className = 'clip-index'; count.textContent = String(pageIndex * 4 + index + 1).padStart(2,'0');
+      const count = document.createElement('span'); count.className = 'clip-index'; count.textContent = String(offset + index + 1).padStart(2,'0');
       text.append(title,note); caption.append(text,count); card.append(frame,caption); grid.append(card);
     });
     updateGroup(groups.get('results'));
@@ -328,12 +328,12 @@
     const zoom = s => s === 1 ? 'none' : `translate(${(0.5 - s * focus) * 100}%, ${(0.5 - s * focus) * 100}%) scale(${s})`;
     // Three zoom levels of the video grid, then two full-frame layers that fade in over it.
     const phases = {
-      1: {transform: zoom(N), count: 1, label: 'REAL SEED VIDEO', caption: 'Start from one real recording of a person carrying a box.'},
-      9: {transform: zoom(N / 3), count: 9, label: 'COUNTERFACTUAL SAMPLES', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
-      256: {transform: zoom(N / 3), count: 256, label: 'COUNTERFACTUAL VIDEOS', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
-      objects: {transform: zoom(1), label: 'DIVERSE 3D OBJECTS', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
-      motion: {transform: zoom(1), label: 'HIGH-QUALITY KINEMATICS', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'},
-      sim2real: {transform: zoom(1), label: 'ZERO-SHOT SIM-TO-REAL', caption: 'One unified policy, trained in simulation and deployed on the real robot across dozens of objects.'}
+      1: {transform: zoom(N), count: 1, label: 'Real seed video', caption: 'Start from one real recording of a person carrying a box.'},
+      9: {transform: zoom(N / 3), count: 9, label: 'Counterfactual samples', caption: 'V2V generation samples new objects together with the human motion that matches them.'},
+      256: {transform: zoom(N / 3), count: 256, label: 'Counterfactual videos', caption: 'From four real seeds, PRISM samples 256 counterfactual videos: diverse training data for one policy.'},
+      objects: {transform: zoom(1), label: 'Diverse 3D objects', caption: 'Every generated video yields a 3D object. Together they span the scales, shapes, and categories of everyday things.'},
+      motion: {transform: zoom(1), label: 'High-quality kinematics', caption: 'Reconstructed interactions are retargeted into humanoid kinematics: physically grounded references for policy training.'},
+      sim2real: {transform: zoom(1), label: 'Zero-shot sim-to-real', caption: 'One unified policy, trained in simulation and deployed on the real robot across dozens of objects.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
     const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
@@ -458,7 +458,7 @@
     modalVideo.src = asset.src; modalVideo.poster = asset.poster;
     modalVideo.playbackRate = 1; modalVideo.muted = true;
     $('#modal-title').textContent = clip.title;
-    $('#modal-description').textContent = `${clip.note || ''}${clip.note ? ' · ' : ''}${clip.speed === 'Mixed' ? 'Variable speed in the original presentation.' : clip.speed === 'Source clip' ? 'Original clip timing.' : `Presentation label: ${clip.speed}.`} Player controls are relative to the supplied clip.`;
+    $('#modal-description').textContent = `${clip.note || ''}${clip.note ? ' · ' : ''}${clip.speed === '1×' ? 'Real-time playback.' : clip.speed === 'Source clip' ? 'Original clip timing.' : `Playback speed: ${clip.speed}.`}`;
     showDialog($('#video-dialog'));
     modalVideo.play().catch(() => {});
   }
