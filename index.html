@@ -46,7 +46,7 @@
   </figure>
   <div class="number-strip" aria-label="Project overview"><div><strong>4</strong><span>real seed videos</span></div><div><strong>256</strong><span>counterfactual videos</span></div><div><strong>1</strong><span>unified policy</span></div><div><strong>28</strong><span>real-world test objects</span></div></div>
 </section>
-<section class="section-space" id="generalization" aria-labelledby="generalization-title">
+<section class="section-space band" id="generalization" aria-labelledby="generalization-title">
   <div class="section-shell">
     <p class="kicker">Real-world generalization</p>
     <div class="section-heading-row compact"><div><h2 class="section-title" id="generalization-title">Switch the test. Not the policy.</h2><p class="section-intro">Different objects, scales, poses, and situations — one unified policy, deployed without real-world fine-tuning.</p></div></div>
@@ -77,7 +77,8 @@
     </div>
   </div>
 </section>
-<section class="motivation section-shell section-space" id="motivation" aria-labelledby="motivation-title">
+<section class="motivation section-space band" id="motivation" aria-labelledby="motivation-title">
+<div class="section-shell">
   <p class="kicker">The idea</p>
   <div class="editorial-grid">
     <div><h2 class="section-title" id="motivation-title">Sample new objects,<br>with new ways to interact.</h2></div>
@@ -97,8 +98,10 @@
       <p id="multiply-caption">Start from one real recording of a person carrying a box.</p>
     </figcaption>
   </figure>
+</div>
 </section>
-<section class="section-shell section-space" id="method" aria-labelledby="method-label">
+<section class="section-space" id="method" aria-labelledby="method-label">
+<div class="section-shell">
   <h2 class="section-title solo" id="method-label">Method</h2>
   <figure class="pipeline media-group" data-group="pipeline" id="pipeline" aria-label="From an input video to a reconstructed interaction to a retargeted humanoid motion.">
     <div class="pipeline-step" style="--i:0"><div class="pipeline-frame"><video data-asset="demo-11" muted playsinline loop preload="none" poster="assets/posters/demo-11.jpg" aria-label="Generated human–object video: a person lifts and carries a gray bin."></video></div><figcaption>Input video</figcaption></div>
@@ -111,8 +114,10 @@
     <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train a co-tracking teacher that is distilled into a depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
     <figcaption><strong>PRISM overview.</strong> Contact anchors carry the interaction from reconstruction through retargeting to a depth-based policy deployed zero-shot on the real robot.</figcaption>
   </figure>
+</div>
 </section>
-<section class="section-shell section-space closing-notes" id="citation" aria-labelledby="citation-label">
+<section class="section-space closing-notes band" id="citation" aria-labelledby="citation-label">
+<div class="section-shell">
   <h2 class="section-title solo" id="citation-label">BibTeX</h2>
   <div class="citation-block">
     <pre id="citation-text">@inproceedings{wang2026counterfactual,
@@ -122,12 +127,15 @@
 }</pre>
     <div class="controls"><button class="button button-small" id="copy-citation" type="button">Copy BibTeX</button><span id="copy-status" role="status" aria-live="polite"></span></div>
   </div>
+</div>
 </section>
-<section class="section-shell section-space closing-notes" id="acknowledgements" aria-labelledby="ack-label">
+<section class="section-space closing-notes band" id="acknowledgements" aria-labelledby="ack-label">
+<div class="section-shell">
   <h2 class="section-title solo" id="ack-label">Acknowledgements</h2>
   <div class="ack-block">
     <p>We thank Qitao Zhao, Yen-Jen Wang, Sirui Chen, Chaile Cheng, Jiashun Wang, and Jacob Berg, and our colleagues at Amazon FAR, for their support and feedback. Video-to-video generation builds on Seedance 2.0, and human–object reconstruction builds on <a href="https://crisp-real2sim.github.io/CRISP-Real2Sim/" target="_blank" rel="noopener noreferrer">CRISP</a>.</p>
   </div>
+</div>
 </section>
 </main>
 <dialog id="video-dialog" class="video-dialog" aria-labelledby="modal-title"><div class="dialog-head"><h2 id="modal-title"></h2><button class="dialog-close" data-close-dialog="video-dialog" aria-label="Close expanded video">×</button></div><video id="modal-video" controls playsinline muted preload="metadata"></video><p id="modal-description"></p></dialog>
