@@ -31,7 +31,8 @@ video{width:100%;height:100%;object-fit:contain;background:var(--soft)}
 .skip-link:focus{top:12px}
 
 /* Layout */
-.section-shell{max-width:1040px;margin:0 auto;padding:0 32px}
+.section-shell{max-width:1192px;margin:0 auto;padding:0 36px}
+@media(min-width:1450px){.section-shell{max-width:1232px}}
 .section-space{padding-top:96px;padding-bottom:96px}
 .kicker{margin-bottom:10px;font-size:13px;font-weight:500;color:var(--muted)}
 .section-title{font-size:clamp(24px,2.6vw,32px);font-weight:600;line-height:1.2;letter-spacing:-.012em;color:var(--ink)}
@@ -203,8 +204,8 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 
 /* Section rail, only where the margin can hold it. */
 .side-nav{display:none}
-@media(min-width:1380px){
-  .side-nav{position:fixed;left:32px;top:50%;z-index:20;display:flex;flex-direction:column;gap:12px;transform:translateY(-50%)}
+@media(min-width:1440px){
+  .side-nav{position:fixed;left:24px;top:50%;z-index:20;display:flex;flex-direction:column;gap:12px;transform:translateY(-50%)}
   .side-nav a{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--faint);transition:color .15s}
   .side-nav a:before{content:"";width:8px;height:1px;background:currentColor;transition:width .15s}
   .side-nav a:hover{color:var(--ink);text-decoration:none}
