@@ -261,9 +261,15 @@ window.PRISM_CONTENT = {
       "pages": [
         [
           {
-            "id": "id-01",
-            "title": "Basketball",
-            "note": "A rounded contact surface",
+            "id": "id-05",
+            "title": "Yellow bin",
+            "note": "An open-top container",
+            "speed": "1\u00d7"
+          },
+          {
+            "id": "id-08",
+            "title": "Printed box",
+            "note": "Another unseen box instance",
             "speed": "1\u00d7"
           },
           {
@@ -277,19 +283,19 @@ window.PRISM_CONTENT = {
             "title": "Green bucket",
             "note": "A handled, open-top barrel",
             "speed": "1\u00d7"
+          }
+        ],
+        [
+          {
+            "id": "id-01",
+            "title": "Basketball",
+            "note": "A rounded contact surface",
+            "speed": "1\u00d7"
           },
           {
             "id": "id-04",
             "title": "Water jug",
             "note": "A narrow body and handle",
-            "speed": "1\u00d7"
-          }
-        ],
-        [
-          {
-            "id": "id-05",
-            "title": "Yellow bin",
-            "note": "An open-top container",
             "speed": "1\u00d7"
           },
           {
@@ -303,12 +309,6 @@ window.PRISM_CONTENT = {
             "title": "Cardboard box",
             "note": "Two-handed pickup",
             "speed": "1\u00d7"
-          },
-          {
-            "id": "id-08",
-            "title": "Printed box",
-            "note": "Another unseen box instance",
-            "speed": "1\u00d7"
           }
         ]
       ]
@@ -321,9 +321,21 @@ window.PRISM_CONTENT = {
       "pages": [
         [
           {
+            "id": "ood-05",
+            "title": "Helmet",
+            "note": "An unfamiliar contact surface",
+            "speed": "1\u00d7"
+          },
+          {
             "id": "ood-01",
             "title": "Backpack",
             "note": "A non-rigid everyday object",
+            "speed": "1\u00d7"
+          },
+          {
+            "id": "ood-07",
+            "title": "Wooden shelf",
+            "note": "An open-frame structure",
             "speed": "1\u00d7"
           },
           {
@@ -331,7 +343,9 @@ window.PRISM_CONTENT = {
             "title": "Chair",
             "note": "Legs and an open frame",
             "speed": "1\u00d7"
-          },
+          }
+        ],
+        [
           {
             "id": "ood-03",
             "title": "Plush dog",
@@ -343,25 +357,11 @@ window.PRISM_CONTENT = {
             "title": "Desk fan",
             "note": "A top-heavy, irregular object",
             "speed": "1\u00d7"
-          }
-        ],
-        [
-          {
-            "id": "ood-05",
-            "title": "Helmet",
-            "note": "An unfamiliar contact surface",
-            "speed": "1\u00d7"
           },
           {
             "id": "ood-06",
             "title": "Cooking pot",
             "note": "A low, rounded object",
-            "speed": "1\u00d7"
-          },
-          {
-            "id": "ood-07",
-            "title": "Wooden shelf",
-            "note": "An open-frame structure",
             "speed": "1\u00d7"
           },
           {
@@ -396,6 +396,12 @@ window.PRISM_CONTENT = {
             "id": "scale-03",
             "title": "Flat box",
             "note": "A low, wide object",
+            "speed": "1\u00d7"
+          },
+          {
+            "id": "id-08",
+            "title": "Large box",
+            "note": "A bulky cardboard box",
             "speed": "1\u00d7"
           }
         ]
@@ -458,6 +464,12 @@ window.PRISM_CONTENT = {
             "id": "pose-03",
             "title": "Bin, tipped over",
             "note": "Resting on its side",
+            "speed": "1\u00d7"
+          },
+          {
+            "id": "id-06",
+            "title": "Bin, upright",
+            "note": "Standing on its base",
             "speed": "1\u00d7"
           }
         ]
