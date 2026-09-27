@@ -283,12 +283,10 @@
       const card = document.createElement('figure'); card.className = 'result-card';
       const frame = document.createElement('div'); frame.className = 'video-frame';
       const video = document.createElement('video'); setMedia(video, clip.id, `Real robot demonstration: ${clip.title}`);
-      const speed = document.createElement('span'); speed.className = 'speed-badge';
-      speed.textContent = clip.speed === '1×' ? 'Real time' : `${clip.speed} speed`;
       const expand = document.createElement('button'); expand.type = 'button'; expand.className = 'expand-video';
       expand.setAttribute('aria-label', `Enlarge ${clip.title} video`);
       expand.addEventListener('click', () => openVideo(clip));
-      frame.append(video, speed, expand);
+      frame.append(video, expand);
       const caption = document.createElement('figcaption'); const text = document.createElement('div');
       const title = document.createElement('h4'); title.textContent = clip.title;
       const note = document.createElement('p'); note.textContent = clip.note;
