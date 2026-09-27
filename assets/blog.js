@@ -1,26 +1,37 @@
-/* Small additions to the original PRISM media controller. */
+/* Chapter navigation and the related-work inset. */
 (() => {
   'use strict';
-  const links = document.querySelectorAll('.side-nav a');
-  const sections = Array.from(links, link => document.querySelector(link.hash));
-  const update = () => {
-    let active = null;
-    sections.forEach(section => { if (section && section.getBoundingClientRect().top <= 180) active = section.id; });
-    links.forEach(link => {
-      if (link.hash === '#' + active) link.setAttribute('aria-current', 'location');
+  const header = document.querySelector('.blog-header');
+  const links = Array.from(document.querySelectorAll('.blog-header nav a, .side-nav a'));
+  const sections = Array.from(new Set(links.map(link => link.hash)))
+    .map(hash => document.querySelector(hash)).filter(Boolean);
+  let offset = 96;
+  function update() {
+    let active = '';
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= offset + 100) active = '#' + section.id;
+    }
+    for (const link of links) {
+      if (link.hash === active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
-    });
-  };
-  let ticking = false;
-  addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => { update(); ticking = false; });
-  }, {passive:true});
+    }
+  }
+  let pending = false;
+  function schedule() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => { pending = false; update(); });
+  }
+  new ResizeObserver(() => {
+    offset = Math.ceil(header.getBoundingClientRect().height) + 20;
+    document.documentElement.style.setProperty('--chapter-offset', offset + 'px');
+    schedule();
+  }).observe(header);
+  addEventListener('scroll', schedule, {passive:true});
+  addEventListener('hashchange', schedule);
   update();
-  // A related-work clip should stop when it leaves the reader's viewport.
   const reference = document.querySelector('.related-video video');
-  new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (!entry.isIntersecting) reference.pause(); });
+  if (reference) new IntersectionObserver(entries => {
+    for (const entry of entries) if (!entry.isIntersecting) reference.pause();
   }).observe(reference);
 })();

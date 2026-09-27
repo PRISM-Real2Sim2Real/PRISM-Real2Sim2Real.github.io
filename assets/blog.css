@@ -77,3 +77,38 @@ html{scroll-padding-top:94px}body{font-size:17px;line-height:1.75}.section-shell
 @media(max-width:420px){
   .paper-hero .resource-links{display:grid;grid-template-columns:repeat(2,max-content)}
 }
+
+/* Story navigation remains visible at every reading width. */
+:root{--chapter-offset:96px}
+html{scroll-padding-top:var(--chapter-offset)}
+.blog-header{position:sticky;top:0;z-index:40;max-width:none;height:72px;min-height:0;padding:0 max(32px,calc((100vw - 1192px)/2 + 48px));background:rgba(255,255,255,.97);backdrop-filter:blur(12px);gap:32px}
+.blog-header .brand-divider,.blog-header .brand-note{display:none}
+.blog-header nav{display:flex;width:auto;gap:24px;font-size:13px;line-height:1.4}
+.blog-header nav a,.blog-header nav a:first-child{display:inline-flex;align-items:center;padding:9px 0;border-bottom:2px solid transparent;color:var(--muted);white-space:nowrap}
+.blog-header nav a:hover{text-decoration:none;color:var(--ink)}
+.blog-header nav a[aria-current="location"]{color:var(--ink);border-bottom-color:var(--gold)}
+.side-nav a[aria-current="location"]{color:#71602a;font-weight:600}
+.paper-hero{padding-bottom:56px}
+.story-opening{margin-top:0}
+.story-opening .opening-lead{font:400 25px/1.4 var(--serif);letter-spacing:-.02em}
+.challenge-intro{margin-top:54px}
+.challenge-intro h3{margin-top:0}
+.challenge-section .related-work{margin:42px auto;max-width:940px}
+.section-bridge{border-top:1px solid var(--line);padding-top:26px}
+.method-return{display:inline-flex;margin-top:26px;font-size:14px;text-decoration:underline;text-underline-offset:4px;color:#71602a}
+@media(max-width:1000px){
+ .blog-header{padding:0 28px;gap:24px}
+ .blog-header nav{gap:18px;font-size:12px}
+}
+@media(max-width:700px){
+ .blog-header{height:auto;display:block;padding:9px 24px;min-height:0}
+ .blog-header>.blog-brand{display:none}
+ .blog-header nav{width:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px 12px;font-size:12px}
+ .blog-header nav a,.blog-header nav a:first-child{grid-column:span 2;justify-content:center;padding:7px 0}
+ .blog-header nav a:nth-child(n+4){grid-column:span 3}
+ .paper-hero{padding-top:38px;padding-bottom:40px}
+ .story-opening .opening-lead{font-size:23px}
+ .challenge-intro{margin-top:36px}
+ .challenge-section .related-work{margin:32px 0}
+}
+@media(min-width:1510px){.side-nav{top:50%;max-width:158px}.side-nav a{font-size:11px}}

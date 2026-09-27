@@ -360,16 +360,4 @@
       $('#copy-status').textContent = 'Citation selected. Press Ctrl/Cmd+C to copy.';
     }
   });
-  // Reading progress is purely local; no scroll data are transmitted.
-  let scrollPending = false;
-  function updateProgress() {
-    const sections = ['generalization','challenge','motivation','v2v','method'];
-    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    const active = atBottom ? sections[sections.length - 1]
-      : sections.filter(id => document.getElementById(id).getBoundingClientRect().top <= 150).pop();
-    $$('.site-header nav a, .side-nav a').forEach(link => link.classList.toggle('active', link.hash === `#${active}`));
-    scrollPending = false;
-  }
-  window.addEventListener('scroll', () => { if (!scrollPending) {scrollPending = true; window.requestAnimationFrame(updateProgress);} }, {passive:true});
-  window.addEventListener('resize', updateProgress); updateProgress();
 })();
