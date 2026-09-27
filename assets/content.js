@@ -241,9 +241,9 @@ window.PRISM_ASSETS = {
     "duration": 8.0
   },
   "demo-hero": {
-    "src": "assets/videos/demo-hero.mp4",
-    "poster": "assets/posters/demo-hero.jpg",
-    "duration": 26.767
+    "src": "assets/videos/demo-hero.mp4?v=hero-20260927",
+    "poster": "assets/posters/demo-hero.jpg?v=hero-20260927",
+    "duration": 26.81
   },
   "retarget-01": {
     "src": "assets/videos/retarget-01.mp4",
