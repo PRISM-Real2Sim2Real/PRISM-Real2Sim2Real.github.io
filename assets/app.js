@@ -1,4 +1,4 @@
-/* PRISM research page. Static, accessible, and dependency-free.
+/* PRISM research page. Static and accessible. HLS playback uses the bundled HLS.js library.
  * All samples are prerecorded. No remote inference, analytics, or tracking.
  */
 (() => {
@@ -10,10 +10,13 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let dialogOpen = false;
   const groups = new Map();
+  const streamingPlayers = new WeakMap();
 
   function setMedia(video, id, label = '') {
     const asset = assets[id];
     video.pause();
+    streamingPlayers.get(video)?.destroy();
+    streamingPlayers.delete(video);
     video.removeAttribute('src');
     video.dataset.asset = id;
     delete video.dataset.loadedAsset;
@@ -32,21 +35,51 @@
     const asset = assets[id];
     if (!asset || video.dataset.loadedAsset === id) return;
     video.dataset.loadedAsset = id;
-    video.src = asset.src;
     video.preload = 'auto';
     video.muted = true;
-    video.load();
+    const showMediaError = () => {
+      const frame = video.closest('.video-frame, .quiz-tile, .hero-film, .method-visual');
+      if (!frame || $('.media-error', frame)) return;
+      const note = document.createElement('span');
+      note.className = 'media-error';
+      note.textContent = 'This clip could not load. Please reload the page and try again.';
+      frame.append(note);
+    };
+    if (asset.format === 'hls' && !video.canPlayType('application/vnd.apple.mpegurl')) {
+      if (!window.Hls?.isSupported()) {
+        showMediaError();
+        return;
+      }
+      const stream = new window.Hls({maxBufferLength: 8, backBufferLength: 30});
+      streamingPlayers.set(video, stream);
+      stream.on(window.Hls.Events.MANIFEST_PARSED, () => {
+        const group = groups.get(video.closest('[data-group]')?.dataset.group);
+        if (group?.playing && group.visible && !document.hidden && !dialogOpen) {
+          video.playbackRate = group.rate;
+          video.play().then(() => refreshButton(group)).catch(() => {});
+        }
+      });
+      let recovered = false;
+      stream.on(window.Hls.Events.ERROR, (_event, data) => {
+        if (!data.fatal) return;
+        if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR && !recovered) {
+          recovered = true;
+          stream.recoverMediaError();
+        } else {
+          stream.destroy();
+          streamingPlayers.delete(video);
+          showMediaError();
+        }
+      });
+      stream.loadSource(asset.src);
+      stream.attachMedia(video);
+    } else {
+      video.src = asset.src;
+      video.load();
+    }
     if (!video.dataset.errorBound) {
       video.dataset.errorBound = '1';
-      video.addEventListener('error', () => {
-        // Visible failure states instead of silently showing a broken video.
-        const frame = video.closest('.video-frame, .quiz-tile, .hero-film, .method-visual');
-        if (!frame || $('.media-error', frame)) return;
-        const note = document.createElement('span');
-        note.className = 'media-error';
-        note.textContent = 'This clip could not load. Please reload the page and try again.';
-        frame.append(note);
-      });
+      video.addEventListener('error', showMediaError);
     }
   }
 

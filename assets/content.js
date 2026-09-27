@@ -241,9 +241,12 @@ window.PRISM_ASSETS = {
     "duration": 8.0
   },
   "demo-hero": {
-    "src": "assets/videos/demo-hero.mp4?v=hero-20260927",
-    "poster": "assets/posters/demo-hero.jpg?v=hero-20260927",
-    "duration": 26.81
+    "src": "assets/videos/hero-4k-v8/playlist.m3u8",
+    "format": "hls",
+    "poster": "assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927",
+    "duration": 26.743383,
+    "width": 3840,
+    "height": 2160
   },
   "retarget-01": {
     "src": "assets/videos/retarget-01.mp4",
