@@ -64,3 +64,11 @@ html{scroll-padding-top:94px}body{font-size:17px;line-height:1.75}.section-shell
 }
 
 .keep-words{white-space:nowrap}
+
+/* Keep every restored blog navigation link available on narrow screens. */
+.blog-header nav a{white-space:nowrap}
+@media(max-width:760px){
+  .blog-header{height:auto;min-height:96px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px;row-gap:14px}
+  .blog-header nav{width:100%;justify-content:space-between;gap:16px;font-size:14px}
+  .blog-header nav a:first-child{display:inline-flex}
+}
