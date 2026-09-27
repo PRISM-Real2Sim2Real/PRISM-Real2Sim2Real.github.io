@@ -207,7 +207,7 @@ h1,h2,h3,h4{color:var(--ink)}
 .method-flow-arrow{position:absolute;right:-30px;top:50%;width:20px;line-height:20px;text-align:center;font-size:22px;color:var(--gold);transform:translateY(-50%)}
 .method-figure{margin-top:30px;padding:0;border:0;background:none}
 .method-figure img{border:1px solid var(--line);border-radius:8px;padding:20px;background:#fff}
-.method-figure figcaption{max-width:760px;font-size:12px;line-height:1.7;margin-top:14px}
+.method-figure figcaption{max-width:none;font-size:12px;line-height:1.7;margin-top:14px}
 .method-return{display:inline-flex;margin-top:22px;font-size:12px;text-decoration:underline;text-underline-offset:4px;color:var(--muted)}
 .closing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);border-top:1px solid var(--line);padding:36px 0}
 .closing-grid .section-space{padding:0;border:0;background:none}
