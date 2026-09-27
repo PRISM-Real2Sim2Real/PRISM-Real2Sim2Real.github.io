@@ -183,7 +183,7 @@ h1,h2,h3,h4{color:var(--ink)}
 .sample-pair figcaption{font-size:12px;line-height:1.6}
 
 /* Methods: one video sequence, four steps, then the complete research figure. */
-.method-intro{max-width:var(--text-width);margin:0 0 26px}
+.method-intro{max-width:none;margin:0 0 26px}
 .pipeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gap);align-items:start}
 .pipeline-step{grid-row:1}
 .pipeline-step:nth-of-type(1){grid-column:1}
