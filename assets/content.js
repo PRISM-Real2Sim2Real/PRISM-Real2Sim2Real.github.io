@@ -525,3 +525,15 @@ window.PRISM_CONTENT = {
     }
   ]
 };
+
+// Editorial entry point; all original experiment categories remain available.
+window.PRISM_CONTENT.groups.unshift({
+  id: 'everyday', name: 'Everyday objects', title: 'From a basketball to a bucket to a plush dog',
+  description: 'One learned policy encounters different everyday objects.',
+  pages: [[
+    {id:'id-01', title:'Basketball', note:'A rounded contact surface', speed:'1×'},
+    {id:'id-03', title:'Green bucket', note:'A handled, open-top container', speed:'1×'},
+    {id:'ood-03', title:'Plush dog', note:'A soft, unfamiliar toy', speed:'1×'},
+    {id:'ood-02', title:'Chair', note:'Legs and an open frame', speed:'1×'}
+  ]]
+});

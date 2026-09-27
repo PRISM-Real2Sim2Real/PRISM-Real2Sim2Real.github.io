@@ -2,8 +2,14 @@
 
 Public site: https://prism-real2sim2real.github.io/
 
-This repository contains the static PRISM research page, interactive V2V challenge,
-method explorer, real-world result galleries, and 48 prerecorded video clips.
+This repository contains the PRISM research blog: real-world results, the video-data
+bottleneck, counterfactual video generation, an interactive V2V challenge, and the
+real-to-sim-to-real method. All original PRISM media remain available.
+
+Edit `index.html` for the narrative and `assets/blog.css` for the editorial layout.
+`assets/content.js` defines the media and galleries; `assets/app.js` handles video
+playback, comparisons, the quiz, and expanded views. The related-work VideoMimic
+clip is attributed and streamed from its original project site.
 
 ## Publish
 
