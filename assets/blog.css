@@ -96,28 +96,14 @@ h1,h2,h3,h4{color:var(--ink)}
 .clip-index{font-size:11px}
 .result-grid>.result-card:last-child:nth-child(odd){grid-column:auto;width:auto}
 
-/* The opening essay and its reference share a desktop spread. */
-.challenge-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);align-items:start}
-.story-opening{margin:0;max-width:none}
+/* One reading column leads from the motivation to the data constraints. */
+.story-opening{margin:0;max-width:var(--text-width)}
 .story-title{font-size:34px;line-height:1.2;margin:0 0 24px;max-width:none}
 .story-opening .opening-lead{font:400 20px/1.5 var(--sans);letter-spacing:-.018em;margin-bottom:20px;color:var(--ink)}
-.related-work{min-width:0;display:flex;flex-direction:column;gap:19px;margin:0;padding:0}
-.related-video{width:100%;position:relative;aspect-ratio:16/9;background:var(--soft);border-radius:6px;overflow:hidden}
-.related-video video{width:100%;height:100%;object-fit:contain}
-.related-video>span{position:absolute;left:0;right:0;top:0;padding:7px 10px;background:#1b2029a8;color:white;font:8px/1.5 var(--sans);letter-spacing:.075em;pointer-events:none}
-.related-work>div:last-child{width:100%}
-.eyebrow-small{font-size:10px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.related-work h3{font:600 19px/1.35 var(--sans);letter-spacing:-.022em}
-.related-work p:not(.eyebrow-small){font-size:14px;line-height:1.65;margin:10px 0}
-.related-work a{font-size:13px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
-.related-caption p{margin-bottom:0!important}
-.challenge-intro{margin-top:40px;max-width:var(--text-width)}
-.challenge-intro h3{margin-top:0}
-.challenge-rows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px var(--grid-gap);margin:28px 0 34px}
-.challenge-rows>div{display:grid;grid-template-rows:subgrid;grid-row:span 3;padding:19px 0 0;border-top:1px solid var(--line)}
-.row-number{font:11px/1.5 var(--mono);color:#9b854e}
-.challenge-rows h3{font:600 18px/1.35 var(--sans);letter-spacing:-.02em;margin:0}
-.challenge-rows p{font-size:14px;line-height:1.7}
+.challenge-rows{max-width:var(--text-width);margin:30px 0 36px;border-top:1px solid var(--line)}
+.challenge-rows>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:var(--grid-gap);align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.challenge-rows h3{font:600 15px/1.7 var(--sans);letter-spacing:-.01em;margin:0}
+.challenge-rows p{font-size:15px;line-height:1.7}
 /* A qualitative search diagram, with a real recording as the target example. */
 .curation-figure{padding:28px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}
 .curation-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:26px}
@@ -231,8 +217,8 @@ h1,h2,h3,h4{color:var(--ink)}
 .media-error{font-size:13px}
 
 /* Short, balanced lines without shrinking copy or cropping videos. */
-.paper-hero #paper-title,.story-title,.section-title,.article-copy h3,.solution-notes h3,.challenge-rows h3,.related-work h3,.method-explanation h3,.gallery-heading h3,.sample-explorer-head h3,.result-card h4,
-.article-copy p,.section-intro,.challenge-rows p,.related-work p,.definition p,.method-explanation p,.method-figure figcaption,.curation-heading h3,.sample-explorer-head p,.sample-pair figcaption,.quiz-feedback p,.fact-text small,.hero-deck,.film-caption p,.generation-caption>span,.result-card figcaption p,.ack-block p{text-wrap:balance;hyphens:none}
+.paper-hero #paper-title,.story-title,.section-title,.article-copy h3,.solution-notes h3,.challenge-rows h3,.method-explanation h3,.gallery-heading h3,.sample-explorer-head h3,.result-card h4,
+.article-copy p,.section-intro,.challenge-rows p,.definition p,.method-explanation p,.method-figure figcaption,.curation-heading h3,.sample-explorer-head p,.sample-pair figcaption,.quiz-feedback p,.fact-text small,.hero-deck,.film-caption p,.generation-caption>span,.result-card figcaption p,.ack-block p{text-wrap:balance;hyphens:none}
 .keep-words{white-space:nowrap}
 
 /* Laptops and tablets keep the same content grid, with chapters in the top bar. */
@@ -267,16 +253,9 @@ h1,h2,h3,h4{color:var(--ink)}
   .section-title,.story-title{font-size:29px}
   .kicker{font-size:10px;margin-bottom:16px}
   .article-copy,.section-intro{font-size:16px}
-  .challenge-overview{grid-template-columns:1fr;gap:26px}
   .story-opening .opening-lead{font-size:19px}
-  .related-work{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-  .related-work h3{font-size:18px}
-  .related-work p:not(.eyebrow-small){font-size:13px}
-  .challenge-intro{margin-top:32px}
-  .challenge-rows{grid-template-columns:1fr;gap:22px}
-  .challenge-rows>div{grid-template-rows:auto auto;grid-row:auto;grid-template-columns:24px 1fr;gap:4px 13px}
-  .challenge-rows h3{margin:0 0 8px}
-  .challenge-rows p{grid-column:2;font-size:15px}
+  .challenge-rows{margin:26px 0 30px}
+  .challenge-rows>div{grid-template-columns:130px minmax(0,1fr);gap:20px;padding:16px 0}
   .curation-figure{padding:20px}
   .curation-heading{align-items:flex-start;gap:15px;margin-bottom:24px}
   .curation-heading h3{font-size:19px}
@@ -315,7 +294,7 @@ h1,h2,h3,h4{color:var(--ink)}
 }
 @media(max-width:480px){
   .paper-hero .resource-links{display:grid;grid-template-columns:repeat(2,max-content)}
-  .related-work{grid-template-columns:1fr;gap:16px}
+  .challenge-rows>div{grid-template-columns:1fr;gap:7px}
   .result-grid,.quiz-grid{grid-template-columns:1fr}
   .generated-cards{grid-template-columns:1fr;gap:15px}
   .seed-card{width:100%}

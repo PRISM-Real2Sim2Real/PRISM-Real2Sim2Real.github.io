@@ -1,4 +1,4 @@
-/* Chapter navigation and the related-work inset. */
+/* Chapter navigation. */
 (() => {
   'use strict';
   const header = document.querySelector('.blog-header');
@@ -30,8 +30,4 @@
   addEventListener('scroll', schedule, {passive:true});
   addEventListener('hashchange', schedule);
   update();
-  const reference = document.querySelector('.related-video video');
-  if (reference) new IntersectionObserver(entries => {
-    for (const entry of entries) if (!entry.isIntersecting) reference.pause();
-  }).observe(reference);
 })();

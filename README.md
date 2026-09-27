@@ -8,8 +8,8 @@ real-to-sim-to-real method. All original PRISM media remain available.
 
 Edit `index.html` for the narrative and `assets/blog.css` for the editorial layout.
 `assets/content.js` defines the media and galleries; `assets/app.js` handles video
-playback, comparisons, the quiz, and expanded views. The related-work VideoMimic
-clip is attributed and streamed from its original project site.
+playback, comparisons, the quiz, and expanded views. The narrative links to
+VideoMimic as related work; the challenge section contains no video embed.
 
 ## Publish
 
@@ -31,7 +31,7 @@ Use concise, active sentences and descriptive headings. Avoid slogans and repeti
 
 ## Desktop layout
 
-Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, pair the opening narrative with its VideoMimic reference, and use equal-width full-frame videos. Use a shared 24px column gap for desktop media and text grids. Align chapter labels with headings, captions with their frames, and paired headings and paragraphs with shared grid rows. Keep standalone prose to the same reading width. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
+Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, use equal-width full-frame videos elsewhere, and keep the challenge section in one reading column with compact source rows and one static curation diagram. Use a shared 24px column gap for desktop media and text grids. Align chapter labels with headings, captions with their frames, and paired headings and paragraphs with shared grid rows. Keep standalone prose to the same reading width. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
 
 ## Hero video
 
