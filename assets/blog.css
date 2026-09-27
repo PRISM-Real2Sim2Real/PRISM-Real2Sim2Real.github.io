@@ -72,3 +72,8 @@ html{scroll-padding-top:94px}body{font-size:17px;line-height:1.75}.section-shell
   .blog-header nav{width:100%;justify-content:space-between;gap:16px;font-size:14px}
   .blog-header nav a:first-child{display:inline-flex}
 }
+
+/* Keep the four project links balanced on small phones. */
+@media(max-width:420px){
+  .paper-hero .resource-links{display:grid;grid-template-columns:repeat(2,max-content)}
+}
