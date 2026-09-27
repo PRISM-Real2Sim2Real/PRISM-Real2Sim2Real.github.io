@@ -31,7 +31,7 @@ Use concise, active sentences and descriptive headings. Avoid slogans and repeti
 
 ## Desktop layout
 
-Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, pair the opening narrative with its VideoMimic reference, and use equal-width full-frame videos. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
+Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, pair the opening narrative with its VideoMimic reference, and use equal-width full-frame videos. Use a shared 24px column gap for desktop media and text grids. Align chapter labels with headings, captions with their frames, and paired headings and paragraphs with shared grid rows. Keep standalone prose to the same reading width. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
 
 ## Hero video
 
