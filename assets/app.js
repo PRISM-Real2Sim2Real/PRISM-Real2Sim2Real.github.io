@@ -52,8 +52,7 @@
 
   const labels = {
     hero: ['Play', 'Pause'], quiz: ['Play all', 'Pause all'],
-    samples: ['Play comparison', 'Pause comparison'], counterfactuals: ['Play examples', 'Pause examples'], pipeline: ['Play pipeline', 'Pause pipeline'], method: ['Play stage', 'Pause stage'],
-    results: ['Play four videos', 'Pause four videos']
+    samples: ['Play comparison', 'Pause comparison'], counterfactuals: ['Play examples', 'Pause examples'], pipeline: ['Play pipeline', 'Pause pipeline'], method: ['Play stage', 'Pause stage']
   };
   function refreshButton(group) {
     const isPlaying = $$('video', group.element).some(v => !v.paused && !v.ended);

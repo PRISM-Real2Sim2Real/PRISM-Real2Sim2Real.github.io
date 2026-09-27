@@ -528,7 +528,7 @@ window.PRISM_CONTENT = {
 
 // Editorial entry point; all original experiment categories remain available.
 window.PRISM_CONTENT.groups.unshift({
-  id: 'everyday', name: 'Everyday objects', title: 'Pick up balls, buckets, and more',
+  id: 'everyday', name: 'Real-world experiment', title: 'Pick up balls, buckets, and more',
   description: 'One learned policy encounters different everyday objects.',
   pages: [[
     {id:'id-01', title:'Basketball', note:'A rounded contact surface', speed:'1×'},
