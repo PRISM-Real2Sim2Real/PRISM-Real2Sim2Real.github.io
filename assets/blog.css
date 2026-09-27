@@ -43,3 +43,24 @@ html{scroll-padding-top:94px}body{font-size:17px;line-height:1.75}.section-shell
   .story-title{font-size:30px}
   .opening .opening-lead{font-size:23px}
 }
+
+/* Balance short headings and give paragraphs fuller final lines at each width. */
+.paper-hero #paper-title,.story-title,.section-title,.article-copy h3,
+.challenge-rows h3,.related-work h3,.method-explanation h3,
+.gallery-heading h3,.sample-explorer-head h3,.result-card h4{
+  text-wrap:balance;
+  hyphens:none;
+}
+.article-copy p,.section-intro,.challenge-rows p,.related-work p,
+.definition p,.method-explanation p,.method-figure figcaption,
+.video-ocean figcaption,.sample-explorer-head p,.sample-pair figcaption,
+.quiz-feedback p,.fact-text small,.hero-deck,.film-caption p,
+.generation-caption>span,.result-card figcaption p,.ack-block p{
+  text-wrap:balance;
+  hyphens:none;
+}
+.generation-caption>span,.fact-text small,.result-card figcaption p{
+  text-wrap:balance;
+}
+
+.keep-words{white-space:nowrap}

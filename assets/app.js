@@ -220,7 +220,7 @@
       ? `Correct. Clip ${realIndex + 1} is the real recording.`
       : `Clip ${realIndex + 1} is the real recording.`;
     const explanation = document.createElement('p');
-    explanation.textContent = 'The other three were generated from it: new objects, with the human motion to match.';
+    explanation.textContent = 'We generated the other three from this recording, changing the objects and the motion.';
     feedback.replaceChildren(title, explanation); feedback.hidden = false;
     $('#sample-explorer').hidden = false;
   }

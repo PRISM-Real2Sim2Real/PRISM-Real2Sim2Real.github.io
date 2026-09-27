@@ -256,7 +256,7 @@ window.PRISM_CONTENT = {
     {
       "id": "in-domain",
       "name": "In-domain",
-      "title": "New objects from categories seen in training",
+      "title": "New objects in familiar categories",
       "description": "Pick, carry, and drop across new instances of the object categories covered by training. Different geometries call for different contacts\u2014not a separate policy.",
       "pages": [
         [
@@ -316,7 +316,7 @@ window.PRISM_CONTENT = {
     {
       "id": "out-of-domain",
       "name": "Out-of-domain",
-      "title": "Objects from categories never seen in training",
+      "title": "Objects beyond the training categories",
       "description": "The same policy encounters everyday objects outside its training categories. Explore held-out object interactions, without switching policies or fine-tuning on the real robot.",
       "pages": [
         [
@@ -376,7 +376,7 @@ window.PRISM_CONTENT = {
     {
       "id": "scale",
       "name": "Scale",
-      "title": "Boxes of very different sizes and shapes",
+      "title": "Different box sizes and shapes",
       "description": "Object size changes where to reach, how far to bend, and how to carry. These examples use the same policy across a substantial range of object dimensions.",
       "pages": [
         [
@@ -410,7 +410,7 @@ window.PRISM_CONTENT = {
     {
       "id": "strategy",
       "name": "Strategy",
-      "title": "Objects placed within reach, far away, or off to the side",
+      "title": "Adapt the approach to the object",
       "description": "The policy adapts its approach and grasp to the object\u2019s position and orientation. Watch the setup\u2014not just the final lift.",
       "pages": [
         [
@@ -444,7 +444,7 @@ window.PRISM_CONTENT = {
     {
       "id": "pose",
       "name": "Pose",
-      "title": "Objects that start upright, on their side, or tipped over",
+      "title": "Grasp objects in different poses",
       "description": "Changing the initial pose changes the reachable surfaces. The policy responds through perception rather than assuming a fixed object configuration.",
       "pages": [
         [
@@ -480,55 +480,55 @@ window.PRISM_CONTENT = {
     {
       "id": "v2v-01",
       "object": "Ball",
-      "insight": "A rounded object invites a different two-handed hold."
+      "insight": "The person adapts their hold to the ball."
     },
     {
       "id": "v2v-02",
       "object": "Container",
-      "insight": "Changing the object changes the available grasp surfaces."
+      "insight": "The new shape changes where the hands grip."
     },
     {
       "id": "v2v-03",
       "object": "Bin",
-      "insight": "Geometry and human motion are sampled together."
+      "insight": "V2V changes the object and motion together."
     },
     {
       "id": "v2v-04",
       "object": "Ladder",
-      "insight": "An elongated object calls for a different body and hand configuration."
+      "insight": "The person adjusts their posture to carry the ladder."
     },
     {
       "id": "v2v-05",
       "object": "Cardboard box",
       "real": true,
-      "insight": "The recorded box interaction anchors the generated alternatives."
+      "insight": "The real box recording guides each generated variation."
     },
     {
       "id": "v2v-06",
       "object": "Monitor",
-      "insight": "The generated motion responds to a new object structure."
+      "insight": "The person adjusts their hold to the monitor."
     },
     {
       "id": "v2v-07",
       "object": "Pan",
-      "insight": "A low object changes the reach and bending pattern."
+      "insight": "The person bends and reaches for the low object."
     },
     {
       "id": "v2v-08",
       "object": "Table",
-      "insight": "Object size and the paired carrying motion vary together."
+      "insight": "The person changes their hold to carry the table."
     },
     {
       "id": "v2v-09",
       "object": "Lamp",
-      "insight": "A new geometry introduces a new interaction configuration."
+      "insight": "The person adjusts their grasp to the lamp."
     }
   ]
 };
 
 // Editorial entry point; all original experiment categories remain available.
 window.PRISM_CONTENT.groups.unshift({
-  id: 'everyday', name: 'Everyday objects', title: 'From a basketball to a bucket to a plush dog',
+  id: 'everyday', name: 'Everyday objects', title: 'Pick up balls, buckets, and more',
   description: 'One learned policy encounters different everyday objects.',
   pages: [[
     {id:'id-01', title:'Basketball', note:'A rounded contact surface', speed:'1×'},

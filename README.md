@@ -24,3 +24,7 @@ Keep `assets/content.js`, video files, and poster images together when updating 
 
 Run `python3 -m http.server 8000` from this directory and open
 http://localhost:8000/ in a browser. No install or build step is required.
+
+## Editorial style
+
+Use concise, active sentences and descriptive headings. Avoid slogans and repetitive explanations. Preserve the approved paper header and deployment facts unless the user requests a change. Balance headings and short paragraphs across desktop and mobile widths; prevent very short final lines without shrinking type or creating overflow.
