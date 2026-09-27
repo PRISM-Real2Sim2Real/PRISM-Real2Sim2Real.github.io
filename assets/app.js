@@ -83,10 +83,7 @@
     }
   }
 
-  const labels = {
-    hero: ['Play', 'Pause'], quiz: ['Play all', 'Pause all'],
-    samples: ['Play comparison', 'Pause comparison'], counterfactuals: ['Play examples', 'Pause examples'], pipeline: ['Play pipeline', 'Pause pipeline'], method: ['Play stage', 'Pause stage']
-  };
+  const labels = {hero: ['Play', 'Pause']};
   function refreshButton(group) {
     const isPlaying = $$('video', group.element).some(v => !v.paused && !v.ended);
     $$(`[data-toggle-group="${group.name}"]`).forEach(button => {
@@ -308,6 +305,7 @@
     $('#generalization-panel').setAttribute('aria-labelledby', `result-tab-${view.id}`);
     $('#gallery-title').textContent = category.title;
     const grid = $('#result-grid');
+    grid.dataset.category = category.id;
     $$('video', grid).forEach(v => v.pause()); grid.replaceChildren();
     // Pages may hold any number of clips, so number them from the clips on earlier pages.
     const offset = category.pages.slice(0, pageIndex).reduce((n, page) => n + page.length, 0);
