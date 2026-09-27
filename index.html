@@ -6,7 +6,7 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=caption-controls-20260927">
+<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=method-flow-20260927">
 <script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=caption-controls-20260927" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
@@ -110,7 +110,12 @@
     <span class="pipeline-arrow" style="--i:3" aria-hidden="true">→</span>
     <figure class="pipeline-step" style="--i:4"><div class="pipeline-frame"><video data-asset="retarget-01" muted playsinline loop preload="none" poster="assets/posters/retarget-01.jpg" aria-label="The interaction retargeted to the humanoid robot."></video></div><figcaption>Retargeted motion</figcaption></figure>
   </figure>
-  <ol class="method-explanation"><li><span>01</span><h3>Reconstruct the interaction</h3><p>Recover the person, object, and scene in a shared 3D coordinate system. Contact anchors keep their motion consistent through occlusions.</p></li><li><span>02</span><h3>Retarget to the humanoid</h3><p>Adapt the motion to the robot’s body. Preserve hand–object contacts and enforce physical constraints.</p></li><li><span>03</span><h3>Learn in simulation</h3><p>Train teachers to track robot and object motion. Distill them into one policy that uses onboard depth.</p></li><li><span>04</span><h3>Transfer to the real world</h3><p>Deploy without real-world fine-tuning. The robot picks up, carries, and drops unfamiliar objects while a person supplies steering commands.</p></li></ol><figure class="method-figure">
+  <ol class="method-flow" aria-label="From video reconstruction to real-world deployment">
+    <li><h3><span>Reconstruct</span> <span>the interaction</span></h3><span class="method-flow-arrow" aria-hidden="true">→</span></li>
+    <li><h3><span>Retarget</span> <span>to the humanoid</span></h3><span class="method-flow-arrow" aria-hidden="true">→</span></li>
+    <li><h3><span>Learn</span> <span>in simulation</span></h3><span class="method-flow-arrow" aria-hidden="true">→</span></li>
+    <li><h3><span>Transfer</span> <span>to the real world</span></h3></li>
+  </ol><figure class="method-figure">
     <img src="assets/figures/method.webp" alt="PRISM overview: monocular human–object videos are reconstructed in a shared world frame with contact anchors, retargeted to the humanoid, and used to train co-tracking teachers that are distilled into one depth-based student policy for zero-shot sim-to-real deployment." loading="lazy" decoding="async">
     <figcaption><strong>PRISM overview.</strong> Reconstruct the interaction, preserve contact during retargeting, and train a depth-based policy in simulation. Deploy it directly on the robot.</figcaption>
   </figure>
