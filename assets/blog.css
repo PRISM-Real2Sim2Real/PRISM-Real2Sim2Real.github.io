@@ -90,10 +90,11 @@ h1,h2,h3,h4{color:var(--ink)}
 .result-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px var(--grid-gap)}
 .result-card .video-frame{aspect-ratio:16/9;border-radius:6px}
 .result-card .video-frame video{object-fit:contain}
-.result-card figcaption{padding-top:10px;gap:15px}
+.result-card figcaption{padding-top:10px;gap:15px;align-items:baseline}
+.result-card figcaption>div{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 10px;min-width:0}
 .result-card h4{font-size:14px;line-height:1.4}
-.result-card figcaption p{font-size:12px;line-height:1.6;margin-top:3px}
-.clip-index{font-size:11px}
+.result-card figcaption p{font-size:12px;line-height:1.6;margin:0}
+.clip-index{font-size:11px;padding-top:0}
 .result-grid>.result-card:last-child:nth-child(odd){grid-column:auto;width:auto}
 
 /* One reading column leads from the motivation to the data constraints. */
