@@ -102,10 +102,14 @@ h1,h2,h3,h4{color:var(--ink)}
 .story-opening{margin:0;max-width:var(--text-width)}
 .story-title{font-size:34px;line-height:1.2;margin:0 0 24px;max-width:none}
 .story-opening .opening-lead{font:400 20px/1.5 var(--sans);letter-spacing:-.018em;margin-bottom:20px;color:var(--ink)}
-.challenge-rows{max-width:var(--text-width);margin:30px 0 36px;border-top:1px solid var(--line)}
-.challenge-rows>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:var(--grid-gap);align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
-.challenge-rows h3{font:600 15px/1.7 var(--sans);letter-spacing:-.01em;margin:0}
-.challenge-rows p{font-size:15px;line-height:1.7}
+/* Compact source summaries share icon, title, and description baselines. */
+.challenge-rows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gap);list-style:none;padding:24px 0;margin:30px 0 36px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.challenge-rows>li{position:relative;display:grid;grid-template-rows:40px auto 1fr;gap:10px;min-width:0}
+.challenge-rows>li+li:before{content:"";position:absolute;left:calc(var(--grid-gap)/-2);top:0;bottom:0;width:1px;background:var(--line)}
+.challenge-icon{width:40px;height:40px;fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.challenge-icon .capture-joint{fill:var(--gold)}
+.challenge-rows h3{font:600 16px/1.4 var(--sans);letter-spacing:-.015em;margin:0}
+.challenge-rows p{font-size:14px;line-height:1.6;margin:0;color:var(--text)}
 /* A qualitative search diagram, with a real recording as the target example. */
 .curation-figure{padding:28px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}
 .curation-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:26px}
@@ -257,8 +261,11 @@ h1,h2,h3,h4{color:var(--ink)}
   .kicker{font-size:10px;margin-bottom:16px}
   .article-copy,.section-intro{font-size:16px}
   .story-opening .opening-lead{font-size:19px}
-  .challenge-rows{margin:26px 0 30px}
-  .challenge-rows>div{grid-template-columns:130px minmax(0,1fr);gap:20px;padding:16px 0}
+  .challenge-rows{grid-template-columns:1fr;gap:22px;padding:22px 0;margin:26px 0 30px}
+  .challenge-rows>li{grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;gap:4px 16px}
+  .challenge-rows>li+li:before{display:none}
+  .challenge-icon{grid-column:1;grid-row:1/3;align-self:center}
+  .challenge-rows h3,.challenge-rows p{grid-column:2}
   .curation-figure{padding:20px}
   .curation-heading{align-items:flex-start;gap:15px;margin-bottom:24px}
   .curation-heading h3{font-size:19px}
@@ -299,7 +306,6 @@ h1,h2,h3,h4{color:var(--ink)}
 }
 @media(max-width:480px){
   .paper-hero .resource-links{display:grid;grid-template-columns:repeat(2,max-content)}
-  .challenge-rows>div{grid-template-columns:1fr;gap:7px}
   .result-grid,.quiz-grid{grid-template-columns:1fr}
   .generated-cards{grid-template-columns:1fr;gap:15px}
   .seed-card{width:100%}

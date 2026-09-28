@@ -6,7 +6,7 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=method-intro-20260927">
+<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=source-icons-20260927">
 <script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=caption-controls-20260927" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
@@ -66,11 +66,11 @@
   <p>People learn these adjustments through years of interaction. Visual imitation gives robots a starting point: <a href="https://www.videomimic.net/" target="_blank" rel="noopener noreferrer">VideoMimic</a> learns climbing and sitting from human video.</p>
   <p>Scaling this approach means collecting more demonstrations. Each source has a cost:</p>
 </div>
-<div class="challenge-rows">
-  <div><h3>Motion capture</h3><p>Motion capture needs specialized equipment and dedicated sessions. Covering more interactions means repeating that process.</p></div>
-  <div><h3>Internet video</h3><p>Internet videos target human viewers. Cuts and occlusions can hide the full-body motion a robot needs.</p></div>
-  <div><h3>Record it yourself</h3><p>Recording a task gives us relevant examples. More objects, poses, and rooms still mean filming more demonstrations.</p></div>
-</div>
+<ul class="challenge-rows" aria-label="Challenges of collecting demonstrations">
+  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M11 4H4v7m25-7h7v7M4 29v7h7m25-7v7h-7"/><circle cx="20" cy="10" r="3"/><path d="M20 13v12m-11-8 11 3 11-3M20 25l-7 8m7-8 7 8"/><circle cx="20" cy="20" r="1.6" class="capture-joint"/></svg><h3>Motion capture</h3><p>Needs specialized gear and dedicated sessions.</p></li>
+  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="4" y="6" width="32" height="28" rx="4"/><path d="M4 13h32m-26-3h.1m4.9 0h.1"/><path d="m17 18 9 5-9 5z"/></svg><h3>Internet video</h3><p>Finding useful demonstrations takes time.</p></li>
+  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="3" y="10" width="24" height="22" rx="4"/><path d="m27 17 10-5v18l-10-5"/><circle cx="15" cy="21" r="5"/></svg><h3>Record it yourself</h3><p>More variety means more filming.</p></li>
+</ul>
 <figure class="curation-figure" id="video-curation" aria-labelledby="curation-title">
   <figcaption class="curation-heading"><h3 id="curation-title">Finding the right video takes curation</h3><span>Schematic</span></figcaption>
   <svg class="curation-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
