@@ -160,12 +160,19 @@ h1,h2,h3,h4{color:var(--ink)}
 /* Share the source video's track so the arrow stays centered on its frame. */
 .generation-arrow{grid-column:1;grid-row:1;align-self:start;aspect-ratio:16/9;display:flex;align-items:center;justify-content:flex-end;font-size:18px;color:#a7adb2;transform:translateX(calc(var(--grid-gap)/2 + .5em));pointer-events:none}
 .generation-caption{margin-top:15px;font-size:12px;color:var(--muted)}
-/* Short explanations read across two aligned rows, followed by the training handoff. */
+/* Align the definition, source prompt, and V2V explanation on one reading grid. */
 .solution-notes{margin-top:28px;border-top:1px solid var(--line)}
 .solution-notes>div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--grid-gap);align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
 .solution-notes h3{font:600 16px/1.5 var(--sans);letter-spacing:-.015em;margin:0}
 .solution-notes p{font:400 15px/1.6 var(--sans);color:var(--text);margin:0}
 .solution-notes .scope-note{margin-top:6px;font-size:12px;color:var(--muted)}
+.solution-notes strong{font-weight:600;color:var(--ink)}
+.generation-prompt{margin:0;padding:16px 20px;border-left:2px solid var(--gold);border-radius:0 6px 6px 0;background:var(--soft)}
+.solution-notes .generation-prompt p{font:400 13px/1.7 var(--mono);color:var(--ink);text-wrap:balance}
+.solution-notes .generation-prompt p+p{margin-top:12px}
+.generation-prompt mark{padding:2px 4px;background:#eee5c9;border-radius:3px;color:inherit}
+.solution-notes .prompt-key{margin-top:10px;font-size:12px;line-height:1.7;color:var(--muted);text-wrap:balance}
+.prompt-key code{font:inherit;color:var(--text)}
 
 /* Restore the original video expansion as the bridge into robot training. */
 .multiply{margin-top:32px}

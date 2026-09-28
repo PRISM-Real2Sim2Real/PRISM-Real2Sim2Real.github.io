@@ -6,7 +6,7 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=bridge-emphasis-20260928">
+<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=counterfactual-prompt-20260928">
 <script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=restore-multiply-20260927" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
@@ -87,7 +87,7 @@
     <div class="curation-example"><h4>A usable demonstration</h4><div class="curation-frame"><img src="assets/figures/curation-example.jpg" width="640" height="360" alt="A frame from our recording: the person's full body and hands holding the box are visible." loading="lazy" decoding="async"><svg viewBox="0 0 640 360" aria-hidden="true"><path class="body-brackets" d="M145 154v-20h22M272 134h20v20M292 326v21h-20M167 347h-22v-21"/><circle class="contact-marker" cx="219" cy="221" r="16"/></svg></div><p>Example: our box-lifting recording</p></div>
   </div>
 </figure>
-<div class="article-copy section-bridge"><p>We start with a few useful recordings, then generate new interactions from them.</p></div></div></section><section class="section-space quiz-section" id="v2v" aria-labelledby="quiz-title">
+<div class="article-copy section-bridge"><p>Our solution: Expand a few recordings into new interactions with a video model.</p></div></div></section><section class="section-space quiz-section" id="v2v" aria-labelledby="quiz-title">
   <div class="section-shell">
     <p class="kicker">03 / Look a little closer</p>
     <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title">Which video is real?</h2><p class="section-intro">We recorded one clip and generated three. Pick the real one.</p></div><div class="controls"><button class="button button-small" id="shuffle-quiz" type="button">Try another set <span aria-hidden="true">↻</span></button></div></div>
@@ -105,7 +105,15 @@
 </section>
 <section class="section-space solution-section" id="motivation" aria-labelledby="motivation-title"><div class="section-shell"><p class="kicker">04 / Our solution</p><h2 class="section-title" id="motivation-title">Generate more interactions from one video</h2><div class="article-copy"><p><strong>Video-to-video generation (V2V)</strong> varies the object in each recording and adapts the person’s motion.</p></div><div class="generation-heading"><span>THE RECORDED EXAMPLE</span><span>COUNTERFACTUAL POSSIBILITIES</span></div><figure class="generation-flow media-group" data-group="counterfactuals"><figure class="seed-card"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="Real seed recording: a person lifting a cardboard box"></video><figcaption><span class="real-tag">RECORDED</span> A person picks up a box</figcaption></figure><span class="generation-arrow" aria-hidden="true">→</span><div class="generated-cards"><figure><video data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A different shape"></video><figcaption><span>GENERATED</span>A different shape</figcaption></figure><figure><video data-asset="v2v-03" muted playsinline loop preload="none" poster="assets/posters/v2v-03.jpg" aria-label="A different grasp"></video><figcaption><span>GENERATED</span>A different grasp</figcaption></figure><figure><video data-asset="v2v-04" muted playsinline loop preload="none" poster="assets/posters/v2v-04.jpg" aria-label="A different reach"></video><figcaption><span>GENERATED</span>A different reach</figcaption></figure></div></figure><div class="generation-caption"><span>Vary the object. Adapt the interaction.</span></div>
 <div class="solution-notes" id="generation-details">
-  <div class="definition"><h3>Counterfactual videos</h3><div><p>We generate possible interactions for the same task with different object shapes, sizes, and poses.</p><p class="scope-note">Scene changes remain a possible extension.</p></div></div>
+  <div class="definition"><h3>Counterfactual videos</h3><div><p>These videos show interactions that <strong>did not happen</strong> in the source recording, but <strong>could have happened</strong> with a different object.</p><p class="scope-note">Scene changes remain a possible extension.</p></div></div>
+  <div class="prompt-note"><h3>Prompt template</h3><div>
+    <blockquote class="generation-prompt" aria-label="Video-to-video prompt from the paper">
+      <p>&lt;VIDEO&gt;</p>
+      <p>In a real-world continuous footage. Preserve the reference video's original background, lighting and camera viewpoint.</p>
+      <p>replace the box with <mark>&lt;CLS&gt;</mark>, pick it up and carry with two hands.</p>
+    </blockquote>
+    <p class="prompt-key"><code>&lt;VIDEO&gt;</code> = source recording · <code>&lt;CLS&gt;</code> = box, bin, barrel, or ball</p>
+  </div></div>
   <div><h3>Why video-to-video</h3><p>A source video supplies the person, scene, and action. Text-to-video must create all three.</p></div>
 </div>
   <figure class="multiply" id="generation-animation" aria-labelledby="multiply-caption">
