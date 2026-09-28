@@ -59,6 +59,7 @@ h1,h2,h3,h4{color:var(--ink)}
 .paper-hero .hero-wordmark{font-size:56px;line-height:1.08}
 .paper-hero #paper-title{font:600 35px/1.2 var(--sans);letter-spacing:-.027em;max-width:890px;margin:22px auto 0}
 .paper-hero h1 em.title-for{font-style:normal;font-weight:400;color:inherit}
+.paper-hero .hero-deck strong{font-weight:600;color:var(--ink)}
 .paper-hero .hero-deck{font-size:17px;line-height:1.55;max-width:640px;margin:16px auto 0;color:var(--text)}
 .paper-hero .venue{font-size:13px;gap:14px;margin-top:22px}
 .paper-hero .venue img{width:104px}
@@ -83,6 +84,7 @@ h1,h2,h3,h4{color:var(--ink)}
 .fact-icon svg{width:21px;height:21px}
 .fact-text strong{font-size:13px;line-height:1.4;font-weight:600}
 .fact-text small{font-size:12px;line-height:1.6;margin-top:3px}
+.results-guide{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--text);text-wrap:balance}
 .result-tabs{gap:5px 20px;margin-bottom:24px;border-color:var(--line)}
 .result-tabs [role=tab]{font-size:12px;min-height:39px;padding:9px 0;background:transparent}
 .result-tabs [aria-selected=true]{color:var(--ink);border-bottom-color:var(--gold)}
