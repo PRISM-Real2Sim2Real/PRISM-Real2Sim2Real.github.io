@@ -122,7 +122,7 @@
       updateGroup(group);
     });
   }, {threshold: 0.06});
-  groups.forEach(group => observer.observe(group.element));
+  groups.forEach(group => { if (group.name !== 'multiply') observer.observe(group.element); });
 
   $$('[data-toggle-group]').forEach(button => button.addEventListener('click', () => {
     const group = groups.get(button.dataset.toggleGroup);
@@ -154,7 +154,7 @@
   // Only like-duration V2V clips are continually time-aligned.
   // Real-world experiments have different durations and loop independently.
   window.setInterval(() => {
-    ['quiz', 'samples', 'counterfactuals', 'pipeline'].forEach(name => {
+    ['quiz', 'samples', 'counterfactuals', 'multiply', 'pipeline'].forEach(name => {
       const group = groups.get(name);
       if (!group || !group.visible || !group.playing || document.hidden || dialogOpen) return;
       const videos = $$('video', group.element).filter(v => !v.paused && v.readyState >= 2 && !v.seeking);
@@ -326,6 +326,138 @@
     updateGroup(groups.get('results'));
   }
   renderResults();
+
+  // ----- One real video → nine samples → 256 counterfactual videos. -----
+  (() => {
+    const grid = $('#multiply-grid'); const stage = $('#multiply-stage');
+    if (!grid || !stage) return;
+    const N = 16; const block = [7, 8, 9]; // 3×3 live videos around the seed tile at (8, 8)
+    const generated = content.choices.filter(choice => !choice.real).map(choice => choice.id);
+    const seed = content.choices.find(choice => choice.real);
+    const live = [...generated.slice(0, 4), seed.id, ...generated.slice(4, 8)];
+    const fragment = document.createDocumentFragment();
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+      const tile = document.createElement('div'); tile.className = 'multiply-tile';
+      if (block.includes(r) && block.includes(c)) {
+        const id = live[(r - block[0]) * 3 + (c - block[0])];
+        const video = document.createElement('video'); setMedia(video, id);
+        tile.append(video); tile.classList.add(id === seed.id ? 'is-seed' : 'is-live');
+      } else {
+        const id = generated[(r * 5 + c * 3 + (r * c) % 7) % generated.length];
+        const img = document.createElement('img'); img.src = assets[id].poster; img.alt = ''; img.decoding = 'async';
+        tile.append(img);
+      }
+      fragment.append(tile);
+    }
+    grid.append(fragment);
+
+    // Zoom about the seed/block center (8.5/16 of the grid) so each stage fills the stage exactly.
+    const focus = 8.5 / N;
+    const zoom = s => s === 1 ? 'none' : `translate(${(0.5 - s * focus) * 100}%, ${(0.5 - s * focus) * 100}%) scale(${s})`;
+    // Zoom out from the seed, then fade through generated videos and robot references.
+    const phases = {
+      1: {transform: zoom(N), count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
+      9: {transform: zoom(N / 3), count: 9, label: 'Counterfactual samples', caption: 'Vary the object and adapt the person’s motion.'},
+      256: {transform: zoom(N / 3), count: 256, label: 'Counterfactual videos', caption: 'We generate 256 counterfactual videos from our seed recordings.'},
+      objects: {transform: zoom(1), label: 'Diverse 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
+      motion: {transform: zoom(1), label: 'Kinematic references', caption: 'Retarget each interaction into a kinematic reference the robot can track.'},
+      sim2real: {transform: zoom(1), label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
+    };
+    const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
+    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
+    let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
+    const counter = $('#multiply-count'); const overlay = counter.parentElement;
+    const tiles = groups.get('multiply');
+    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]'), sim2real: $('.multiply-layer[data-layer="sim2real"]')};
+    // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
+    // and never recover. Keep only the visible stage loaded — nine tiles for the grid phases,
+    // one full-frame clip otherwise — and release the rest.
+    function unload(video) {
+      video.pause(); video.removeAttribute('src'); video.load(); delete video.dataset.loadedAsset;
+    }
+    function unloadTiles() { $$('video', tiles.element).forEach(video => { if (video.dataset.loadedAsset) unload(video); }); }
+    function showLayer(video) {
+      loadMedia(video);
+      if (reducedMotion.matches) video.pause();
+      else if (video.paused) video.play().catch(() => {});
+    }
+    function syncMedia() {
+      window.clearTimeout(mediaTimer);
+      const wanted = inView && !document.hidden && !dialogOpen ? layers[phase] : null;
+      Object.values(layers).forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
+      if (wanted) showLayer(wanted);
+      tiles.visible = inView;
+      tiles.playing = !layers[phase] && !reducedMotion.matches;
+      updateGroup(tiles);
+      // Release the tiles once the layer has faded in over them.
+      if (layers[phase] || !inView) mediaTimer = window.setTimeout(unloadTiles, 1000);
+    }
+    function setPhase(next, animateCount = true) {
+      const from = phase; phase = next;
+      const spec = phases[next];
+      grid.style.transform = spec.transform;
+      stage.dataset.phase = String(next);
+      syncMedia();
+      $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
+      $('#multiply-label').textContent = spec.label;
+      $('#multiply-caption').textContent = spec.caption;
+      overlay.classList.toggle('no-count', spec.count === undefined);
+      window.cancelAnimationFrame(countFrame);
+      const fromCount = phases[from].count;
+      if (spec.count === undefined) { counter.textContent = ''; return; }
+      if (!animateCount || reducedMotion.matches || fromCount === undefined) { counter.textContent = String(spec.count); return; }
+      const start = performance.now();
+      const tick = now => {
+        const t = Math.min(1, (now - start) / 1500); const eased = 1 - Math.pow(1 - t, 3);
+        counter.textContent = String(Math.round(fromCount + (spec.count - fromCount) * eased));
+        if (t < 1) countFrame = window.requestAnimationFrame(tick);
+      };
+      countFrame = window.requestAnimationFrame(tick);
+    }
+    function jumpTo(next) {
+      stage.classList.add('instant'); setPhase(next, false);
+      void stage.offsetWidth; stage.classList.remove('instant');
+    }
+    function run() {
+      window.clearTimeout(timer);
+      if (!inView || document.hidden || dialogOpen || reducedMotion.matches) return;
+      const [next, hold] = sequence[step];
+      step = (step + 1) % sequence.length;
+      if (next === 1 && phase !== 1) {
+        // Loop back with a short fade rather than a reverse zoom.
+        stage.classList.add('is-resetting');
+        timer = window.setTimeout(() => {
+          jumpTo(1); stage.classList.remove('is-resetting');
+          timer = window.setTimeout(run, hold);
+        }, 420);
+        return;
+      }
+      setPhase(next, next !== 1);
+      timer = window.setTimeout(run, hold);
+    }
+    // A manual choice lingers on that stage a little longer, then the sequence continues from it.
+    $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {
+      const next = parsePhase(button.dataset.multiplyPhase);
+      const index = sequence.findIndex(([name]) => name === next);
+      window.clearTimeout(timer);
+      step = (index + 1) % sequence.length;
+      setPhase(next);
+      timer = window.setTimeout(run, sequence[index][1] + 800);
+    }));
+    // Coming back into view or to the tab resumes from the current stage instead of skipping ahead.
+    function resume(delay) { window.clearTimeout(timer); timer = window.setTimeout(run, delay); }
+    new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.35 && !inView) {
+        inView = true; syncMedia(); resume(step === 0 ? 0 : 1200);
+      } else if ((!entry.isIntersecting || entry.intersectionRatio < 0.35) && inView) { inView = false; window.clearTimeout(timer); syncMedia(); }
+    }), {threshold: 0.35}).observe(stage);
+    document.addEventListener('visibilitychange', () => { syncMedia(); if (document.hidden) window.clearTimeout(timer); else resume(1200); });
+    if (reducedMotion.matches) jumpTo(256);
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) { window.clearTimeout(timer); jumpTo(256); }
+      else { syncMedia(); resume(1200); }
+    });
+  })();
 
   // ----- Method pipeline: reveal the three stages left to right once in view. -----
   const pipeline = $('#pipeline');

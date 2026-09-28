@@ -163,13 +163,19 @@ h1,h2,h3,h4{color:var(--ink)}
 .solution-notes h3{font:600 16px/1.5 var(--sans);letter-spacing:-.015em;margin:0}
 .solution-notes p{font:400 15px/1.6 var(--sans);color:var(--text);margin:0}
 .solution-notes .scope-note{margin-top:6px;font-size:12px;color:var(--muted)}
-.solution-output{display:grid;grid-template-columns:auto 24px minmax(0,1fr);align-items:center;gap:24px;margin-top:22px;padding:18px 24px;background:var(--soft);border-radius:6px}
-.output-count{display:flex;align-items:center;gap:14px;margin:0;color:var(--ink)}
-.output-count>strong{font:600 30px/1 var(--sans);letter-spacing:-.04em;color:#8d794a}
-.output-count>span{font:500 14px/1.5 var(--sans)}
-.output-count small{display:block;font-size:12px;font-weight:400;color:var(--muted)}
-.output-arrow{font-size:22px;line-height:1;color:var(--gold);text-align:center}
-.output-next{font:400 15px/1.6 var(--sans);margin:0}
+
+/* Restore the original video expansion as the bridge into robot training. */
+.multiply{margin-top:32px}
+.multiply-stage{border-radius:6px}
+.multiply-steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;overflow:visible}
+.multiply-step{font-size:13px;text-align:center}
+.multiply-foot{margin-top:10px}
+#multiply-caption{margin-top:12px;min-height:24px;font-size:14px;line-height:1.7;text-wrap:pretty}
+@media(max-width:760px){
+  .multiply-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px;border-bottom:0;overflow:visible}
+  .multiply-step{font-size:11px;white-space:normal;border-bottom:1px solid var(--line)}
+  #multiply-caption{min-height:48px;font-size:13px}
+}
 
 /* Comparisons retain complete source frames. */
 .quiz-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap)}
@@ -296,10 +302,6 @@ h1,h2,h3,h4{color:var(--ink)}
   .seed-card figcaption,.generated-cards figcaption{font-size:11px;padding:9px 0 0}
   .solution-notes{margin-top:24px}
   .solution-notes>div{grid-template-columns:1fr;gap:7px;padding:18px 0}
-  .solution-output{grid-template-columns:24px minmax(0,1fr);gap:14px 12px;padding:18px 20px}
-  .output-count{grid-column:1/-1}
-  .output-arrow{grid-column:1;grid-row:2;transform:rotate(90deg)}
-  .output-next{grid-column:2;grid-row:2}
   .section-heading-row{align-items:flex-start;flex-direction:column;gap:17px}
   .quiz-grid{gap:12px}
   .pipeline{--grid-gap:20px}
