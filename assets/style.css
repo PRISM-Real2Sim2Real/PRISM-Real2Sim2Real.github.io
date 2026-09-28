@@ -146,11 +146,11 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .idea-summary{margin-top:8px;font-size:16px;color:var(--muted)}
 
 /* One video to 256, then objects, kinematics and sim-to-real.
-   A 16x16 grid is zoomed with one transform about the seed tile; four full-frame clips fade in over it. */
+   A 2×2 grid zooms out from the source tile; full-frame clips then show the scrolling montage and robot references. */
 .multiply{margin-top:44px}
 .multiply-stage{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#111}
 .multiply-viewport{position:absolute;inset:0}
-.multiply-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(16,minmax(0,1fr));grid-template-rows:repeat(16,minmax(0,1fr));background:#fff;transform:translate(-800%,-800%) scale(16);transform-origin:0 0;will-change:transform;transition:transform 1.9s cubic-bezier(.7,0,.2,1),opacity .35s ease}
+.multiply-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));background:#fff;transform:scale(2);transform-origin:0 0;will-change:transform;transition:transform 1.9s cubic-bezier(.7,0,.2,1),opacity .35s ease}
 .multiply-stage.instant .multiply-grid,.multiply-stage.instant .multiply-layer{transition:none}
 .multiply-stage.is-resetting .multiply-grid{opacity:0}
 .multiply-tile{position:relative;min-width:0;min-height:0;overflow:hidden;border:.25px solid rgba(255,255,255,.9);background:#222}

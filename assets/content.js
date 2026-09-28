@@ -1,5 +1,12 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "counterfactual-scroll-3x3": {
+    "src": "assets/videos/counterfactual-scroll-3x3.mp4",
+    "poster": "assets/posters/counterfactual-scroll-3x3.jpg",
+    "duration": 8,
+    "width": 1920,
+    "height": 1080
+  },
   "demo-01": {
     "src": "assets/videos/demo-01.mp4",
     "poster": "assets/posters/demo-01.jpg",

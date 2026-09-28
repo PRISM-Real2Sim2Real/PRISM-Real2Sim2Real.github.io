@@ -327,50 +327,39 @@
   }
   renderResults();
 
-  // ----- One real video → nine samples → 256 counterfactual videos. -----
+  // ----- One real video → four examples → a scrolling 3×3 selection. -----
   (() => {
     const grid = $('#multiply-grid'); const stage = $('#multiply-stage');
     if (!grid || !stage) return;
-    const N = 16; const block = [7, 8, 9]; // 3×3 live videos around the seed tile at (8, 8)
     const generated = content.choices.filter(choice => !choice.real).map(choice => choice.id);
     const seed = content.choices.find(choice => choice.real);
-    const live = [...generated.slice(0, 4), seed.id, ...generated.slice(4, 8)];
+    const live = [seed.id, generated[0], generated[2], generated[3]];
     const fragment = document.createDocumentFragment();
-    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
-      const tile = document.createElement('div'); tile.className = 'multiply-tile';
-      if (block.includes(r) && block.includes(c)) {
-        const id = live[(r - block[0]) * 3 + (c - block[0])];
-        const video = document.createElement('video'); setMedia(video, id);
-        tile.append(video); tile.classList.add(id === seed.id ? 'is-seed' : 'is-live');
-      } else {
-        const id = generated[(r * 5 + c * 3 + (r * c) % 7) % generated.length];
-        const img = document.createElement('img'); img.src = assets[id].poster; img.alt = ''; img.decoding = 'async';
-        tile.append(img);
-      }
-      fragment.append(tile);
-    }
+    live.forEach(id => {
+      const tile = document.createElement('div');
+      tile.className = 'multiply-tile ' + (id === seed.id ? 'is-seed' : 'is-live');
+      const video = document.createElement('video'); setMedia(video, id);
+      tile.append(video); fragment.append(tile);
+    });
     grid.append(fragment);
 
-    // Zoom about the seed/block center (8.5/16 of the grid) so each stage fills the stage exactly.
-    const focus = 8.5 / N;
-    const zoom = s => s === 1 ? 'none' : `translate(${(0.5 - s * focus) * 100}%, ${(0.5 - s * focus) * 100}%) scale(${s})`;
-    // Zoom out from the seed, then fade through generated videos and robot references.
+    // Zoom out from the top-left source to four examples, then fade into the scrolling montage.
     const phases = {
-      1: {transform: zoom(N), count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
-      9: {transform: zoom(N / 3), count: 9, label: 'Counterfactual samples', caption: 'Vary the object and adapt the person’s motion.'},
-      256: {transform: zoom(N / 3), count: 256, label: 'Counterfactual videos', caption: 'We generate 256 counterfactual videos from our seed recordings.'},
-      objects: {transform: zoom(1), label: 'Diverse 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
-      motion: {transform: zoom(1), label: 'Kinematic references', caption: 'Retarget each interaction into a kinematic reference the robot can track.'},
-      sim2real: {transform: zoom(1), label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
+      1: {transform: 'scale(2)', count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
+      4: {transform: 'none', count: 4, label: 'Video examples', caption: 'Vary the object and adapt the person’s motion.'},
+      256: {transform: 'none', count: 256, label: 'Counterfactual videos', caption: 'We generate 256 counterfactual videos from our seed recordings.'},
+      objects: {transform: 'none', label: 'Diverse 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
+      motion: {transform: 'none', label: 'Kinematic references', caption: 'Retarget each interaction into a kinematic reference the robot can track.'},
+      sim2real: {transform: 'none', label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [9, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
+    const sequence = [[1, 2600], [4, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
     let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
     const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]'), sim2real: $('.multiply-layer[data-layer="sim2real"]')};
     // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
-    // and never recover. Keep only the visible stage loaded — nine tiles for the grid phases,
+    // and never recover. Keep only the visible stage loaded — four tiles for the grid phases,
     // one full-frame clip otherwise — and release the rest.
     function unload(video) {
       video.pause(); video.removeAttribute('src'); video.load(); delete video.dataset.loadedAsset;

@@ -6,8 +6,8 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=counterfactual-prompt-20260928">
-<script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=original-video-20260928" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=scroll-grid-20260928"><link rel="stylesheet" href="assets/blog.css?v=counterfactual-prompt-20260928">
+<script src="assets/content.js?v=scroll-grid-20260928" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=scroll-grid-20260928" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
 <header class="blog-header"><a class="blog-brand" href="#top" aria-label="PRISM home"><span class="prism-mark" aria-hidden="true"></span>PRISM<span class="brand-divider"></span><span class="brand-note">Research stories</span></a><nav aria-label="Main navigation">
@@ -119,14 +119,14 @@
   <figure class="multiply" id="generation-animation" aria-labelledby="multiply-caption">
     <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
       <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
-      <video class="multiply-layer" data-layer="256" data-asset="demo-10" muted playsinline loop preload="none" poster="assets/posters/demo-10.jpg"></video>
+      <video class="multiply-layer" data-layer="256" data-asset="counterfactual-scroll-3x3" muted playsinline loop preload="none" poster="assets/posters/counterfactual-scroll-3x3.jpg"></video>
       <video class="multiply-layer" data-layer="objects" data-asset="objects-01" muted playsinline loop preload="none" poster="assets/posters/objects-01.jpg"></video>
       <video class="multiply-layer" data-layer="motion" data-asset="kinematics-01" muted playsinline loop preload="none" poster="assets/posters/kinematics-01.jpg"></video>
       <video class="multiply-layer" data-layer="sim2real" data-asset="demo-48" muted playsinline loop preload="none" poster="assets/posters/demo-48.jpg"></video>
       <div class="multiply-overlay"><span class="multiply-count" id="multiply-count">1</span><span class="multiply-label" id="multiply-label">Real seed video</span></div>
     </div>
     <figcaption class="multiply-foot">
-      <div class="multiply-steps" role="group" aria-label="Choose a pipeline stage"><button type="button" class="multiply-step" data-multiply-phase="1" aria-pressed="true"><strong>1</strong> source video</button><button type="button" class="multiply-step" data-multiply-phase="9" aria-pressed="false"><strong>9</strong> samples</button><button type="button" class="multiply-step" data-multiply-phase="256" aria-pressed="false"><strong>256</strong> videos</button><button type="button" class="multiply-step" data-multiply-phase="objects" aria-pressed="false"><strong>3D</strong> objects</button><button type="button" class="multiply-step" data-multiply-phase="motion" aria-pressed="false">Kinematic references</button><button type="button" class="multiply-step" data-multiply-phase="sim2real" aria-pressed="false">Zero-shot Sim2Real</button></div>
+      <div class="multiply-steps" role="group" aria-label="Choose a pipeline stage"><button type="button" class="multiply-step" data-multiply-phase="1" aria-pressed="true"><strong>1</strong> source video</button><button type="button" class="multiply-step" data-multiply-phase="4" aria-pressed="false"><strong>4</strong> samples</button><button type="button" class="multiply-step" data-multiply-phase="256" aria-pressed="false"><strong>256</strong> videos</button><button type="button" class="multiply-step" data-multiply-phase="objects" aria-pressed="false"><strong>3D</strong> objects</button><button type="button" class="multiply-step" data-multiply-phase="motion" aria-pressed="false">Kinematic references</button><button type="button" class="multiply-step" data-multiply-phase="sim2real" aria-pressed="false">Zero-shot Sim2Real</button></div>
       <p id="multiply-caption">Start with a real recording of a person carrying a box.</p>
     </figcaption>
   </figure></div></section><section class="section-space" id="method" aria-labelledby="method-label">
