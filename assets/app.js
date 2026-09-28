@@ -198,7 +198,7 @@
     order.forEach((choice, index) => {
       const tile = document.createElement('button');
       tile.type = 'button'; tile.className = 'quiz-tile';
-      tile.setAttribute('aria-label', `Choose clip ${index + 1} as the real recording`);
+      tile.setAttribute('aria-label', `Choose clip ${index + 1} as the original video`);
       tile.setAttribute('aria-pressed', 'false');
       const video = document.createElement('video');
       setMedia(video, choice.id);
@@ -210,7 +210,7 @@
       tile.append(video, number, answer);
       tile.addEventListener('click', () => {
         if (revealed) {
-          openVideo({id: choice.id, title: choice.real ? 'Original real recording · cardboard box' : `V2V-generated · ${choice.object}`, note: choice.insight, speed: 'Source clip'});
+          openVideo({id: choice.id, title: choice.real ? 'Original video · cardboard box' : `Counterfactual video · ${choice.object}`, note: choice.insight, speed: 'Source clip'});
           return;
         }
         selected = index;
@@ -240,16 +240,16 @@
       tile.classList.add('revealed');
       tile.classList.toggle('is-real', isReal);
       tile.classList.remove('is-wrong');
-      $('.quiz-answer', tile).textContent = isReal ? 'Real' : 'Generated';
-      tile.setAttribute('aria-label', `Inspect clip ${index + 1}: ${isReal ? 'original real recording' : 'V2V-generated'}, ${order[index].object}`);
+      $('.quiz-answer', tile).textContent = isReal ? 'Original' : 'Counterfactual';
+      tile.setAttribute('aria-label', `Inspect clip ${index + 1}: ${isReal ? 'original video' : 'counterfactual generated from the original'}, ${order[index].object}`);
     });
     const feedback = $('#quiz-feedback');
     const title = document.createElement('strong');
     title.textContent = selected === realIndex
-      ? `Correct. Clip ${realIndex + 1} is the real recording.`
-      : `Clip ${realIndex + 1} is the real recording.`;
+      ? `Correct. Clip ${realIndex + 1} is the original video.`
+      : `Clip ${realIndex + 1} is the original video.`;
     const explanation = document.createElement('p');
-    explanation.textContent = 'We generated the other three from this recording, changing the objects and the motion.';
+    explanation.textContent = 'We generated the three counterfactuals from this video, changing the object and adapting the person’s motion.';
     feedback.replaceChildren(title, explanation); feedback.hidden = false;
     $('#sample-explorer').hidden = false;
   }

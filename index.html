@@ -7,13 +7,13 @@
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation for Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/style.css?v=blog-20260927"><link rel="stylesheet" href="assets/blog.css?v=counterfactual-prompt-20260928">
-<script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=restore-multiply-20260927" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
+<script src="assets/content.js?v=hero-4k-v8-20260927" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=original-video-20260928" defer></script><script src="assets/blog.js?v=section-two-20260927" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
 <header class="blog-header"><a class="blog-brand" href="#top" aria-label="PRISM home"><span class="prism-mark" aria-hidden="true"></span>PRISM<span class="brand-divider"></span><span class="brand-note">Research stories</span></a><nav aria-label="Main navigation">
-<a href="#results">Results</a><a href="#challenge">The challenge</a><a href="#v2v">Real or generated?</a><a href="#motivation">Our solution</a><a href="#method">Method</a>
+<a href="#results">Results</a><a href="#challenge">The challenge</a><a href="#v2v">Find the original</a><a href="#motivation">Our solution</a><a href="#method">Method</a>
 </nav><a class="project-overview" href="#research">Project overview <span aria-hidden="true">↑</span></a></header>
-<nav class="side-nav" aria-label="On this page"><span class="toc-label">Contents</span><a href="#results"><span class="nav-index">01</span>Results</a><a href="#challenge"><span class="nav-index">02</span>The challenge</a><a href="#v2v"><span class="nav-index">03</span>Real or generated?</a><a href="#motivation"><span class="nav-index">04</span>Our solution</a><a href="#method"><span class="nav-index">05</span>Method</a></nav>
+<nav class="side-nav" aria-label="On this page"><span class="toc-label">Contents</span><a href="#results"><span class="nav-index">01</span>Results</a><a href="#challenge"><span class="nav-index">02</span>The challenge</a><a href="#v2v"><span class="nav-index">03</span>Find the original</a><a href="#motivation"><span class="nav-index">04</span>Our solution</a><a href="#method"><span class="nav-index">05</span>Method</a></nav>
 <main id="main"><section class="hero paper-hero section-shell" id="top" aria-labelledby="paper-title">
   <div id="research" class="paper-heading">
   <p class="kicker hero-kicker">Real-to-Sim-to-Real</p>
@@ -89,16 +89,16 @@
 </figure>
 <div class="article-copy section-bridge"><p>Our solution: Expand a few recordings into new interactions with a video model.</p></div></div></section><section class="section-space quiz-section" id="v2v" aria-labelledby="quiz-title">
   <div class="section-shell">
-    <p class="kicker">03 / Look a little closer</p>
-    <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title">Which video is real?</h2><p class="section-intro">We recorded one clip and generated three. Pick the real one.</p></div><div class="controls"><button class="button button-small" id="shuffle-quiz" type="button">Try another set <span aria-hidden="true">↻</span></button></div></div>
+    <p class="kicker">03 / Counterfactual video generation</p>
+    <div class="section-heading-row compact"><div><h2 class="section-title" id="quiz-title"><span class="keep-words">Which one is</span> <span class="keep-words">the original video?</span></h2><p class="section-intro">We generated three counterfactual videos from one recording. Pick the original.</p></div><div class="controls"><button class="button button-small" id="shuffle-quiz" type="button">Try another set <span aria-hidden="true">↻</span></button></div></div>
     <div class="quiz-panel media-group" data-group="quiz">
-      <div class="quiz-grid" id="quiz-grid" role="group" aria-label="Four video choices. Exactly one is a real recording."></div>
+      <div class="quiz-grid" id="quiz-grid" role="group" aria-label="One original video and three counterfactual videos generated from it. Select the original."></div>
       <div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite" hidden></div>
     </div>
     <div class="sample-explorer" id="sample-explorer" hidden>
-      <div class="sample-explorer-head"><h3>See how the interaction changes</h3><p>Choose an object to compare its generated motion with the real recording.</p></div>
+      <div class="sample-explorer-head"><h3>See how the interaction changes</h3><p>Choose an object to compare its generated motion with the original video.</p></div>
       <div class="sample-options" id="sample-options" role="group" aria-label="Select a pre-generated counterfactual example"></div>
-      <div class="sample-pair media-group" data-group="samples"><figure><div class="video-frame"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="The real cardboard-box seed interaction."></video><span class="corner-label">Real seed</span></div><figcaption>A person carries a box</figcaption></figure><span class="pair-arrow" aria-hidden="true">→</span><figure><div class="video-frame"><video id="sample-video" data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A generated alternative interaction."></video><span class="corner-label">Generated</span></div><figcaption id="sample-caption">The person adapts their hold to the ball.</figcaption></figure></div>
+      <div class="sample-pair media-group" data-group="samples"><figure><div class="video-frame"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="The original cardboard-box interaction."></video><span class="corner-label">Original video</span></div><figcaption>A person carries a box</figcaption></figure><span class="pair-arrow" aria-hidden="true">→</span><figure><div class="video-frame"><video id="sample-video" data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A generated alternative interaction."></video><span class="corner-label">Counterfactual</span></div><figcaption id="sample-caption">The person adapts their hold to the ball.</figcaption></figure></div>
     </div>
     <div class="article-copy quiz-insight"><p>We vary the object and adapt the reach, grasp, and posture from one source video.</p></div>
   </div>
