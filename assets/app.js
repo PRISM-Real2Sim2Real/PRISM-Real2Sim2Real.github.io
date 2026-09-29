@@ -38,7 +38,7 @@
     video.preload = 'auto';
     video.muted = true;
     const showMediaError = () => {
-      const frame = video.closest('.video-frame, .quiz-tile, .hero-film, .method-visual');
+      const frame = video.closest('.video-frame, .hero-film, .method-visual');
       if (!frame || $('.media-error', frame)) return;
       const note = document.createElement('span');
       note.className = 'media-error';
@@ -154,7 +154,7 @@
   // Only like-duration V2V clips are continually time-aligned.
   // Real-world experiments have different durations and loop independently.
   window.setInterval(() => {
-    ['quiz', 'samples', 'counterfactuals', 'multiply', 'pipeline'].forEach(name => {
+    ['counterfactuals', 'multiply', 'pipeline'].forEach(name => {
       const group = groups.get(name);
       if (!group || !group.visible || !group.playing || document.hidden || dialogOpen) return;
       const videos = $$('video', group.element).filter(v => !v.paused && v.readyState >= 2 && !v.seeking);
@@ -167,112 +167,6 @@
       });
     });
   }, 400);
-
-  // ----- Four clips per round: one real seed and three counterfactuals. -----
-  let order = [];
-  let selected = null;
-  let revealed = false;
-  function shuffle(array) {
-    const result = [...array];
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
-    }
-    return result;
-  }
-  function renderQuiz() {
-    const grid = $('#quiz-grid');
-    $$('video', grid).forEach(v => v.pause());
-    const pool = shuffle(content.choices.filter(choice => !choice.real));
-    const picks = pool.slice(0, 3);
-    // A new round always changes the comparison, not just its positions.
-    if (picks.every(choice => order.some(previous => previous.id === choice.id)) && pool.length > 3) {
-      picks[2] = pool.find(choice => !order.some(previous => previous.id === choice.id));
-    }
-    order = shuffle([content.choices.find(choice => choice.real), ...picks]);
-    selected = null; revealed = false;
-    $('#quiz-feedback').hidden = true;
-    $('#quiz-feedback').replaceChildren();
-    $('#sample-explorer').hidden = true; // Do not spoil the seed before the reveal.
-    grid.replaceChildren();
-    order.forEach((choice, index) => {
-      const tile = document.createElement('button');
-      tile.type = 'button'; tile.className = 'quiz-tile';
-      tile.setAttribute('aria-label', `Choose clip ${index + 1} as the original video`);
-      tile.setAttribute('aria-pressed', 'false');
-      const video = document.createElement('video');
-      setMedia(video, choice.id);
-      // A video inside an answer button is decorative; the button owns the accessible name.
-      video.setAttribute('aria-hidden', 'true');
-      const number = document.createElement('span');
-      number.className = 'quiz-number'; number.textContent = String(index + 1);
-      const answer = document.createElement('span'); answer.className = 'quiz-answer';
-      tile.append(video, number, answer);
-      tile.addEventListener('click', () => {
-        if (revealed) {
-          openVideo({id: choice.id, title: choice.real ? 'Original video · cardboard box' : `Counterfactual video · ${choice.object}`, note: choice.insight, speed: 'Source clip'});
-          return;
-        }
-        selected = index;
-        $$('.quiz-tile', grid).forEach((button, i) => {
-          button.classList.toggle('selected', i === index);
-          button.setAttribute('aria-pressed', String(i === index));
-        });
-        reveal();
-      });
-      tile.addEventListener('keydown', event => {
-        const directions = {ArrowRight: 1, ArrowLeft: -1, ArrowDown: 2, ArrowUp: -2};
-        if (!(event.key in directions)) return;
-        event.preventDefault();
-        const next = (index + directions[event.key] + order.length) % order.length;
-        $$('.quiz-tile', grid)[next].focus();
-      });
-      grid.append(tile);
-    });
-    updateGroup(groups.get('quiz'));
-  }
-  function reveal() {
-    if (revealed) return;
-    revealed = true;
-    const realIndex = order.findIndex(choice => choice.real);
-    $$('.quiz-tile').forEach((tile, index) => {
-      const isReal = Boolean(order[index].real);
-      tile.classList.add('revealed');
-      tile.classList.toggle('is-real', isReal);
-      tile.classList.remove('is-wrong');
-      $('.quiz-answer', tile).textContent = isReal ? 'Original' : 'Counterfactual';
-      tile.setAttribute('aria-label', `Inspect clip ${index + 1}: ${isReal ? 'original video' : 'counterfactual generated from the original'}, ${order[index].object}`);
-    });
-    const feedback = $('#quiz-feedback');
-    const title = document.createElement('strong');
-    title.textContent = selected === realIndex
-      ? `Correct. Clip ${realIndex + 1} is the original video.`
-      : `Clip ${realIndex + 1} is the original video.`;
-    const explanation = document.createElement('p');
-    explanation.textContent = 'We generated the three counterfactuals from this video, changing the object and adapting the person’s motion.';
-    feedback.replaceChildren(title, explanation); feedback.hidden = false;
-    $('#sample-explorer').hidden = false;
-  }
-  $('#shuffle-quiz').addEventListener('click', renderQuiz);
-  renderQuiz();
-
-  // ----- Explore a pre-generated object-conditioned sample. -----
-  content.choices.filter(choice => !choice.real).forEach((choice, index) => {
-    const button = document.createElement('button');
-    button.type = 'button'; button.className = 'sample-option';
-    button.textContent = choice.object;
-    button.setAttribute('aria-pressed', String(index === 0));
-    button.addEventListener('click', () => {
-      $$('.sample-option').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-      setMedia($('#sample-video'), choice.id, `V2V-generated interaction with a ${choice.object.toLowerCase()}`);
-      $('#sample-caption').textContent = choice.insight;
-      const group = groups.get('samples');
-      const seed = $('video', group.element);
-      if (seed.readyState) seed.currentTime = 0;
-      updateGroup(group);
-    });
-    $('#sample-options').append(button);
-  });
 
   // ----- Four independent videos per generalization view. -----
   // Multi-page categories become one tab per page, e.g. "In-domain (1/2)".
@@ -348,12 +242,12 @@
       1: {transform: 'scale(2)', count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
       4: {transform: 'none', count: 4, label: 'Video examples', caption: 'Vary the object and adapt the person’s motion.'},
       256: {transform: 'none', count: 256, label: 'Counterfactual videos', caption: 'We generate 256 counterfactual videos from our seed recordings.'},
-      objects: {transform: 'none', label: 'Diverse 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
+      objects: {transform: 'none', label: 'Reconstructed 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
       motion: {transform: 'none', label: 'Kinematic references', caption: 'Retarget each interaction into a kinematic reference the robot can track.'},
       sim2real: {transform: 'none', label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [4, 4400], [256, 5200], ['objects', 2700], ['motion', 8400], ['sim2real', 7400]];
+    const sequence = [[1, 2600], [4, 4400], [256, 5200], ['objects', 9000], ['motion', 8600], ['sim2real', 8900]];
     let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
@@ -368,7 +262,7 @@
     function showLayer(video) {
       loadMedia(video);
       if (reducedMotion.matches) video.pause();
-      else if (video.paused) video.play().catch(() => {});
+      else if (video.paused && !video.ended) video.play().catch(() => {});
     }
     function syncMedia() {
       window.clearTimeout(mediaTimer);
@@ -385,6 +279,7 @@
       const from = phase; phase = next;
       const spec = phases[next];
       grid.style.transform = spec.transform;
+      if (layers[next]?.dataset.loadedAsset) layers[next].currentTime = 0;
       stage.dataset.phase = String(next);
       syncMedia();
       $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));

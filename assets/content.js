@@ -1,5 +1,11 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "method-student-release": {"src": "assets/videos/method-student-bin34-28k-drop8s.mp4", "poster": "assets/posters/method-student-bin34-28k-drop8s.jpg", "duration": 8, "width": 1280, "height": 720},
+  "method-real-yellow": {"src": "assets/videos/id-05.mp4", "poster": "assets/posters/method-real-yellow.jpg", "duration": 8, "width": 1280, "height": 720},
+  "sim2real-36": {"src": "assets/videos/sim2real-36.mp4", "poster": "assets/posters/sim2real-36.jpg", "duration": 8.3, "width": 1920, "height": 1080},
+  "reconstructed-objects-studio": {"src": "assets/videos/reconstructed-objects-studio.mp4", "poster": "assets/posters/reconstructed-objects-studio.jpg", "duration": 9, "width": 1920, "height": 1080},
+  "kinematics-pullback": {"src": "assets/videos/kinematics-pullback.mp4", "poster": "assets/posters/kinematics-pullback.jpg", "duration": 8.6, "width": 1920, "height": 1080},
+  "sim2real-pullback": {"src": "assets/videos/sim2real-pullback.mp4", "poster": "assets/posters/sim2real-pullback.jpg", "duration": 9, "width": 1920, "height": 1080},
   "counterfactual-scroll-3x3": {
     "src": "assets/videos/counterfactual-scroll-3x3.mp4",
     "poster": "assets/posters/counterfactual-scroll-3x3.jpg",

@@ -3,12 +3,11 @@
 Public site: https://prism-real2sim2real.github.io/
 
 This repository contains the PRISM research blog: real-world results, the video-data
-bottleneck, counterfactual video generation, an interactive V2V challenge, and the
-real-to-sim-to-real method. All original PRISM media remain available.
+bottleneck, counterfactual video generation, and the real-to-sim-to-real method. All original PRISM media remain available.
 
 Edit `index.html` for the narrative and `assets/blog.css` for the editorial layout.
 `assets/content.js` defines the media and galleries; `assets/app.js` handles video
-playback, comparisons, the quiz, and expanded views. The narrative links to
+playback, the generation animation, and expanded views. The narrative links to
 VideoMimic as related work; the challenge section contains no video embed.
 
 ## Publish
@@ -36,3 +35,11 @@ Prioritize laptop and desktop reading. At widths of 1180px and above, use the fi
 ## Hero video
 
 The hero combines the approved v8 first-clip master with the approved chair and plush-dog edits, rebuilt before their previous lossy exports. It preserves 3840 × 2160 resolution and 60000/1001 fps, with 1603 frames (26.743383 seconds). The lossless archival master stays in the local Berkeley teaser folder; `assets/videos/hero-4k-v8/playlist.m3u8` serves a high-quality 4K H.264 rendition in short segments. Safari uses native HLS; other supported browsers use the locally bundled HLS.js 1.7.3. The hero retains the existing pause/play and looping behavior.
+
+## Method demonstrations
+
+The method uses a three-plus-two layout: generated video, 3D reconstruction,
+retargeted motion, then the released student rollout and real-world deployment.
+Both deployment videos last eight seconds. The student uses the 28K checkpoint
+with command 0.1, stops and receives the drop command at six seconds, and runs
+at its original playback speed. Local review artifacts in `qa/` are not published.
