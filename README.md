@@ -12,6 +12,8 @@ VideoMimic as related work; the challenge section contains no video embed.
 
 ## Publish
 
+For requested website changes, complete local verification, then commit and push to `main` without requesting a separate publish confirmation. Verify the GitHub Pages deployment and live files before reporting completion. Keep changes local only when the user explicitly requests a preview or defers publishing.
+
 GitHub Pages serves the root of the `main` branch. The `.nojekyll` file preserves
 this static site. Push regular commits to `main` to publish updates;
 fetch and incorporate remote changes before pushing. Do not force-push.

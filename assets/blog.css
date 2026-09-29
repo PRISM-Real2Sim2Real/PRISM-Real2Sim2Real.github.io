@@ -18,8 +18,8 @@
   --chapter-offset: 24px;
 }
 html { scroll-padding-top: var(--chapter-offset); scroll-behavior: auto; }
-body { padding-left: 200px; background: var(--bg); font: 17px/1.7 var(--sans); color: var(--text); }
-main { width: calc(100% - 80px); max-width: var(--page-width); margin: 0 auto; padding: 0; }
+body { padding-left: 168px; background: var(--bg); font: 17px/1.7 var(--sans); color: var(--text); }
+main { width: calc(100% - 64px); max-width: var(--page-width); margin: 0 auto; padding: 0; }
 .section-shell { width: 100%; max-width: none; margin: 0; padding: 0; }
 .section-space { padding: 48px 0 64px; border: 0; border-top: 2px solid var(--line); background: none; }
 h1, h2, h3, h4 { color: var(--ink); }
@@ -44,34 +44,29 @@ p { text-wrap: pretty; }
 .button-small { min-height: 32px; padding: 6px 12px; font-size: 13px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
-/* A stable table of contents keeps the story visible while the figures change. */
+/* A compact chapter index leaves the page, rather than a sidebar panel, in view. */
 .blog-header { display: none; }
 .blog-brand { display: inline-flex; align-items: center; color: var(--ink); font-size: 21px; font-weight: 650; letter-spacing: -.02em; }
 .blog-brand:hover { text-decoration: none; }
-.side-nav { position: fixed; inset: 0 auto 0 0; z-index: 40; width: 200px; display: flex; flex-direction: column; gap: 4px; padding: 34px 16px; border-right: 1px solid var(--line); background: var(--surface); transform: none; }
-.side-nav .rail-brand { display: block; padding: 0 14px; margin-bottom: 48px; color: var(--ink); font: 650 25px/1.2 var(--sans); letter-spacing: -.02em; }
-.side-nav .rail-brand:before, .side-nav .rail-brand:after { display: none; }
-.toc-label { display: block; padding: 0 14px; margin: 0 0 12px; color: #6b7469; font: 500 13px/1.5 var(--sans); }
-.side-nav a[data-chapter] { display: flex; align-items: baseline; gap: 10px; padding: 12px 11px; border-left: 3px solid transparent; border-radius: 0 4px 4px 0; color: #566152; font: 450 14px/1.4 var(--sans); }
+.side-nav { position: fixed; top: clamp(140px, 22vh, 220px); left: 18px; bottom: auto; z-index: 40; width: 144px; display: flex; flex-direction: column; gap: 2px; padding: 0; border: 0; border-left: 1px solid var(--line); background: none; transform: none; }
+.side-nav a[data-chapter] { display: block; padding: 8px 11px; margin-left: -1px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; color: #566152; font: 450 13px/1.5 var(--sans); white-space: nowrap; }
 .side-nav a[data-chapter]:before, .side-nav a[data-chapter]:after { display: none; }
 .side-nav a[data-chapter]:hover { background: #e8ece2; color: var(--ink); text-decoration: none; }
 .side-nav a[aria-current="location"] { border-left-color: var(--link); background: var(--accent-soft); color: #284d39; font-weight: 600; }
-.nav-number { color: #646f5b; font-size: 12px; font-variant-numeric: tabular-nums; }
-.side-nav a[aria-current="location"] .nav-number { color: #35634f; }
 
 /* The paper identity is compact; the result and its takeaway form one figure. */
 .paper-hero { padding: 42px 0 44px; text-align: center; }
-.paper-hero .hero-wordmark { display: block; font: 650 32px/1.2 var(--sans); letter-spacing: -.02em; color: var(--ink); }
-.paper-hero #paper-title { max-width: 1060px; margin: 14px auto 0; font: 650 40px/1.18 var(--sans); letter-spacing: -.025em; text-wrap: balance; }
-.paper-hero .authors { margin: 22px auto 0; gap: 4px; max-width: 960px; font-size: 15px; line-height: 1.55; }
-.paper-hero .author-row { gap: 3px 22px; }
+.paper-hero #paper-title { max-width: 1060px; margin: 0 auto; font: 650 40px/1.18 var(--sans); letter-spacing: -.025em; text-wrap: balance; }
+.paper-hero .authors { margin: 28px auto 0; gap: 6px; max-width: 1040px; font-size: 16px; line-height: 1.55; }
+.paper-hero .author-row { gap: 4px 36px; }
 .paper-hero .authors sup { font-size: 10px; }
-.paper-hero .affiliations { margin: 12px auto 0; max-width: 920px; gap: 2px 20px; font-size: 13px; line-height: 1.6; color: #677061; }
-.affiliation-note { flex-basis: 100%; font-size: 12px; }
-.paper-meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px 30px; margin: 23px auto 0; }
-.paper-hero .venue { margin: 0; gap: 10px; font-size: 13px; font-weight: 450; color: #5b6758; }
-.paper-hero .venue img { width: 76px; }
-.paper-hero .hero-actions { margin: 0; gap: 8px; }
+.paper-hero .affiliations { margin: 16px auto 0; max-width: 1040px; gap: 4px 30px; font-size: 14px; line-height: 1.6; color: #677061; }
+.affiliation-note { flex-basis: 100%; font-size: 13px; }
+.paper-meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 18px 44px; margin: 26px auto 0; }
+.paper-hero .venue { margin: 0; gap: 12px; font-size: 14px; font-weight: 450; color: #5b6758; }
+.paper-hero .venue img { width: 84px; }
+.paper-hero .hero-actions { margin: 0; gap: 12px; }
+.paper-hero .hero-actions .button { min-width: 104px; padding: 10px 18px; font-size: 15px; }
 .paper-hero .hero-deck { max-width: none; margin: 30px 0 0; padding: 17px 22px; border-left: 3px solid #557864; border-radius: 0 4px 4px 0; background: #eef2e9; text-align: left; font-size: 20px; line-height: 1.55; color: var(--ink); }
 .hero-deck strong { font-weight: 650; }
 .hero-film { position: relative; margin: 18px 0 0; aspect-ratio: 16/9; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: #eeeee7; }
@@ -225,9 +220,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   body { padding-left: 0; }
   main { width: calc(100% - 64px); }
   .side-nav { display: none; }
-  .blog-header { position: sticky; top: 0; z-index: 40; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 32px; border-bottom: 1px solid var(--line); background: var(--bg); }
-  .blog-header nav { display: flex; gap: 22px; font-size: 14px; }
-  .blog-header nav a { color: #566152; }
+  .blog-header { position: sticky; top: 0; z-index: 40; height: 48px; display: flex; align-items: center; justify-content: center; padding: 0 32px; border-bottom: 1px solid var(--line); background: var(--bg); }
+  .blog-header nav { display: flex; align-items: center; justify-content: center; gap: 26px; font-size: 14px; }
+  .blog-header nav a { padding: 10px 0; color: #566152; white-space: nowrap; }
   .blog-header nav a[aria-current="location"] { color: var(--link); text-decoration: underline; text-underline-offset: 6px; }
 
   .paper-hero #paper-title { font-size: 34px; }
@@ -239,14 +234,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 @media (max-width: 760px) {
   body { font-size: 16px; }
   main { width: calc(100% - 36px); }
-  .blog-header { height: auto; min-height: 54px; padding: 10px 18px; gap: 16px; align-items: center; }
+  .blog-header { height: 44px; min-height: 44px; padding: 0 12px; }
   .blog-brand { font-size: 16px; }
-  .blog-header nav { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px 8px; font-size: 12px; }
-  .blog-header nav a { grid-column: span 2; text-align: center; }
-  .blog-header nav a:nth-last-child(-n+2) { grid-column: span 3; }
+  .blog-header nav { width: 100%; justify-content: space-between; gap: 8px; font-size: 12px; }
   .paper-hero { padding-top: 28px; }
-  .paper-hero .hero-wordmark { font-size: 25px; }
-  .paper-hero #paper-title { font-size: clamp(25px, 4.5vw, 32px); line-height: 1.25; margin-top: 12px; }
+  .paper-hero #paper-title { font-size: clamp(25px, 4.5vw, 32px); line-height: 1.25; margin-top: 0; }
   .paper-hero .authors { font-size: 14px; margin-top: 20px; }
   .paper-hero .author-row { gap: 4px 16px; }
   .paper-hero .co-lead-authors:nth-of-type(2) { display: grid; grid-template-columns: repeat(2, max-content); }
@@ -255,6 +247,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .paper-hero .venue { font-size: 12px; gap: 10px; margin: 0; }
   .paper-hero .venue img { width: 65px; }
   .paper-hero .hero-actions { gap: 8px; margin: 0; }
+  .paper-hero .hero-actions .button { min-width: 0; padding: 7px 12px; font-size: 13px; }
   .paper-meta { gap: 14px; margin-top: 20px; }
   .button { padding: 7px 12px; font-size: 13px; }
   .paper-hero .hero-deck { margin-top: 24px; padding: 14px 16px; font-size: 16px; }
