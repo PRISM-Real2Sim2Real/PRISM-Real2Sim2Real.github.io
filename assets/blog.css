@@ -241,7 +241,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .paper-hero #paper-title { font-size: clamp(25px, 4.5vw, 32px); line-height: 1.25; margin-top: 0; }
   .paper-hero .authors { font-size: 14px; margin-top: 20px; }
   .paper-hero .author-row { gap: 4px 16px; }
-  .paper-hero .co-lead-authors:nth-of-type(2) { display: grid; grid-template-columns: repeat(2, max-content); }
+  .paper-hero .co-lead-authors:nth-of-type(3) { display: grid; grid-template-columns: repeat(2, max-content); }
   .paper-hero .affiliations { font-size: 12px; gap: 3px 13px; }
   .affiliation-note { font-size: 11px; }
   .paper-hero .venue { font-size: 12px; gap: 10px; margin: 0; }
