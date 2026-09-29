@@ -61,7 +61,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .paper-hero .author-row { gap: 4px 36px; }
 .paper-hero .authors sup { font-size: 10px; }
 .paper-hero .affiliations { margin: 16px auto 0; max-width: 1040px; gap: 4px 30px; font-size: 14px; line-height: 1.6; color: #677061; }
-.affiliation-note { flex-basis: 100%; font-size: 13px; }
+.affiliation-note { flex-basis: auto; font-size: 13px; }
 .paper-meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 18px 44px; margin: 26px auto 0; }
 .paper-hero .venue { margin: 0; gap: 12px; font-size: 14px; font-weight: 450; color: #5b6758; }
 .paper-hero .venue img { width: 84px; }
