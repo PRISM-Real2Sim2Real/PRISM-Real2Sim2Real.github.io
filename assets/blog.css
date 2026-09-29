@@ -250,7 +250,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .paper-hero .hero-actions .button { min-width: 0; padding: 7px 12px; font-size: 13px; }
   .paper-meta { gap: 14px; margin-top: 20px; }
   .button { padding: 7px 12px; font-size: 13px; }
-  .paper-hero .hero-deck { margin-top: 24px; padding: 14px 16px; font-size: 16px; }
+  .paper-hero .hero-deck { margin-top: 24px; padding: 14px 16px; font-size: 16px; text-wrap: balance; }
   .film-caption p { font-size: 13px; }
   .section-space { padding: 36px 0; }
   .section-title, .story-title { gap: 12px; font-size: 26px; }

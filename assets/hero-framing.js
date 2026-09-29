@@ -17,6 +17,8 @@
   }
 
   function frame(time) {
+    // The HLS video track starts 33 ms into its presentation timeline.
+    time = Math.max(0, time - .033);
     let width = 1, left = 0, top = 0;
     if (time < firstCut) {
       width = .8;
