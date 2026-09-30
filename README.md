@@ -131,3 +131,8 @@ generated bin-carrying video; the agent scripts a new SMPL sequence from it.
 The video comes from a real box-carrying seed; the agent calls a Real2Sim module
 and refines the reconstructed ground alignment and object motion. The floor
 uses a darker checkerboard. This section contains no efficiency or cost claims.
+
+The Agents comparison autoplays and loops without visible playback controls.
+Its text-only route explicitly withholds video from the agent. The takeaway
+assigns interaction sampling to video models and Real2Sim quality refinement
+to agents. The introduction states the pick-up, carry, and set-down task.
