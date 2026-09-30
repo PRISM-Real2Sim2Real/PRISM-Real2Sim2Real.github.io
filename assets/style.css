@@ -146,7 +146,7 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .idea-summary{margin-top:8px;font-size:16px;color:var(--muted)}
 
 /* One video to 256, then objects, kinematics and sim-to-real.
-   A 2×2 grid zooms out from the source tile; full-frame clips then show the scrolling montage and robot references. */
+   A 2×2 grid zooms out from the source tile; one clip continues through the video wall and robot references. */
 .multiply{margin-top:44px}
 .multiply-stage{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#111}
 .multiply-viewport{position:absolute;inset:0}
@@ -160,10 +160,10 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-tile.is-seed{z-index:2}
 .multiply-tile.is-seed:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 .2px var(--gold);pointer-events:none}
 .multiply-layer{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;pointer-events:none}
-.multiply-stage[data-phase="256"] .multiply-layer[data-layer="256"],
-.multiply-stage[data-phase="objects"] .multiply-layer[data-layer="objects"],
-.multiply-stage[data-phase="motion"] .multiply-layer[data-layer="objects"],
-.multiply-stage[data-phase="sim2real"] .multiply-layer[data-layer="objects"]{opacity:1}
+.multiply-stage[data-phase="256"] .multiply-layer,
+.multiply-stage[data-phase="objects"] .multiply-layer,
+.multiply-stage[data-phase="motion"] .multiply-layer,
+.multiply-stage[data-phase="sim2real"] .multiply-layer{opacity:1}
 .multiply-stage.is-resetting .multiply-layer{opacity:0;transition-duration:.4s}
 .multiply-overlay{position:absolute;left:16px;bottom:14px;z-index:3;display:flex;align-items:baseline;gap:10px;padding:6px 12px;border-radius:6px;background:rgba(0,0,0,.5);color:#fff;pointer-events:none;transition:opacity .3s}
 .multiply-stage.is-resetting .multiply-overlay{opacity:0}
@@ -171,6 +171,7 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-label{font-size:13px;font-weight:500}
 .multiply-overlay.no-count .multiply-count{display:none}
 /* The Twitter clips carry their own labels; keep the stage name in the controls below. */
+.multiply-stage[data-phase="256"] .multiply-overlay,
 .multiply-stage[data-phase="objects"] .multiply-overlay,
 .multiply-stage[data-phase="motion"] .multiply-overlay,
 .multiply-stage[data-phase="sim2real"] .multiply-overlay{opacity:0}

@@ -237,7 +237,7 @@
     });
     grid.append(fragment);
 
-    // Zoom out from the top-left source to four examples, then fade into the scrolling montage.
+    // Zoom out from the source to four examples, then play the latest release sequence.
     const phases = {
       1: {transform: 'scale(2)', count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
       4: {transform: 'none', count: 4, label: 'Video examples', caption: 'Vary the object and adapt the person’s motion.'},
@@ -248,15 +248,15 @@
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
     const sequence = [1, 4, 256, 'objects', 'motion', 'sim2real'];
-    const holds = {1: 2600, 4: 4400, 256: 5200};
+    const holds = {1: 2600, 4: 4400};
     let phase = 1; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
-    const reconstruction = $('.multiply-layer[data-layer="objects"]');
-    const reconstructionAsset = assets[reconstruction.dataset.asset];
-    const stageStarts = reconstructionAsset.stageStarts;
-    const posters = {objects: reconstructionAsset.poster, motion: reconstructionAsset.motionPoster, sim2real: reconstructionAsset.sim2realPoster};
-    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: reconstruction, motion: reconstruction, sim2real: reconstruction};
+    const film = $('.multiply-layer[data-layer="sequence"]');
+    const filmAsset = assets[film.dataset.asset];
+    const stageStarts = filmAsset.stageStarts;
+    const posters = {256: filmAsset.poster, objects: filmAsset.objectsPoster, motion: filmAsset.motionPoster, sim2real: filmAsset.sim2realPoster};
+    const layers = {256: film, objects: film, motion: film, sim2real: film};
     const layerVideos = [...new Set(Object.values(layers))];
     const positions = new WeakMap(); const pendingSeek = new WeakMap();
     const active = () => inView && !document.hidden && !dialogOpen && !reducedMotion.matches;
@@ -296,10 +296,10 @@
       const from = phase; phase = next;
       const spec = phases[next];
       grid.style.transform = spec.transform;
-      // The three final stages share one clip, preserving both the pullback and tear reveal.
+      // The four video stages share one clip, preserving every cut, pullback and tear reveal.
       // Manual choices seek; automatic stage changes keep the same playback clock.
       if (layers[next] && !continuePlayback) pendingSeek.set(layers[next], stageStarts[next] ?? 0);
-      reconstruction.poster = posters[next] || reconstructionAsset.poster;
+      film.poster = posters[next] || filmAsset.poster;
       stage.dataset.phase = String(next);
       syncMedia();
       $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
@@ -351,10 +351,10 @@
         if (video === layers[phase] && !pendingSeek.has(video)) advance();
       });
     });
-    reconstruction.addEventListener('timeupdate', () => {
-      if (pendingSeek.has(reconstruction)) return;
-      const boundary = phase === 'objects' ? stageStarts.motion : phase === 'motion' ? stageStarts.sim2real : null;
-      if (boundary !== null && reconstruction.currentTime >= boundary) advance();
+    film.addEventListener('timeupdate', () => {
+      if (pendingSeek.has(film) || !layers[phase]) return;
+      const boundary = stageStarts[sequence[sequence.indexOf(phase) + 1]];
+      if (boundary !== undefined && film.currentTime >= boundary) advance();
     });
     // Manual choices replay the selected stage, including its exact start in the shared clip.
     $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {

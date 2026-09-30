@@ -48,19 +48,21 @@ at its original playback speed. Local review artifacts in `qa/` are not publishe
 
 ## Generation animation
 
-Reconstructed 3D objects, Kinematic references, and Zero-shot Sim2Real share one
-19.5-second video, so both the pullback and the center tear play continuously.
-The opening uses the completed v40 video-wall-to-3D bridge with the original
-transparent paper logo; the rest comes from the completed Twitter v40 video,
-44.1–60.5 seconds. It includes the object/configuration captions, “With paired
-robot motion,” 49 kinematic references, and the real-world ending.
+The 256-video wall, Reconstructed 3D objects, Kinematic references, and Zero-shot
+Sim2Real share one 18.1-second video, extracted from the completed Twitter v47
+release at 44.2–62.3 seconds. The source and four-example stages still use the
+existing live videos. The new sequence preserves the labeled video wall, object
+and configuration captions, “With paired robot motion,” the 3.6-second camera
+pullback from the foot plant to 49 references, and the earlier center tear reveal.
+All recorded actions play at their original speed.
 
-Stage boundaries live in the media manifest: objects at 0, motion at 6.7, and
-Sim2Real at 16 seconds. The real-world ending remains 3.5 seconds. Manual stage
-selection seeks to the corresponding boundary; automatic changes preserve the
-same video and playback clock. The real-world mosaic includes repeated views;
-its tile count is not a count of distinct objects. The logo and browser icon come
-from `PRISM-arxiv.zip`, `figs_1st/_1_teaser.pdf`.
+Stage boundaries live in the media manifest: videos at 0, objects at 3, motion
+at 6.6, and Sim2Real at 14.6 seconds. The real-world ending remains 3.5 seconds.
+Manual stage selection seeks to the corresponding boundary; automatic changes
+follow the shared video clock, including the video-wall-to-objects cut. The
+real-world mosaic includes repeated views; its tile count is not a count of
+distinct objects. The browser icon comes from `PRISM-arxiv.zip`,
+`figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/twitter-v47/`.
 
 ## Robustness results
 
