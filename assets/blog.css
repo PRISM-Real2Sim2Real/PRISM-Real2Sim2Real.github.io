@@ -43,8 +43,8 @@ p { text-wrap: pretty; }
 .button:hover:not(:disabled) { background: var(--soft); }
 .button-small { min-height: 32px; padding: 6px 12px; font-size: 13px; }
 .resource-links .resource-paper .btn-icon { fill: #b31b1b; }
-.resource-links .resource-code .btn-icon { fill: #6e40c9; }
-.resource-links .resource-post .btn-icon { fill: #1d9bf0; }
+.resource-links .resource-code .btn-icon { fill: #000; }
+.resource-links .resource-post .btn-icon { fill: #000; }
 .resource-links .btn-icon { width: 18px; height: 18px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
