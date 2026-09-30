@@ -96,6 +96,10 @@ clicking them opens the unchanged original PDF. The pose figure compares 137
 generated clips with four upright seed videos. The elevated pick-up description
 identifies these as simulation tests and preserves the reported successes
 (35-degree ramp, 0.43m support) and failures (45 degrees, 0.45m).
+It also preserves the paper's grasp-height explanation as a hypothesis: tall
+training objects expose the policy to similar grasp heights. Simple V2V prompts
+can generate elevated demonstrations; training on them is a proposed way to
+extend the range, not an evaluated result.
 Source snapshots, hashes, and export records are in `qa/robustness-generalization/`.
 The compact chapter navigation links to this section as “Robustness.”
 

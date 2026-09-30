@@ -6,7 +6,7 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/prism-logo.png?v=paper-20260929" type="image/png">
-<link rel="stylesheet" href="assets/style.css?v=twitter-v47-20260929"><link rel="stylesheet" href="assets/blog.css?v=robustness-generalization-20260930">
+<link rel="stylesheet" href="assets/style.css?v=twitter-v47-20260929"><link rel="stylesheet" href="assets/blog.css?v=robustness-analysis-20260930">
 <script src="assets/content.js?v=motivation-v52-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=agents-motion-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
@@ -131,13 +131,12 @@
 <section class="section-space paper-results-section" id="robustness-generalization" aria-labelledby="robustness-generalization-title">
 <div class="section-shell">
   <h2 class="section-title" id="robustness-generalization-title"><span class="chapter-number" aria-hidden="true">05</span><span class="chapter-title">Robustness and Generalization</span></h2>
-  <p class="section-intro">We measure object-pose coverage and test zero-shot pick-up beyond flat terrain.</p>
   <figure class="paper-result" id="pose-coverage">
     <figcaption><h3>Initial object-pose coverage</h3><p>We compare object poses in <strong>137 generated clips</strong> and <strong>4 upright seed videos</strong>. The plots show positions relative to G1 and yaw counts in six 30° bins modulo 180°.</p></figcaption>
     <a class="paper-result-image" href="assets/figures/object-pose-coverage.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the original object-pose coverage figure as a PDF" title="Open original figure"><img src="assets/figures/object-pose-coverage.webp" width="2240" height="807" loading="lazy" decoding="async" alt="Initial object poses relative to G1: generated clips form a wider spread around the four upright seed poses, including lying-down objects. The orientation histogram totals 137 clips across six yaw bins."></a>
   </figure>
   <figure class="paper-result" id="elevated-pickup">
-    <figcaption><h3>Zero-shot elevated pick-up</h3><p>We train only on flat terrain. In simulation, the policy picks up objects on a <strong>35° ramp</strong> (top) and a <strong>0.43 m support</strong> (bottom) without further training. It fails at 45° and 0.45 m.</p></figcaption>
+    <figcaption><h3>Zero-shot elevated pick-up</h3><p>We train only on flat terrain. In simulation, the policy succeeds zero-shot on a <strong>35° ramp</strong> (top) and a <strong>0.43 m support</strong> (bottom), but fails at 45° and 0.45 m.</p><p>Tall training objects may explain this transfer by exposing the policy to <strong>similar grasp heights</strong>. We can generate elevated pick-up demonstrations with simple V2V prompts; training on them may extend this range.</p></figcaption>
     <a class="paper-result-image" href="assets/figures/elevated-pickup.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the original elevated pick-up figure as a PDF" title="Open original figure"><img src="assets/figures/elevated-pickup.webp" width="2240" height="1165" loading="lazy" decoding="async" alt="Two simulation sequences show G1 approaching, grasping, and lifting an object. Top: a yellow bin on a 35-degree ramp. Bottom: a yellow box on a 0.43-meter support. Arrows annotate contact forces."></a>
   </figure>
 </div>
