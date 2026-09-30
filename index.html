@@ -10,8 +10,8 @@
 <script src="assets/content.js?v=motivation-v52-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=agents-motion-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-center-r2-20260929" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
-<header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#agents">Agents</a><a href="#citation">Citation</a></nav></header>
-<nav class="side-nav" aria-label="On this page"><a data-chapter href="#results">Results</a><a data-chapter href="#challenge">Challenge</a><a data-chapter href="#motivation">Video generation</a><a data-chapter href="#method">Method</a><a data-chapter href="#agents">Agents &amp; video</a><a data-chapter href="#citation">Citation</a></nav>
+<header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#citation">Citation</a></nav></header>
+<nav class="side-nav" aria-label="On this page"><a data-chapter href="#results">Results</a><a data-chapter href="#challenge">Challenge</a><a data-chapter href="#motivation">Video generation</a><a data-chapter href="#method">Method</a><a data-chapter href="#citation">Citation</a></nav>
 <main id="main"><section class="hero paper-hero section-shell" id="top" aria-labelledby="paper-title">
   <div id="research" class="paper-heading">
   <h1 id="paper-title">Counterfactual Video Generation Enables<br class="desktop-break"> Scalable Humanoid Loco-Manipulation</h1>
@@ -126,35 +126,9 @@
   <div class="article-copy section-bridge"><p>See our <a href="https://arxiv.org/abs/2609.38172" target="_blank" rel="noopener noreferrer">paper</a> for more details.</p></div>
   <a class="method-return" href="#results">Watch the learned policy on the real robot ↑</a>
 </div>
-</section><section class="section-space agents-section" id="agents" aria-labelledby="agents-title">
+</section><section class="section-space closing-notes" id="citation" aria-labelledby="citation-label">
 <div class="section-shell">
-  <h2 class="section-title" id="agents-title"><span class="chapter-number" aria-hidden="true">05</span><span class="chapter-title">Why video in the agentic era?</span></h2>
-  <div class="article-copy agents-intro">
-    <p>A text prompt names the task. A video also shows <strong>how to do it</strong>: the object’s shape, where to grasp, how low to reach, and how the body moves during the carry.</p>
-    <p>We asked an agent to produce a pick–carry–place motion, first from text alone, then from a video with our real2sim tools. Below are the two resulting G1 motion replays.</p>
-  </div>
-  <div class="agents-comparison-heading"><h3 id="agents-comparison-title">Text → motion vs. video → motion</h3><div class="agents-video-controls" role="group" aria-label="Motion comparison playback"><button class="button button-small" type="button" data-toggle-group="agents-motion">Play</button><button class="button button-small" type="button" data-restart-group="agents-motion">Restart both</button><span>1× speed</span></div></div>
-  <figure class="agents-motion-figure" aria-labelledby="agents-comparison-title">
-    <div class="agents-motion-pair media-group" data-group="agents-motion">
-      <figure class="agents-motion-panel">
-        <h4>Text → motion</h4>
-        <div class="video-frame"><video data-asset="agents-text-motion" muted playsinline loop preload="none" poster="assets/posters/agents-text-motion.jpg" aria-label="Text-only G1 motion from the earlier comparison: the robot lifts an assumed cylindrical bin and carries it a short distance. Full 8-second kinematic replay."></video></div>
-        <figcaption><strong>The agent chooses the details.</strong> A cylindrical bin and a short carry, built from scripted targets and inverse kinematics.</figcaption>
-      </figure>
-      <figure class="agents-motion-panel">
-        <h4>Video → motion</h4>
-        <div class="video-frame"><video data-asset="agents-video-motion" muted playsinline loop preload="none" poster="assets/posters/agents-video-motion.jpg" aria-label="Video-fitted G1 motion from the earlier comparison: a reconstructed low bin, deep reach, and longer carry. The partial result ends at 6.16 seconds, followed by a labeled end card."></video></div>
-        <figcaption><strong>The video supplies the details.</strong> The bin’s geometry, a deeper reach, and a longer carry recovered through reconstruction and retargeting.</figcaption>
-      </figure>
-    </div>
-    <figcaption class="agents-replay-note">Both show exported G1 29-DoF, 50 Hz motion data, not policy rollouts. Text: complete 8 s. Video: 6.16 s partial fit; strict retargeting failed at 6.20 s. The right panel then holds with an end card. Neither result has validated training success.</figcaption>
-  </figure>
-  <div class="article-copy agents-takeaway"><p><strong>Video gives the agent a concrete interaction to reconstruct.</strong> It supplies motion and object information that a short text prompt leaves unspecified. Turning that information into physically valid robot motion still requires correcting reconstruction and contact errors.</p></div>
-</div>
-</section>
-<section class="section-space closing-notes" id="citation" aria-labelledby="citation-label">
-<div class="section-shell">
-  <h2 class="section-title solo" id="citation-label"><span class="chapter-number" aria-hidden="true">06</span><span class="chapter-title">BibTeX</span></h2>
+  <h2 class="section-title solo" id="citation-label"><span class="chapter-number" aria-hidden="true">05</span><span class="chapter-title">BibTeX</span></h2>
   <p class="citation-intro">If you find our work helpful, please cite:</p>
   <div class="citation-block">
     <pre id="citation-text">@article{wang2026counterfactual,
