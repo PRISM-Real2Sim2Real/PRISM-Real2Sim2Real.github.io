@@ -75,3 +75,12 @@ Repack (wooden rack), Continuous working (large box), Out-of-distribution depth
 (basketball), and Failure robustness (small box). Each lasts 15 seconds and plays
 at the original speed. Short sources are padded at the beginning with their first
 frame, not slowed down. Original 4K recordings remain in the user's demos folder.
+
+## Agents and video
+
+The Agents section compares direct motion generation/fitting with video generation
+followed by 3D reconstruction. This is a conceptual comparison, not an evaluated
+agent baseline. It reuses the existing generated ball, bin, and lamp clips with
+explicit captions. The lamp is a generation example outside the robot training
+categories. An autonomous agent coordinating the full loop is described as a
+possible extension, not as a PRISM result.
