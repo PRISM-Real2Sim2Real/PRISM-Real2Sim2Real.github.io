@@ -110,31 +110,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .challenge-icon .capture-joint { fill: #53604c; }
 .challenge-rows h3 { font: 600 16px/1.5 var(--sans); margin: 0; }
 .challenge-rows p { grid-column: 2; align-self: start; font-size: 15px; line-height: 1.55; color: #53604c; }
-.curation-figure { margin-top: 24px; padding: 26px; border: 1px solid var(--line); border-radius: 5px; background: #f5f5ef; }
-.curation-heading { margin-bottom: 24px; }
-.curation-heading h3 { max-width: 920px; font: 600 19px/1.45 var(--sans); }
-.curation-symbols { position: absolute; width: 0; height: 0; overflow: hidden; }
-.curation-flow { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(182px, .75fr) minmax(0, 1fr); gap: 14px 28px; align-items: start; }
-.curation-flow > div { display: grid; grid-template-rows: subgrid; grid-row: span 3; min-width: 0; }
-.curation-flow h4 { margin: 0; font: 600 14px/1.5 var(--sans); }
-.curation-flow p { margin: 0; font: 400 13px/1.55 var(--sans); color: #65705e; }
-.clip-library { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
-.library-clip { display: block; min-width: 0; border: 1px solid #dbdfd6; border-radius: 1px; background: #fbfcf7; color: #b0b8aa; overflow: hidden; }
-.library-clip svg { display: block; width: 100%; aspect-ratio: 5/3; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.library-clip i { display: block; height: 5px; border-top: 1px solid #e6e9df; background: #eaece4; }
-.library-clip-selected { color: #35634f; border-color: #91ac94; background: #e5eee2; }
-.library-clip-selected i { background: #dbdfd6; }
-.curation-criteria { position: relative; }
-.curation-criteria:before, .curation-criteria:after { content: "→"; position: absolute; top: 50%; transform: translateY(-50%); width: 32px; text-align: center; color: #818a7a; }
-.curation-criteria:before { right: 100%; }
-.curation-criteria:after { left: 100%; }
-.curation-criteria ul { display: grid; gap: 13px; align-self: center; list-style: none; padding: 0; }
-.curation-criteria li { display: flex; align-items: baseline; gap: 7px; font-size: 14px; line-height: 1.5; }
-.curation-criteria li svg { flex: none; width: 15px; height: 15px; stroke: #53604c; stroke-width: 1.8; fill: none; }
-.curation-frame { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-.curation-frame img { width: 100%; height: 100%; object-fit: contain; }
-.curation-frame > svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 1px 2px #333); }
-.contact-marker { stroke-dasharray: 3 5; }
+.motivation-film { margin-top: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: #fff; }
+.motivation-film video { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; }
 .section-bridge { max-width: none; margin-top: 26px; font-size: 17px; }
 .challenge-section .section-bridge { padding: 18px 0 0; font-size: 20px; font-weight: 550; color: var(--ink); }
 
@@ -247,8 +224,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .paper-hero #paper-title { font-size: 34px; }
   .result-tabs { gap: 3px; }
   .result-tabs [role="tab"] { font-size: 12px; }
-  .curation-flow { grid-template-columns: minmax(0, 1fr) 185px minmax(0, 1fr); gap: 12px 24px; }
-  .clip-library { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
 }
 @media (max-width: 760px) {
   body { font-size: 16px; }
@@ -286,13 +261,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .result-grid { grid-template-columns: 1fr; gap: 22px; }
   .result-card figcaption p { font-size: 13px; }
   .challenge-rows { grid-template-columns: 1fr; gap: 20px; }
-  .curation-figure { padding: 18px; }
-  .curation-heading h3 { font-size: 17px; }
-  .curation-flow { grid-template-columns: 1fr; gap: 20px; }
-  .curation-flow > div { grid-row: auto; grid-template-rows: none; gap: 10px; }
-  .clip-library { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .curation-criteria:before, .curation-criteria:after { display: none; }
-  .curation-criteria ul { gap: 8px; }
   .challenge-section .section-bridge { font-size: 18px; }
   .model-roles { grid-template-columns: 1fr; gap: 20px; }
   .generation-heading { display: none; }

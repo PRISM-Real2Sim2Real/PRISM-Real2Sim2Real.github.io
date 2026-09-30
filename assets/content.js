@@ -2,11 +2,12 @@
 window.PRISM_ASSETS = {
   "agents-text-motion": {"src": "assets/videos/agents-text-motion.mp4", "poster": "assets/posters/agents-text-motion.jpg", "duration": 8, "width": 960, "height": 540},
   "agents-video-motion": {"src": "assets/videos/agents-video-motion.mp4", "poster": "assets/posters/agents-video-motion.jpg", "duration": 8, "width": 960, "height": 540},
+  "motivation-v52": {"src": "assets/videos/motivation-v52.mp4", "poster": "assets/posters/motivation-v52.jpg", "duration": 16.4, "width": 1920, "height": 1080},
   "robustness-repack": {"src": "assets/videos/robustness-repack.mp4", "poster": "assets/posters/robustness-repack.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-continuous": {"src": "assets/videos/robustness-continuous.mp4", "poster": "assets/posters/robustness-continuous.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-depth": {"src": "assets/videos/robustness-depth.mp4", "poster": "assets/posters/robustness-depth.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-failure": {"src": "assets/videos/robustness-failure.mp4", "poster": "assets/posters/robustness-failure.jpg", "duration": 15, "width": 1920, "height": 1080},
-  "generation-sim2real-v50": {"src": "assets/videos/generation-sim2real-v50.mp4", "poster": "assets/posters/generation-v50.jpg", "objectsPoster": "assets/posters/reconstruction-v50.jpg", "motionPoster": "assets/posters/kinematics-v50.jpg", "sim2realPoster": "assets/posters/sim2real-v50.jpg", "stageStarts": {"256": 0, "objects": 2.8, "motion": 6.4, "sim2real": 14.4}, "duration": 17.9, "width": 1920, "height": 1080},
+  "generation-sim2real-v52": {"src": "assets/videos/generation-sim2real-v52.mp4", "poster": "assets/posters/generation-v52.jpg", "objectsPoster": "assets/posters/reconstruction-v52.jpg", "motionPoster": "assets/posters/kinematics-v52.jpg", "sim2realPoster": "assets/posters/sim2real-v52.jpg", "stageStarts": {"256": 0, "objects": 2.8, "motion": 6.4, "sim2real": 14.4}, "duration": 17.9, "width": 1920, "height": 1080},
   "method-student-release": {"src": "assets/videos/method-student-bin34-28k-drop8s.mp4", "poster": "assets/posters/method-student-bin34-28k-drop8s.jpg", "duration": 8, "width": 1280, "height": 720},
   "method-real-yellow": {"src": "assets/videos/id-05.mp4", "poster": "assets/posters/method-real-yellow.jpg", "duration": 8, "width": 1280, "height": 720},
   "sim2real-36": {"src": "assets/videos/sim2real-36.mp4", "poster": "assets/posters/sim2real-36.jpg", "duration": 8.3, "width": 1920, "height": 1080},

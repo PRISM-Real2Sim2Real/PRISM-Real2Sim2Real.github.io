@@ -8,7 +8,7 @@ bottleneck, counterfactual video generation, and the real-to-sim-to-real method.
 Edit `index.html` for the narrative and `assets/blog.css` for the editorial layout.
 `assets/content.js` defines the media and galleries; `assets/app.js` handles video
 playback, the generation animation, and expanded views. The narrative links to
-VideoMimic as related work; the challenge section contains no video embed.
+VideoMimic as related work; the challenge section uses the latest motivation animation.
 
 ## Publish
 
@@ -32,7 +32,7 @@ Use concise, active sentences and descriptive headings. Avoid slogans and repeti
 
 ## Desktop layout
 
-Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, use equal-width full-frame videos elsewhere, and keep the challenge section in one reading column with compact source rows and one static curation diagram. Use a shared 24px column gap for desktop media and text grids. Align chapter labels with headings, captions with their frames, and paired headings and paragraphs with shared grid rows. Keep standalone prose to the same reading width. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
+Prioritize laptop and desktop reading. At widths of 1180px and above, use the fixed left chapter rail and one aligned content grid; show chapter links in the top bar on narrower screens. Keep headings in the same sans-serif family, use equal-width full-frame videos elsewhere, and keep the challenge section in one reading column with compact source rows and a full-width motivation animation. Use a shared 24px column gap for desktop media and text grids. Align chapter labels with headings, captions with their frames, and paired headings and paragraphs with shared grid rows. Keep standalone prose to the same reading width. Avoid centered paragraphs that drift away from the heading or figure alignment, oversized serif headings, and duplicate desktop navigation.
 
 ## Hero video
 
@@ -46,17 +46,29 @@ Both deployment videos last eight seconds. The student uses the 28K checkpoint
 with command 0.1, stops and receives the drop command at six seconds, and runs
 at its original playback speed. Local review artifacts in `qa/` are not published.
 
+## Motivation animation
+
+The old Internet-video heading and static curation diagram are replaced by the
+16.4-second middle of Twitter v52 (28.5–44.9 seconds), in a full-width 16:9 frame.
+It shows Internet examples collecting into a circle, the tiny usable subset and
+arrow to a large reference video, the larger ladder comparison with a small
+video-model icon, then the video wall labeled “256 counterfactual videos / from
+4 real videos.” The original file is preserved. Playback follows the existing
+muted, inline, in-view autoplay and loop behavior; reduced motion shows a poster.
+There is no duplicate heading or additional playback control.
+
 ## Generation animation
 
 The 256-video wall, Reconstructed 3D objects, Kinematic references, and Zero-shot
-Sim2Real share one 17.9-second video, extracted from the completed Twitter v50
+Sim2Real share one 17.9-second video, extracted from the completed Twitter v52
 release at 42.1–60 seconds. The source and four-example stages still use the
 existing individual clips. The sequence uses the new bottom-aligned 256 caption
 and near-white Zero-shot Sim2Real title card with green type and a soft shadow.
+The video wall uses the two-line “256 counterfactual videos / from 4 real videos” caption.
 It preserves the object and configuration captions, “With paired robot motion,”
 the 3.6-second camera pullback from the foot plant to 49 references, and the center
 tear reveal. Robot actions play at their original speed; generated-video timing
-matches the v50 release.
+matches the v52 release.
 
 Stage boundaries live in the media manifest: videos at 0, objects at 2.8, motion
 at 6.4, and Sim2Real at 14.4 seconds. The real-world ending remains 3.5 seconds.
@@ -64,7 +76,7 @@ Manual stage selection seeks to the corresponding boundary; automatic changes
 follow the shared video clock, including the video-wall-to-objects cut. The
 real-world mosaic includes repeated views; its tile count is not a count of
 distinct objects. The browser icon comes from `PRISM-arxiv.zip`,
-`figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/twitter-v50/`.
+`figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/motivation-v52/`.
 
 ## Robustness results
 
