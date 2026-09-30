@@ -1,5 +1,7 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "reconstruction-kinematics-v25": {"src": "assets/videos/reconstruction-kinematics-v25.mp4", "poster": "assets/posters/reconstruction-kinematics-v25.jpg", "motionPoster": "assets/posters/kinematics-v25.jpg", "duration": 16, "width": 1920, "height": 1080},
+  "sim2real-v35": {"src": "assets/videos/sim2real-v35-3p5s.mp4", "poster": "assets/posters/sim2real-v35-3p5s.jpg", "duration": 3.5, "width": 1920, "height": 1080},
   "method-student-release": {"src": "assets/videos/method-student-bin34-28k-drop8s.mp4", "poster": "assets/posters/method-student-bin34-28k-drop8s.jpg", "duration": 8, "width": 1280, "height": 720},
   "method-real-yellow": {"src": "assets/videos/id-05.mp4", "poster": "assets/posters/method-real-yellow.jpg", "duration": 8, "width": 1280, "height": 720},
   "sim2real-36": {"src": "assets/videos/sim2real-36.mp4", "poster": "assets/posters/sim2real-36.jpg", "duration": 8.3, "width": 1920, "height": 1080},

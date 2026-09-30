@@ -162,7 +162,7 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-layer{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;pointer-events:none}
 .multiply-stage[data-phase="256"] .multiply-layer[data-layer="256"],
 .multiply-stage[data-phase="objects"] .multiply-layer[data-layer="objects"],
-.multiply-stage[data-phase="motion"] .multiply-layer[data-layer="motion"],
+.multiply-stage[data-phase="motion"] .multiply-layer[data-layer="objects"],
 .multiply-stage[data-phase="sim2real"] .multiply-layer[data-layer="sim2real"]{opacity:1}
 .multiply-stage.is-resetting .multiply-layer{opacity:0;transition-duration:.4s}
 .multiply-overlay{position:absolute;left:16px;bottom:14px;z-index:3;display:flex;align-items:baseline;gap:10px;padding:6px 12px;border-radius:6px;background:rgba(0,0,0,.5);color:#fff;pointer-events:none;transition:opacity .3s}
@@ -170,6 +170,10 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-count{font-size:26px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
 .multiply-label{font-size:13px;font-weight:500}
 .multiply-overlay.no-count .multiply-count{display:none}
+/* The Twitter clips carry their own labels; keep the stage name in the controls below. */
+.multiply-stage[data-phase="objects"] .multiply-overlay,
+.multiply-stage[data-phase="motion"] .multiply-overlay,
+.multiply-stage[data-phase="sim2real"] .multiply-overlay{opacity:0}
 .multiply-foot{margin-top:14px}
 #multiply-caption{margin-top:12px;font-size:14px;color:var(--muted)}
 

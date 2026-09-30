@@ -45,3 +45,15 @@ retargeted motion, then the released student rollout and real-world deployment.
 Both deployment videos last eight seconds. The student uses the 28K checkpoint
 with command 0.1, stops and receives the drop command at six seconds, and runs
 at its original playback speed. Local review artifacts in `qa/` are not published.
+
+## Generation animation
+
+The reconstruction and kinematic stages use the continuous 16-second C segment
+from Twitter video v35. The stage label changes at 6.1 seconds without restarting
+the video. The opening bridge uses the original transparent PRISM logo extracted
+from `PRISM-arxiv.zip`, `figs_1st/_1_teaser.pdf`; the browser icon uses the same asset.
+The original 3D objects, pickup motion, and pullback to 49 kinematic references remain intact.
+Zero-shot Sim2Real uses v35's 3.5-second real-world ending. The reference and
+real-world stages advance on video playback events, and manual stage selections
+seek to their respective starts. The real-world mosaic includes repeated views;
+its tile count is not a count of distinct objects.

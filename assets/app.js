@@ -247,27 +247,42 @@
       sim2real: {transform: 'none', label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
-    const sequence = [[1, 2600], [4, 4400], [256, 5200], ['objects', 9000], ['motion', 8600], ['sim2real', 8900]];
-    let phase = 1; let step = 0; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
+    const sequence = [1, 4, 256, 'objects', 'motion', 'sim2real'];
+    const holds = {1: 2600, 4: 4400, 256: 5200};
+    const motionStart = 6.1;
+    let phase = 1; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
-    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: $('.multiply-layer[data-layer="objects"]'), motion: $('.multiply-layer[data-layer="motion"]'), sim2real: $('.multiply-layer[data-layer="sim2real"]')};
+    const reconstruction = $('.multiply-layer[data-layer="objects"]');
+    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: reconstruction, motion: reconstruction, sim2real: $('.multiply-layer[data-layer="sim2real"]')};
+    const layerVideos = [...new Set(Object.values(layers))];
+    const positions = new WeakMap(); const pendingSeek = new WeakMap();
+    const active = () => inView && !document.hidden && !dialogOpen && !reducedMotion.matches;
     // Media pipelines are a scarce resource: past a dozen or so, newly created ones render black
     // and never recover. Keep only the visible stage loaded — four tiles for the grid phases,
     // one full-frame clip otherwise — and release the rest.
     function unload(video) {
+      if (layerVideos.includes(video)) positions.set(video, video.currentTime);
       video.pause(); video.removeAttribute('src'); video.load(); delete video.dataset.loadedAsset;
     }
     function unloadTiles() { $$('video', tiles.element).forEach(video => { if (video.dataset.loadedAsset) unload(video); }); }
+    function seekWhenReady(video) {
+      if (video.readyState > 0 && pendingSeek.has(video)) {
+        video.currentTime = pendingSeek.get(video);
+        pendingSeek.delete(video);
+      }
+    }
     function showLayer(video) {
+      if (!video.dataset.loadedAsset && !pendingSeek.has(video)) pendingSeek.set(video, positions.get(video) || 0);
       loadMedia(video);
+      seekWhenReady(video);
       if (reducedMotion.matches) video.pause();
       else if (video.paused && !video.ended) video.play().catch(() => {});
     }
     function syncMedia() {
       window.clearTimeout(mediaTimer);
       const wanted = inView && !document.hidden && !dialogOpen ? layers[phase] : null;
-      Object.values(layers).forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
+      layerVideos.forEach(video => { if (video !== wanted && video.dataset.loadedAsset) unload(video); });
       if (wanted) showLayer(wanted);
       tiles.visible = inView;
       tiles.playing = !layers[phase] && !reducedMotion.matches;
@@ -275,11 +290,14 @@
       // Release the tiles once the layer has faded in over them.
       if (layers[phase] || !inView) mediaTimer = window.setTimeout(unloadTiles, 1000);
     }
-    function setPhase(next, animateCount = true) {
+    function setPhase(next, animateCount = true, continuePlayback = false) {
       const from = phase; phase = next;
       const spec = phases[next];
       grid.style.transform = spec.transform;
-      if (layers[next]?.dataset.loadedAsset) layers[next].currentTime = 0;
+      // Objects and references share one continuous clip. Only manual selection seeks;
+      // the automatic handoff keeps the same decoder, frame and playback clock.
+      if (layers[next] && !continuePlayback) pendingSeek.set(layers[next], next === 'motion' ? motionStart : 0);
+      reconstruction.poster = next === 'motion' ? assets[reconstruction.dataset.asset].motionPoster : assets[reconstruction.dataset.asset].poster;
       stage.dataset.phase = String(next);
       syncMedia();
       $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
@@ -302,44 +320,62 @@
       stage.classList.add('instant'); setPhase(next, false);
       void stage.offsetWidth; stage.classList.remove('instant');
     }
-    function run() {
+    function schedule(extra = 0) {
       window.clearTimeout(timer);
-      if (!inView || document.hidden || dialogOpen || reducedMotion.matches) return;
-      const [next, hold] = sequence[step];
-      step = (step + 1) % sequence.length;
-      if (next === 1 && phase !== 1) {
+      if (!active()) return;
+      // Video stages advance from their media clock, so loading cannot shorten a shot.
+      if (holds[phase]) timer = window.setTimeout(advance, holds[phase] + extra);
+      else if (layers[phase]?.ended && !pendingSeek.has(layers[phase])) advance();
+    }
+    function advance() {
+      window.clearTimeout(timer);
+      if (!active() || stage.classList.contains('is-resetting')) return;
+      const next = sequence[(sequence.indexOf(phase) + 1) % sequence.length];
+      if (next === 1) {
         // Loop back with a short fade rather than a reverse zoom.
         stage.classList.add('is-resetting');
         timer = window.setTimeout(() => {
           jumpTo(1); stage.classList.remove('is-resetting');
-          timer = window.setTimeout(run, hold);
+          schedule();
         }, 420);
         return;
       }
-      setPhase(next, next !== 1);
-      timer = window.setTimeout(run, hold);
+      setPhase(next, true, phase === 'objects' && next === 'motion');
+      schedule();
     }
-    // A manual choice lingers on that stage a little longer, then the sequence continues from it.
+    layerVideos.forEach(video => {
+      video.addEventListener('loadedmetadata', () => seekWhenReady(video));
+      video.addEventListener('ended', () => {
+        if (video === layers[phase] && !pendingSeek.has(video)) advance();
+      });
+    });
+    reconstruction.addEventListener('timeupdate', () => {
+      if (phase === 'objects' && !pendingSeek.has(reconstruction) && reconstruction.currentTime >= motionStart) advance();
+    });
+    // Manual choices replay the selected stage, including its exact start in the shared clip.
     $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {
       const next = parsePhase(button.dataset.multiplyPhase);
-      const index = sequence.findIndex(([name]) => name === next);
       window.clearTimeout(timer);
-      step = (index + 1) % sequence.length;
+      stage.classList.remove('is-resetting');
       setPhase(next);
-      timer = window.setTimeout(run, sequence[index][1] + 800);
+      schedule(800);
     }));
     // Coming back into view or to the tab resumes from the current stage instead of skipping ahead.
-    function resume(delay) { window.clearTimeout(timer); timer = window.setTimeout(run, delay); }
     new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting && entry.intersectionRatio >= 0.35 && !inView) {
-        inView = true; syncMedia(); resume(step === 0 ? 0 : 1200);
-      } else if ((!entry.isIntersecting || entry.intersectionRatio < 0.35) && inView) { inView = false; window.clearTimeout(timer); syncMedia(); }
+        inView = true; syncMedia(); schedule();
+      } else if ((!entry.isIntersecting || entry.intersectionRatio < 0.35) && inView) {
+        inView = false; window.clearTimeout(timer); stage.classList.remove('is-resetting'); syncMedia();
+      }
     }), {threshold: 0.35}).observe(stage);
-    document.addEventListener('visibilitychange', () => { syncMedia(); if (document.hidden) window.clearTimeout(timer); else resume(1200); });
+    document.addEventListener('visibilitychange', () => {
+      stage.classList.remove('is-resetting'); syncMedia(); schedule();
+    });
     if (reducedMotion.matches) jumpTo(256);
     reducedMotion.addEventListener('change', event => {
+      stage.classList.remove('is-resetting');
       if (event.matches) { window.clearTimeout(timer); jumpTo(256); }
-      else { syncMedia(); resume(1200); }
+      else { syncMedia(); schedule(); }
     });
   })();
 
