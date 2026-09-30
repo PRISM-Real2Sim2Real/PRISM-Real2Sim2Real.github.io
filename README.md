@@ -136,7 +136,7 @@ Restored with one synchronized, eight-second SMPL comparison. The labels are
 generated bin-carrying video; the agent scripts a new SMPL sequence from it.
 The video comes from a real box-carrying seed; the agent calls a Real2Sim module
 and refines the reconstructed ground alignment and object motion. Both sequences
-reuse the Twitter v54 film’s Blender studio scene: pearl ceramic SMPL bodies,
+reuse the Twitter v54 film’s Blender studio scene: crisp blue ceramic SMPL bodies (#1677E8),
 a pale green grid floor, and soft shadows. A shared static camera shows the
 original 240 frames at 30 fps, with no pose edits or retiming. This section
 contains no efficiency or cost claims.
