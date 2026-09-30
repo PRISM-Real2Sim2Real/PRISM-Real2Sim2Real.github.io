@@ -57,3 +57,13 @@ Zero-shot Sim2Real uses v35's 3.5-second real-world ending. The reference and
 real-world stages advance on video playback events, and manual stage selections
 seek to their respective starts. The real-world mosaic includes repeated views;
 its tile count is not a count of distinct objects.
+
+## Robustness results
+
+The results gallery starts with In-domain and ends with Pose, then Robustness.
+The redundant Real-world experiment overview tab is removed; its examples remain
+in the existing object categories. Robustness contains four 1080p, 60 fps clips:
+Repack (wooden rack), Continuous working (large box), Out-of-distribution depth
+(basketball), and Failure robustness (small box). Each lasts 15 seconds and plays
+at the original speed. Short sources are padded at the beginning with their first
+frame, not slowed down. Original 4K recordings remain in the user's demos folder.

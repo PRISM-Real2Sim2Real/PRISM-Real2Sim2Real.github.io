@@ -1,5 +1,9 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "robustness-repack": {"src": "assets/videos/robustness-repack.mp4", "poster": "assets/posters/robustness-repack.jpg", "duration": 15, "width": 1920, "height": 1080},
+  "robustness-continuous": {"src": "assets/videos/robustness-continuous.mp4", "poster": "assets/posters/robustness-continuous.jpg", "duration": 15, "width": 1920, "height": 1080},
+  "robustness-depth": {"src": "assets/videos/robustness-depth.mp4", "poster": "assets/posters/robustness-depth.jpg", "duration": 15, "width": 1920, "height": 1080},
+  "robustness-failure": {"src": "assets/videos/robustness-failure.mp4", "poster": "assets/posters/robustness-failure.jpg", "duration": 15, "width": 1920, "height": 1080},
   "reconstruction-kinematics-v25": {"src": "assets/videos/reconstruction-kinematics-v25.mp4", "poster": "assets/posters/reconstruction-kinematics-v25.jpg", "motionPoster": "assets/posters/kinematics-v25.jpg", "duration": 16, "width": 1920, "height": 1080},
   "sim2real-v35": {"src": "assets/videos/sim2real-v35-3p5s.mp4", "poster": "assets/posters/sim2real-v35-3p5s.jpg", "duration": 3.5, "width": 1920, "height": 1080},
   "method-student-release": {"src": "assets/videos/method-student-bin34-28k-drop8s.mp4", "poster": "assets/posters/method-student-bin34-28k-drop8s.jpg", "duration": 8, "width": 1280, "height": 720},
@@ -544,14 +548,14 @@ window.PRISM_CONTENT = {
   ]
 };
 
-// Editorial entry point; all original experiment categories remain available.
-window.PRISM_CONTENT.groups.unshift({
-  id: 'everyday', name: 'Real-world experiment', title: 'Pick up balls, buckets, and more',
-  description: 'One learned policy encounters different everyday objects.',
+// Robustness follows Pose; the overview clips remain in their original object categories.
+window.PRISM_CONTENT.groups.push({
+  id: 'robustness', name: 'Robustness', title: 'Robustness',
+  description: 'Repeated tasks, out-of-distribution depth, and recovery from failure.',
   pages: [[
-    {id:'id-01', title:'Basketball', note:'A rounded contact surface', speed:'1×'},
-    {id:'id-03', title:'Green bucket', note:'A handled, open-top container', speed:'1×'},
-    {id:'ood-03', title:'Plush dog', note:'A soft, unfamiliar toy', speed:'1×'},
-    {id:'ood-02', title:'Chair', note:'Legs and an open frame', speed:'1×'}
+    {id:'robustness-repack', title:'Repack', note:'', speed:'1×'},
+    {id:'robustness-continuous', title:'Continuous working', note:'', speed:'1×'},
+    {id:'robustness-depth', title:'Out-of-distribution depth', note:'', speed:'1×'},
+    {id:'robustness-failure', title:'Failure robustness', note:'', speed:'1×'}
   ]]
 });
