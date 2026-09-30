@@ -58,8 +58,9 @@ at its original playback speed. Local review artifacts in `qa/` are not publishe
 ## Motivation animation
 
 The challenge opens with human interaction experience and asks how robots can
-collect such practice. It compares two text-only sources: collecting data through
+collect such practice. Two plain paragraphs, numbered (1) and (2), compare collecting data through
 motion capture or recording, and curating reconstruction-friendly Internet video.
+Keep them in the article flow without separate headings, icons, columns, or borders.
 The model/PRISM distinction stays brief: video-to-video generation versus sampling
 interactions and running real-to-sim.
 

@@ -108,11 +108,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 
 /* Short source descriptions and a quiet explanatory figure. */
 .story-opening { margin-top: 0; max-width: var(--text-width); }
-.story-opening .opening-lead { font: 400 18px/1.65 var(--sans); margin-bottom: 14px; text-wrap: balance; }
-.challenge-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); list-style: none; margin: 28px 0 36px; padding: 24px 0; border: 1px solid var(--line); border-width: 1px 0; }
-.challenge-rows > li { display: grid; grid-template-rows: auto 1fr; align-content: start; gap: 7px; }
-.challenge-rows h3 { font: 600 16px/1.5 var(--sans); margin: 0; }
-.challenge-rows p { margin: 0; align-self: start; font-size: 15px; line-height: 1.55; color: #53604c; text-wrap: balance; }
+.story-opening p { text-wrap: balance; }
+.story-opening .opening-lead { font: 400 18px/1.65 var(--sans); margin-bottom: 14px; }
 .motivation-film { margin-top: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: #fff; }
 .motivation-film video { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; }
 .section-bridge { max-width: none; margin-top: 26px; font-size: 17px; }
@@ -280,7 +277,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .result-tabs [role="tab"] { font-size: 13px; }
   .result-grid { grid-template-columns: 1fr; gap: 22px; }
   .result-card figcaption p { font-size: 13px; }
-  .challenge-rows { grid-template-columns: 1fr; gap: 20px; }
   .challenge-section .section-bridge { font-size: 18px; }
   .model-roles { grid-template-columns: 1fr; gap: 20px; }
   .generation-heading { display: none; }

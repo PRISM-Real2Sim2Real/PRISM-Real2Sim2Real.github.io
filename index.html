@@ -6,7 +6,7 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/prism-logo.png?v=paper-20260929" type="image/png">
-<link rel="stylesheet" href="assets/style.css?v=concise-story-20260930"><link rel="stylesheet" href="assets/blog.css?v=agents-smpl-v2-20260930">
+<link rel="stylesheet" href="assets/style.css?v=concise-story-20260930"><link rel="stylesheet" href="assets/blog.css?v=numbered-sources-20260930">
 <script src="assets/content.js?v=agents-smpl-v2-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=concise-story-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
@@ -65,11 +65,9 @@
   <p class="opening-lead">Humans generalize from rich interaction experience. How do robots collect such experience to practice?</p>
   <p>Visual imitation gives robots a starting point: <a href="https://www.videomimic.net/" target="_blank" rel="noopener noreferrer">VideoMimic</a> learns climbing and sitting from human video.</p>
   <p>Scaling this approach means collecting more demonstrations. Common solutions are:</p>
+  <p>(1) Collect your own data: motion capture and recording are costly and do not scale.</p>
+  <p>(2) Internet video: scalable in theory, but useful, reconstruction-friendly demonstrations are hard to collect at scale.</p>
 </div>
-<ul class="challenge-rows" aria-label="Challenges of collecting demonstrations">
-  <li><h3>Collect your own data</h3><p>Motion capture and recording are costly and do not scale.</p></li>
-  <li><h3>Internet video</h3><p>Scalable in theory, but useful, reconstruction-friendly demonstrations are hard to collect at scale.</p></li>
-</ul>
 <figure class="motivation-film media-group" id="video-curation" data-group="motivation" aria-label="From scarce usable demonstrations to counterfactual video generation">
   <video data-asset="motivation-v52" muted playsinline loop preload="none" poster="assets/posters/motivation-v52.jpg" width="1920" height="1080" aria-label="Internet examples reveal why usable demonstrations are scarce. A video model changes a box into a ladder, then scales four real recordings into 256 counterfactual videos."></video>
 </figure>
