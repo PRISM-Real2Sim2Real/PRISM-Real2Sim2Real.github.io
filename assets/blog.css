@@ -204,8 +204,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .blog-footer .blog-brand { font-size: 16px; }
 .video-dialog, .video-dialog video { border-radius: 3px; }
 
-/* The recorded text-only and video-fitted G1 motions, shown side by side. */
+/* One synchronized SMPL comparison with short source captions. */
 .agents-intro { margin-top: 0; }
+.agents-smpl-figure { margin: 24px 0 0; }
+.agents-smpl-frame { aspect-ratio: 40/13; border: 1px solid var(--line); border-radius: 4px; }
+.agents-smpl-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.agents-source-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); padding-top: 16px; }
+.agents-source-notes p { margin: 0; font-size: 15px; line-height: 1.65; }
+.agents-source-notes strong { color: var(--ink); font-weight: 600; }
+.agents-smpl-figure .agents-video-controls { margin-top: 16px; }
 .agents-comparison-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin: 28px 0 20px; }
 .agents-comparison-heading h3 { margin: 0; font: 600 21px/1.4 var(--sans); }
 .agents-video-controls { display: flex; align-items: center; gap: 8px; }
@@ -297,6 +304,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .paper-result h3 { font-size: 19px; }
   .paper-result p { font-size: 15px; }
   .agents-motion-pair { grid-template-columns: 1fr; gap: 24px; }
+  .agents-source-notes { grid-template-columns: 1fr; gap: 12px; }
   .agents-comparison-heading h3 { font-size: 19px; }
   .agents-motion-panel h4 { font-size: 17px; }
   .citation-block pre { padding: 14px; font-size: 11px; }

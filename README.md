@@ -124,4 +124,9 @@ frame, not slowed down. Original 4K recordings remain in the user's demos folder
 
 ## Agents and video
 
-Temporarily withdrawn from the page and chapter navigation at the user’s request.
+Restored with one synchronized, eight-second SMPL comparison. The labels are
+“Text + Agentics” and “Video + Agentics.” Text comes from a caption of the same
+generated bin-carrying video; the agent scripts a new SMPL sequence from it.
+The video comes from a real box-carrying seed; the agent calls a Real2Sim module
+and refines the reconstructed ground alignment and object motion. The floor
+uses a darker checkerboard. This section contains no efficiency or cost claims.
