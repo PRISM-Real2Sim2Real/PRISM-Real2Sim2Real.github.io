@@ -78,9 +78,12 @@ frame, not slowed down. Original 4K recordings remain in the user's demos folder
 
 ## Agents and video
 
-The Agents section compares direct motion generation/fitting with video generation
-followed by 3D reconstruction. This is a conceptual comparison, not an evaluated
-agent baseline. It reuses the existing generated ball, bin, and lamp clips with
-explicit captions. The lamp is a generation example outside the robot training
-categories. An autonomous agent coordinating the full loop is described as a
-possible extension, not as a PRISM result.
+This section reuses the exact A_text.mp4 and B_video.mp4 motion replays delivered
+in the chat “生成视频拟合动作数据”. The text-only trajectory lasts 8 seconds;
+the video-fitted trajectory is the preserved 6.16-second partial result of strict
+retargeting. Both are kinematic replays, not policy rollouts or validated training
+results. The video panel holds its last frame under an explicit end card after
+the original 185 frames, bringing both players to 8 seconds for synchronized
+looping at their original 1× speed. The original partial MP4 is also preserved as
+assets/videos/agents-video-motion-original.mp4. Sources and processing details
+are recorded locally in qa/agents-motion-comparison/media-provenance.json.

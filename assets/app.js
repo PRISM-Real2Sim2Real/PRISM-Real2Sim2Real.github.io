@@ -151,10 +151,10 @@
   reducedMotion.addEventListener('change', event => {
     if (event.matches) groups.forEach(group => {group.playing = false; updateGroup(group);});
   });
-  // Only like-duration V2V clips are continually time-aligned.
+  // Keep like-duration comparisons and V2V clips time-aligned.
   // Real-world experiments have different durations and loop independently.
   window.setInterval(() => {
-    ['counterfactuals', 'multiply', 'pipeline'].forEach(name => {
+    ['counterfactuals', 'multiply', 'pipeline', 'agents-motion'].forEach(name => {
       const group = groups.get(name);
       if (!group || !group.visible || !group.playing || document.hidden || dialogOpen) return;
       const videos = $$('video', group.element).filter(v => !v.paused && v.readyState >= 2 && !v.seeking);

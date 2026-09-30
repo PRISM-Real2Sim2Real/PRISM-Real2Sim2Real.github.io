@@ -1,5 +1,7 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "agents-text-motion": {"src": "assets/videos/agents-text-motion.mp4", "poster": "assets/posters/agents-text-motion.jpg", "duration": 8, "width": 960, "height": 540},
+  "agents-video-motion": {"src": "assets/videos/agents-video-motion.mp4", "poster": "assets/posters/agents-video-motion.jpg", "duration": 8, "width": 960, "height": 540},
   "robustness-repack": {"src": "assets/videos/robustness-repack.mp4", "poster": "assets/posters/robustness-repack.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-continuous": {"src": "assets/videos/robustness-continuous.mp4", "poster": "assets/posters/robustness-continuous.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-depth": {"src": "assets/videos/robustness-depth.mp4", "poster": "assets/posters/robustness-depth.jpg", "duration": 15, "width": 1920, "height": 1080},

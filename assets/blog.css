@@ -214,34 +214,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .blog-footer .blog-brand { font-size: 16px; }
 .video-dialog, .video-dialog video { border-radius: 3px; }
 
-/* Agents and video: an explicit comparison followed by observed interactions. */
+/* The recorded text-only and video-fitted G1 motions, shown side by side. */
 .agents-intro { margin-top: 0; }
-.agents-scroll-hint { display: none; }
-.agents-comparison-heading { margin: 28px 0 14px; }
-.agents-comparison-heading h3, .agents-examples-heading h3 { margin: 0 0 6px; font: 600 21px/1.4 var(--sans); }
-.agents-comparison-heading p, .agents-example-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-.agents-table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; }
-.agents-table-scroll:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
-.agents-comparison { width: 100%; min-width: 650px; table-layout: fixed; border-collapse: collapse; font-size: 15px; line-height: 1.6; }
-.agents-comparison th, .agents-comparison td { padding: 16px 18px; text-align: left; vertical-align: top; border: 0; border-bottom: 1px solid var(--line); }
-.agents-comparison thead { background: var(--surface); }
-.agents-comparison th { font-weight: 600; color: var(--ink); }
-.agents-comparison th:first-child { width: 18%; }
-.agents-comparison th:last-child, .agents-comparison td:last-child { background: #eef2e9; }
-.agents-comparison tbody tr:last-child > * { border-bottom: 0; }
-.agents-examples-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 34px 0 16px; }
-.agents-examples-heading p { margin: 0; font-size: 16px; }
-.agents-video-controls { display: flex; gap: 8px; flex-shrink: 0; }
-.agents-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); }
-.agents-examples figure { margin: 0; min-width: 0; }
-.agents-examples .video-frame { aspect-ratio: 16/9; border: 1px solid var(--line); border-radius: 4px; }
-.agents-examples video { width: 100%; height: 100%; object-fit: contain; }
-.agents-video-label { position: absolute; top: 8px; left: 8px; padding: 2px 7px; border-radius: 3px; background: #fdfcf9ed; color: var(--ink); font-size: 11px; line-height: 1.6; pointer-events: none; }
-.agents-examples figcaption { padding-top: 12px; }
-.agents-examples h4 { margin: 0 0 5px; font: 600 16px/1.45 var(--sans); }
-.agents-examples figcaption p { margin: 0; font-size: 15px; line-height: 1.6; }
-.agents-example-note { margin-top: 18px; max-width: var(--text-width); }
-.agents-takeaway { margin-top: 26px; padding-left: 18px; border-left: 3px solid #557864; }
+.agents-comparison-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin: 28px 0 20px; }
+.agents-comparison-heading h3 { margin: 0; font: 600 21px/1.4 var(--sans); }
+.agents-video-controls { display: flex; align-items: center; gap: 8px; }
+.agents-video-controls > span { margin-left: 4px; font-size: 13px; color: var(--muted); }
+.agents-motion-figure, .agents-motion-panel { margin: 0; }
+.agents-motion-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); }
+.agents-motion-panel { min-width: 0; }
+.agents-motion-panel h4 { margin: 0 0 10px; font: 600 18px/1.4 var(--sans); }
+.agents-motion-panel .video-frame { aspect-ratio: 16/9; border: 1px solid var(--line); border-radius: 4px; }
+.agents-motion-panel video { width: 100%; height: 100%; object-fit: contain; }
+.agents-motion-panel figcaption { padding-top: 12px; font-size: 15px; line-height: 1.6; }
+.agents-motion-panel figcaption strong { color: var(--ink); font-weight: 600; }
+.agents-replay-note { margin-top: 18px; max-width: var(--text-width); color: var(--muted); font-size: 13px; line-height: 1.65; }
+.agents-takeaway { margin-top: 24px; padding-left: 18px; border-left: 3px solid #557864; }
 
 @media (min-width: 1180px) {
   .section-title, .story-title { position: relative; display: block; }
@@ -326,13 +314,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .method-deployment { grid-template-columns: 1fr; gap: 18px; }
   .method-deployment-arrow { position: static; justify-self: center; transform: rotate(90deg); }
   .method-demonstrations h3 { font-size: 18px; }
-  .agents-comparison-heading h3, .agents-examples-heading h3 { font-size: 19px; }
-  .agents-examples-heading { align-items: start; flex-direction: column; }
-  .agents-scroll-hint { display: block; margin: 0 0 8px; color: var(--muted); font-size: 13px; }
-  .agents-examples { grid-template-columns: 1fr; gap: 24px; }
-  .agents-examples figcaption { padding-top: 10px; }
-  .agents-comparison th, .agents-comparison td { padding: 14px; }
-  .agents-example-note { font-size: 13px; }
+  .agents-motion-pair { grid-template-columns: 1fr; gap: 24px; }
+  .agents-comparison-heading h3 { font-size: 19px; }
+  .agents-motion-panel h4 { font-size: 17px; }
   .citation-block pre { padding: 14px; font-size: 11px; }
   .ack-block p { font-size: 15px; }
 }
