@@ -1,7 +1,7 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
   "applications-stairs-8x3": {"src": "assets/videos/applications-stairs-8x3.mp4", "poster": "assets/posters/applications-stairs-8x3.jpg", "duration": 5.016667, "width": 1920, "height": 960},
-  "agents-smpl-comparison": {"src": "assets/videos/agents-smpl-comparison-sky-blue-orange-v6.mp4", "poster": "assets/posters/agents-smpl-comparison-sky-blue-orange-v6.jpg", "duration": 8, "width": 1920, "height": 624},
+  "agents-smpl-comparison": {"src": "assets/videos/agents-smpl-comparison-astra-v7.mp4", "poster": "assets/posters/agents-smpl-comparison-astra-v7.jpg", "duration": 8, "width": 1920, "height": 624},
   "motivation-v54": {"src": "assets/videos/motivation-v54.mp4", "poster": "assets/posters/motivation-v54.jpg", "duration": 15.633333333333333, "width": 1920, "height": 1080},
   "robustness-repack": {"src": "assets/videos/robustness-repack.mp4", "poster": "assets/posters/robustness-repack.jpg", "duration": 15, "width": 1920, "height": 1080},
   "robustness-continuous": {"src": "assets/videos/robustness-continuous.mp4", "poster": "assets/posters/robustness-continuous.jpg", "duration": 15, "width": 1920, "height": 1080},

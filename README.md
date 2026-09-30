@@ -129,10 +129,11 @@ Repack (wooden rack), Continuous working (large box), Out-of-distribution depth
 at the original speed. Short sources are padded at the beginning with their first
 frame, not slowed down. Original 4K recordings remain in the user's demos folder.
 
-## Agents and video
+## Astra and video
 
 Restored with one synchronized, eight-second SMPL comparison. The labels are
-“Text + Agentics” and “Video + Agentics.” Text comes from a caption of the same
+“Text + Astra” and “Video + Astra.” Both use GPT-6 Astra (Extra High).
+Text comes from a caption of the same
 generated bin-carrying video; the agent scripts a new SMPL sequence from it.
 The video comes from a real box-carrying seed; the agent calls a Real2Sim module
 and refines the reconstructed ground alignment and object motion. Both sequences
@@ -142,10 +143,10 @@ a pale green grid floor, and soft shadows. A shared static camera shows the
 original 240 frames at 30 fps, with no pose edits or retiming. This section
 contains no efficiency or cost claims.
 
-The Agents comparison autoplays and loops without visible playback controls.
+The Astra comparison autoplays and loops without visible playback controls.
 Its text-only route explicitly withholds video from the agent. The takeaway
-emphasizes that video demonstrations still help and the agentic pipeline refines
-the Real2Sim reconstruction. The introduction states the pick-up, carry, and set-down task.
+emphasizes that video demonstrations still help and the agentic pipeline helps
+scale Real2Sim. The navigation label is “Astra.” The introduction states the pick-up, carry, and set-down task.
 
 ## Application examples
 
