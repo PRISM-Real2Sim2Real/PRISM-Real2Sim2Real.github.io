@@ -87,6 +87,18 @@ real-world mosaic includes repeated views; its tile count is not a count of
 distinct objects. The browser icon comes from `PRISM-arxiv.zip`,
 `figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/motivation-v52/`.
 
+## Robustness and Generalization
+
+An independent section after Method presents the two figures from the latest
+Overleaf manuscript (revision `8b9699a`): initial object-pose coverage and zero-shot
+elevated pick-up. Both figures use full-width, lossless WebP previews at 2240px;
+clicking them opens the unchanged original PDF. The pose figure compares 137
+generated clips with four upright seed videos. The elevated pick-up description
+identifies these as simulation tests and preserves the reported successes
+(35-degree ramp, 0.43m support) and failures (45 degrees, 0.45m).
+Source snapshots, hashes, and export records are in `qa/robustness-generalization/`.
+The compact chapter navigation links to this section as “Robustness.”
+
 ## Robustness results
 
 The results gallery starts with In-domain and ends with Pose, then Robustness.

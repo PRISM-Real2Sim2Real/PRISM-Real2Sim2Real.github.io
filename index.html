@@ -6,12 +6,12 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/prism-logo.png?v=paper-20260929" type="image/png">
-<link rel="stylesheet" href="assets/style.css?v=twitter-v47-20260929"><link rel="stylesheet" href="assets/blog.css?v=hero-paper-title-20260930">
+<link rel="stylesheet" href="assets/style.css?v=twitter-v47-20260929"><link rel="stylesheet" href="assets/blog.css?v=robustness-generalization-20260930">
 <script src="assets/content.js?v=motivation-v52-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=agents-motion-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
-<header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#citation">Citation</a></nav></header>
-<nav class="side-nav" aria-label="On this page"><a data-chapter href="#results">Results</a><a data-chapter href="#challenge">Challenge</a><a data-chapter href="#motivation">Video generation</a><a data-chapter href="#method">Method</a><a data-chapter href="#citation">Citation</a></nav>
+<header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#robustness-generalization">Robustness</a><a href="#citation">Citation</a></nav></header>
+<nav class="side-nav" aria-label="On this page"><a data-chapter href="#results">Results</a><a data-chapter href="#challenge">Challenge</a><a data-chapter href="#motivation">Video generation</a><a data-chapter href="#method">Method</a><a data-chapter href="#robustness-generalization">Robustness</a><a data-chapter href="#citation">Citation</a></nav>
 <main id="main"><section class="hero paper-hero section-shell" id="top" aria-labelledby="paper-title">
   <div id="research" class="paper-heading">
   <h1 id="paper-title">Counterfactual Video Generation Enables<br class="desktop-break"> Scalable Humanoid Loco-Manipulation</h1>
@@ -127,9 +127,23 @@
   <div class="article-copy section-bridge"><p>See our <a href="https://arxiv.org/abs/2609.38172" target="_blank" rel="noopener noreferrer">paper</a> for more details.</p></div>
   <a class="method-return" href="#results">Watch the learned policy on the real robot ↑</a>
 </div>
+</section>
+<section class="section-space paper-results-section" id="robustness-generalization" aria-labelledby="robustness-generalization-title">
+<div class="section-shell">
+  <h2 class="section-title" id="robustness-generalization-title"><span class="chapter-number" aria-hidden="true">05</span><span class="chapter-title">Robustness and Generalization</span></h2>
+  <p class="section-intro">We measure object-pose coverage and test zero-shot pick-up beyond flat terrain.</p>
+  <figure class="paper-result" id="pose-coverage">
+    <figcaption><h3>Initial object-pose coverage</h3><p>We compare object poses in <strong>137 generated clips</strong> and <strong>4 upright seed videos</strong>. The plots show positions relative to G1 and yaw counts in six 30° bins modulo 180°.</p></figcaption>
+    <a class="paper-result-image" href="assets/figures/object-pose-coverage.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the original object-pose coverage figure as a PDF" title="Open original figure"><img src="assets/figures/object-pose-coverage.webp" width="2240" height="807" loading="lazy" decoding="async" alt="Initial object poses relative to G1: generated clips form a wider spread around the four upright seed poses, including lying-down objects. The orientation histogram totals 137 clips across six yaw bins."></a>
+  </figure>
+  <figure class="paper-result" id="elevated-pickup">
+    <figcaption><h3>Zero-shot elevated pick-up</h3><p>We train only on flat terrain. In simulation, the policy picks up objects on a <strong>35° ramp</strong> (top) and a <strong>0.43 m support</strong> (bottom) without further training. It fails at 45° and 0.45 m.</p></figcaption>
+    <a class="paper-result-image" href="assets/figures/elevated-pickup.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the original elevated pick-up figure as a PDF" title="Open original figure"><img src="assets/figures/elevated-pickup.webp" width="2240" height="1165" loading="lazy" decoding="async" alt="Two simulation sequences show G1 approaching, grasping, and lifting an object. Top: a yellow bin on a 35-degree ramp. Bottom: a yellow box on a 0.43-meter support. Arrows annotate contact forces."></a>
+  </figure>
+</div>
 </section><section class="section-space closing-notes" id="citation" aria-labelledby="citation-label">
 <div class="section-shell">
-  <h2 class="section-title solo" id="citation-label"><span class="chapter-number" aria-hidden="true">05</span><span class="chapter-title">BibTeX</span></h2>
+  <h2 class="section-title solo" id="citation-label"><span class="chapter-number" aria-hidden="true">06</span><span class="chapter-title">BibTeX</span></h2>
   <p class="citation-intro">If you find our work helpful, please cite:</p>
   <div class="citation-block">
     <pre id="citation-text">@article{wang2026counterfactual,
