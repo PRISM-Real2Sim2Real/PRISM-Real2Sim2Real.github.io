@@ -135,8 +135,11 @@ Restored with one synchronized, eight-second SMPL comparison. The labels are
 “Text + Agentics” and “Video + Agentics.” Text comes from a caption of the same
 generated bin-carrying video; the agent scripts a new SMPL sequence from it.
 The video comes from a real box-carrying seed; the agent calls a Real2Sim module
-and refines the reconstructed ground alignment and object motion. The floor
-uses a darker checkerboard. This section contains no efficiency or cost claims.
+and refines the reconstructed ground alignment and object motion. Both sequences
+reuse the Twitter v54 film’s Blender studio scene: pearl ceramic SMPL bodies,
+a pale green grid floor, and soft shadows. A shared static camera shows the
+original 240 frames at 30 fps, with no pose edits or retiming. This section
+contains no efficiency or cost claims.
 
 The Agents comparison autoplays and loops without visible playback controls.
 Its text-only route explicitly withholds video from the agent. The takeaway
