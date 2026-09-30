@@ -65,13 +65,16 @@ The model/PRISM distinction stays brief: video-to-video generation versus sampli
 interactions and running real-to-sim.
 
 The old Internet-video heading and static curation diagram are replaced by the
-16.4-second middle of Twitter v52 (28.5–44.9 seconds), in a full-width 16:9 frame.
+15.633-second middle of Twitter v54 (27.6–43.233 seconds), in a full-width 16:9 frame.
 It shows Internet examples collecting into a circle, the tiny usable subset and
 arrow to a large reference video, the larger ladder comparison with a small
 video-model icon, then the video wall labeled “256 counterfactual videos / from
 4 real videos.” The original file is preserved. Playback follows the existing
 muted, inline, in-view autoplay and loop behavior; reduced motion shows a poster.
-There is no duplicate heading or additional playback control.
+The three Internet-video labels are centered under their clips. The compact
+256 caption appears before the wall fills the screen. The pullback ends with an
+eight-frame camera hold while the source videos continue playing. There is no
+duplicate heading or additional playback control.
 
 ## Generation animation
 
@@ -79,23 +82,26 @@ Keep the six stage buttons, but do not add a small explanatory line below them.
 The animation has a stable accessible name and no dynamic footer caption.
 
 The 256-video wall, Reconstructed 3D objects, Kinematic references, and Zero-shot
-Sim2Real share one 17.9-second video, extracted from the completed Twitter v52
-release at 42.1–60 seconds. The source and four-example stages still use the
+Sim2Real share one 18.8-second video, extracted from the completed Twitter v54
+release at 41.2–60 seconds. The source and four-example stages still use the
 existing individual clips. The sequence uses the new bottom-aligned 256 caption
 and near-white Zero-shot Sim2Real title card with green type and a soft shadow.
 The video wall uses the two-line “256 counterfactual videos / from 4 real videos” caption.
 It preserves the object and configuration captions, “With paired robot motion,”
 the 3.6-second camera pullback from the foot plant to 49 references, and the center
 tear reveal. Robot actions play at their original speed; generated-video timing
-matches the v52 release.
+matches the v54 release. The object pan starts with the leftmost bin near the
+frame edge and takes 4.4 seconds. The Zero-shot title lasts 35 frames, while the
+49 reference motions continue underneath at their original speed.
 
-Stage boundaries live in the media manifest: videos at 0, objects at 2.8, motion
-at 6.4, and Sim2Real at 14.4 seconds. The real-world ending remains 3.5 seconds.
+Stage boundaries live in the media manifest: videos at 0, objects at 61/30, motion
+at 193/30, and Sim2Real at 424/30 seconds. The Sim2Real button begins at the title;
+the tear reveal starts at 15.3 seconds and the real-world ending remains 3.5 seconds.
 Manual stage selection seeks to the corresponding boundary; automatic changes
 follow the shared video clock, including the video-wall-to-objects cut. The
 real-world mosaic includes repeated views; its tile count is not a count of
 distinct objects. The browser icon comes from `PRISM-arxiv.zip`,
-`figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/motivation-v52/`.
+`figs_1st/_1_teaser.pdf`. Extraction and verification records are in `qa/motivation-v54/`.
 
 ## Robustness and Generalization
 
