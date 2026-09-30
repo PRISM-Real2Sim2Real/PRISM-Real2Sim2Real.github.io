@@ -123,17 +123,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .applications > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 2px; }
 .applications-chevron { width: 8px; height: 8px; margin-top: -4px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
 .applications[open] > summary .applications-chevron { margin-top: 4px; transform: rotate(225deg); }
-.applications-content { display: grid; gap: 30px; margin-top: 18px; padding-top: 24px; border-top: 1px solid var(--line); }
+.applications-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); margin-top: 18px; padding-top: 24px; border-top: 1px solid var(--line); }
 .application-example { min-width: 0; margin: 0; }
-.application-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.application-heading { margin-bottom: 14px; }
 .application-heading h3 { margin: 0; font: 600 clamp(17px, 2.2vw, 21px)/1.4 var(--sans); }
 .application-heading p { margin: 4px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
-.application-heading .button { flex: none; min-width: 62px; min-height: 44px; border-color: #c9ccc8; }
-.application-heading .button:hover { background: #eeefec; }
-.application-heading .button:focus-visible { outline-color: var(--ink); }
 .application-video { border: 1px solid var(--line); border-radius: 4px; background: #fff; }
-.application-video-stairs { aspect-ratio: 2/1; }
 .application-video video { display: block; width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 767px) {
+  .applications-content { grid-template-columns: 1fr; gap: 30px; }
+  .application-video-stairs { aspect-ratio: 2/1; }
+}
 
 /* Counterfactual examples and the exact prompt read as part of the article. */
 .model-roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin: 24px 0 32px; }

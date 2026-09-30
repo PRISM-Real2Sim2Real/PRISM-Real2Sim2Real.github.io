@@ -143,5 +143,7 @@ The solution statement is followed by a collapsed “See different applications�
 disclosure. Human-scene interaction (Vary the stairs) shows the supplied full-frame
 1920 × 960, 60 fps, 8×3 video. Human-object interaction (Vary the object) reuses
 the original eight-second scrolling 3×3 video in its original colors, looping
-independently without transitioning into reconstruction. Each has play/pause
-controls. Hidden and offscreen examples pause; reduced motion disables autoplay.
+independently without transitioning into reconstruction. The examples automatically loop
+side by side on desktop and stack on mobile, with no playback buttons. Full
+frames are retained. Hidden and offscreen examples pause; reduced motion disables
+autoplay.
