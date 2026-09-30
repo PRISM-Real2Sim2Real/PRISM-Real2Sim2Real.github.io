@@ -108,13 +108,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 
 /* Short source descriptions and a quiet explanatory figure. */
 .story-opening { margin-top: 0; max-width: var(--text-width); }
-.story-opening .opening-lead { font: 400 18px/1.65 var(--sans); margin-bottom: 14px; }
-.challenge-rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; list-style: none; margin: 28px 0 36px; padding: 24px 0; border: 1px solid var(--line); border-width: 1px 0; }
-.challenge-rows > li { display: grid; grid-template-columns: 28px 1fr; grid-template-rows: 26px 1fr; align-items: start; gap: 7px 10px; }
-.challenge-icon { width: 26px; height: 26px; fill: none; stroke: #557864; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.challenge-icon .capture-joint { fill: #53604c; }
+.story-opening .opening-lead { font: 400 18px/1.65 var(--sans); margin-bottom: 14px; text-wrap: balance; }
+.challenge-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); list-style: none; margin: 28px 0 36px; padding: 24px 0; border: 1px solid var(--line); border-width: 1px 0; }
+.challenge-rows > li { display: grid; grid-template-rows: auto 1fr; align-content: start; gap: 7px; }
 .challenge-rows h3 { font: 600 16px/1.5 var(--sans); margin: 0; }
-.challenge-rows p { grid-column: 2; align-self: start; font-size: 15px; line-height: 1.55; color: #53604c; }
+.challenge-rows p { margin: 0; align-self: start; font-size: 15px; line-height: 1.55; color: #53604c; text-wrap: balance; }
 .motivation-film { margin-top: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: #fff; }
 .motivation-film video { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; }
 .section-bridge { max-width: none; margin-top: 26px; font-size: 17px; }
@@ -155,7 +153,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .multiply-steps { display: grid; grid-template-columns: 1fr 1fr 1fr 1.3fr 1.2fr 1.2fr; gap: 16px; overflow: visible; }
 .multiply-step { min-height: 58px; font-size: 14px; text-align: center; white-space: normal; line-height: 1.4; font-weight: 500; }
 .multiply-step[aria-pressed="true"] { border-bottom-color: #35634f; color: #35634f; font-weight: 650; }
-#multiply-caption { margin-top: 12px; min-height: 24px; font-size: 15px; }
 
 /* Three preparation steps followed by the paired eight-second results. */
 .method-intro { max-width: none; margin: 0 0 26px; }
@@ -290,7 +287,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
   .solution-notes .generation-prompt p { font-size: 12px; }
   .multiply-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 14px; border: 0; }
   .multiply-step { font-size: 12px; min-height: 54px; border-bottom: 1px solid #dbdfd6; }
-  #multiply-caption { font-size: 14px; min-height: 44px; }
   .pipeline { grid-template-columns: 1fr; gap: 18px; }
   .pipeline-step:nth-of-type(n) { grid-column: 1; grid-row: auto; }
   .pipeline .pipeline-arrow, .pipeline.is-in .pipeline-arrow { grid-column: 1; grid-row: auto; justify-content: center; transform: rotate(90deg); }

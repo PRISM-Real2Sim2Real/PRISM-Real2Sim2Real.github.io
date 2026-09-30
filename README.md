@@ -57,6 +57,12 @@ at its original playback speed. Local review artifacts in `qa/` are not publishe
 
 ## Motivation animation
 
+The challenge opens with human interaction experience and asks how robots can
+collect such practice. It compares two text-only sources: collecting data through
+motion capture or recording, and curating reconstruction-friendly Internet video.
+The model/PRISM distinction stays brief: video-to-video generation versus sampling
+interactions and running real-to-sim.
+
 The old Internet-video heading and static curation diagram are replaced by the
 16.4-second middle of Twitter v52 (28.5–44.9 seconds), in a full-width 16:9 frame.
 It shows Internet examples collecting into a circle, the tiny usable subset and
@@ -67,6 +73,9 @@ muted, inline, in-view autoplay and loop behavior; reduced motion shows a poster
 There is no duplicate heading or additional playback control.
 
 ## Generation animation
+
+Keep the six stage buttons, but do not add a small explanatory line below them.
+The animation has a stable accessible name and no dynamic footer caption.
 
 The 256-video wall, Reconstructed 3D objects, Kinematic references, and Zero-shot
 Sim2Real share one 17.9-second video, extracted from the completed Twitter v52

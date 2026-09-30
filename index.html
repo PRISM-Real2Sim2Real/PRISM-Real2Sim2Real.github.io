@@ -6,8 +6,8 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/prism-logo.png?v=paper-20260929" type="image/png">
-<link rel="stylesheet" href="assets/style.css?v=twitter-v47-20260929"><link rel="stylesheet" href="assets/blog.css?v=robustness-analysis-20260930">
-<script src="assets/content.js?v=motivation-v52-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=agents-motion-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=concise-story-20260930"><link rel="stylesheet" href="assets/blog.css?v=concise-story-20260930">
+<script src="assets/content.js?v=motivation-v52-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=concise-story-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
 <header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#robustness-generalization">Robustness</a><a href="#citation">Citation</a></nav></header>
@@ -61,22 +61,21 @@
     </div>
   </div>
 </section>
-<section class="section-space challenge-section" id="challenge" aria-labelledby="opening-title"><div class="section-shell"><h2 class="story-title" id="opening-title"><span class="chapter-number" aria-hidden="true">02</span><span class="chapter-title">Teaching a humanoid to pick <span class="keep-words">up different things</span></span></h2><div class="article-copy story-opening">
-  <p class="opening-lead">To handle unfamiliar objects from different angles, a robot needs varied practice.</p>
-  <p>People learn these adjustments through years of interaction. Visual imitation gives robots a starting point: <a href="https://www.videomimic.net/" target="_blank" rel="noopener noreferrer">VideoMimic</a> learns climbing and sitting from human video.</p>
-  <p>Scaling this approach means collecting more demonstrations. Each source has a cost:</p>
+<section class="section-space challenge-section" id="challenge" aria-labelledby="opening-title"><div class="section-shell"><h2 class="story-title" id="opening-title"><span class="chapter-number" aria-hidden="true">02</span><span class="chapter-title">Teaching humanoids to pick up diverse everyday objects</span></h2><div class="article-copy story-opening">
+  <p class="opening-lead">Humans generalize from rich interaction experience. How do robots collect such experience to practice?</p>
+  <p>Visual imitation gives robots a starting point: <a href="https://www.videomimic.net/" target="_blank" rel="noopener noreferrer">VideoMimic</a> learns climbing and sitting from human video.</p>
+  <p>Scaling this approach means collecting more demonstrations. Common solutions are:</p>
 </div>
 <ul class="challenge-rows" aria-label="Challenges of collecting demonstrations">
-  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M11 4H4v7m25-7h7v7M4 29v7h7m25-7v7h-7"/><circle cx="20" cy="10" r="3"/><path d="M20 13v12m-11-8 11 3 11-3M20 25l-7 8m7-8 7 8"/><circle cx="20" cy="20" r="1.6" class="capture-joint"/></svg><h3>Motion capture</h3><p>Needs specialized gear and dedicated sessions.</p></li>
-  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="4" y="6" width="32" height="28" rx="4"/><path d="M4 13h32m-26-3h.1m4.9 0h.1"/><path d="m17 18 9 5-9 5z"/></svg><h3>Internet video</h3><p>Useful demonstrations are hard to find.</p></li>
-  <li><svg class="challenge-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="3" y="10" width="24" height="22" rx="4"/><path d="m27 17 10-5v18l-10-5"/><circle cx="15" cy="21" r="5"/></svg><h3>Record it yourself</h3><p>More variety means more filming.</p></li>
+  <li><h3>Collect your own data</h3><p>Motion capture and recording are costly and do not scale.</p></li>
+  <li><h3>Internet video</h3><p>Scalable in theory, but useful, reconstruction-friendly demonstrations are hard to collect at scale.</p></li>
 </ul>
 <figure class="motivation-film media-group" id="video-curation" data-group="motivation" aria-label="From scarce usable demonstrations to counterfactual video generation">
   <video data-asset="motivation-v52" muted playsinline loop preload="none" poster="assets/posters/motivation-v52.jpg" width="1920" height="1080" aria-label="Internet examples reveal why usable demonstrations are scarce. A video model changes a box into a ladder, then scales four real recordings into 256 counterfactual videos."></video>
 </figure>
 <div class="article-copy section-bridge"><p>Our solution: Expand a few recordings into new interactions with a video model.</p></div></div></section><section class="section-space solution-section" id="motivation" aria-labelledby="motivation-title"><div class="section-shell"><h2 class="section-title" id="motivation-title"><span class="chapter-number" aria-hidden="true">03</span><span class="chapter-title">Counterfactual video generation</span></h2><div class="model-roles">
-  <div><h3>The video model</h3><p>A pretrained video model generates new interactions from a reference video and a text prompt.</p></div>
-  <div><h3>What PRISM does</h3><p>We vary the object, reconstruct each interaction, and train one humanoid policy.</p></div>
+  <div><h3>The video model</h3><p>Video-to-video generation.</p></div>
+  <div><h3>What PRISM does</h3><p>We sample interactions, then run real-to-sim.</p></div>
 </div>
 <div class="generation-heading"><span>Original recording</span><span>Counterfactual videos</span></div><figure class="generation-flow media-group" data-group="counterfactuals"><figure class="seed-card"><video data-asset="v2v-05" muted playsinline loop preload="none" poster="assets/posters/v2v-05.jpg" aria-label="Real seed recording: a person lifting a cardboard box"></video><figcaption><span class="real-tag">Original video</span> A person picks up a box</figcaption></figure><span class="generation-arrow" aria-hidden="true">→</span><div class="generated-cards"><figure><video data-asset="v2v-01" muted playsinline loop preload="none" poster="assets/posters/v2v-01.jpg" aria-label="A different shape"></video><figcaption><span>Generated video</span>A different shape</figcaption></figure><figure><video data-asset="v2v-03" muted playsinline loop preload="none" poster="assets/posters/v2v-03.jpg" aria-label="A different grasp"></video><figcaption><span>Generated video</span>A different grasp</figcaption></figure><figure><video data-asset="v2v-04" muted playsinline loop preload="none" poster="assets/posters/v2v-04.jpg" aria-label="A different reach"></video><figcaption><span>Generated video</span>A different reach</figcaption></figure></div></figure>
 <div class="solution-notes" id="generation-details">
@@ -91,7 +90,7 @@
   </div></div>
   <div><h3>Why video-to-video</h3><p>A source video supplies the person, scene, and action. Text-to-video must create all three.</p></div>
 </div>
-  <figure class="multiply" id="generation-animation" aria-labelledby="multiply-caption">
+  <figure class="multiply" id="generation-animation" aria-label="From a source video to counterfactual videos, 3D objects, kinematic references, and zero-shot Sim2Real">
     <div class="multiply-stage" id="multiply-stage" data-phase="1" aria-hidden="true">
       <div class="multiply-viewport media-group" data-group="multiply"><div class="multiply-grid" id="multiply-grid"></div></div>
       <video class="multiply-layer" data-layer="sequence" data-asset="generation-sim2real-v52" muted playsinline preload="none" poster="assets/posters/generation-v52.jpg"></video>
@@ -99,7 +98,6 @@
     </div>
     <figcaption class="multiply-foot">
       <div class="multiply-steps" role="group" aria-label="Choose a pipeline stage"><button type="button" class="multiply-step" data-multiply-phase="1" aria-pressed="true"><strong>1</strong> source video</button><button type="button" class="multiply-step" data-multiply-phase="4" aria-pressed="false"><strong>4</strong> samples</button><button type="button" class="multiply-step" data-multiply-phase="256" aria-pressed="false"><strong>256</strong> videos</button><button type="button" class="multiply-step" data-multiply-phase="objects" aria-pressed="false">Reconstructed <strong>3D</strong> objects</button><button type="button" class="multiply-step" data-multiply-phase="motion" aria-pressed="false">Kinematic references</button><button type="button" class="multiply-step" data-multiply-phase="sim2real" aria-pressed="false">Zero-shot Sim2Real</button></div>
-      <p id="multiply-caption">Start with a real recording of a person carrying a box.</p>
     </figcaption>
   </figure></div></section><section class="section-space" id="method" aria-labelledby="method-label">
 <div class="section-shell"><h2 class="section-title solo" id="method-label"><span class="chapter-number" aria-hidden="true">04</span><span class="chapter-title">Method</span></h2><div class="article-copy method-intro"><p>We reconstruct these interactions in 3D, retarget them to the robot, and train in simulation.</p><p>We correct generation and reconstruction errors for physically feasible motion and <strong>hand–object contact</strong>.</p></div>

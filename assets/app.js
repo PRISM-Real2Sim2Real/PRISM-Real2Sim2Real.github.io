@@ -239,12 +239,12 @@
 
     // Zoom out from the source to four examples, then play the latest release sequence.
     const phases = {
-      1: {transform: 'scale(2)', count: 1, label: 'Real seed video', caption: 'Start with a real recording of a person carrying a box.'},
-      4: {transform: 'none', count: 4, label: 'Video examples', caption: 'Vary the object and adapt the person’s motion.'},
-      256: {transform: 'none', count: 256, label: 'Counterfactual videos', caption: 'We generate 256 counterfactual videos from our seed recordings.'},
-      objects: {transform: 'none', label: 'Reconstructed 3D objects', caption: 'Reconstruct objects with different shapes and sizes.'},
-      motion: {transform: 'none', label: 'Kinematic references', caption: 'Retarget each interaction into a kinematic reference the robot can track.'},
-      sim2real: {transform: 'none', label: 'Zero-shot Sim2Real', caption: 'Train one policy in simulation and deploy it directly on the robot.'}
+      1: {transform: 'scale(2)', count: 1, label: 'Real seed video'},
+      4: {transform: 'none', count: 4, label: 'Video examples'},
+      256: {transform: 'none', count: 256, label: 'Counterfactual videos'},
+      objects: {transform: 'none', label: 'Reconstructed 3D objects'},
+      motion: {transform: 'none', label: 'Kinematic references'},
+      sim2real: {transform: 'none', label: 'Zero-shot Sim2Real'}
     };
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
     const sequence = [1, 4, 256, 'objects', 'motion', 'sim2real'];
@@ -304,7 +304,6 @@
       syncMedia();
       $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
       $('#multiply-label').textContent = spec.label;
-      $('#multiply-caption').textContent = spec.caption;
       overlay.classList.toggle('no-count', spec.count === undefined);
       window.cancelAnimationFrame(countFrame);
       const fromCount = phases[from].count;

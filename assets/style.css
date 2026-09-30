@@ -176,7 +176,6 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-stage[data-phase="motion"] .multiply-overlay,
 .multiply-stage[data-phase="sim2real"] .multiply-overlay{opacity:0}
 .multiply-foot{margin-top:14px}
-#multiply-caption{margin-top:12px;font-size:14px;color:var(--muted)}
 
 /* Method: input video, reconstruction, retargeted motion, then the paper figure. */
 .pipeline{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:12px;align-items:center}
