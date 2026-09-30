@@ -249,12 +249,14 @@
     const parsePhase = value => Number.isNaN(Number(value)) ? value : Number(value);
     const sequence = [1, 4, 256, 'objects', 'motion', 'sim2real'];
     const holds = {1: 2600, 4: 4400, 256: 5200};
-    const motionStart = 6.1;
     let phase = 1; let timer = 0; let mediaTimer = 0; let countFrame = 0; let inView = false;
     const counter = $('#multiply-count'); const overlay = counter.parentElement;
     const tiles = groups.get('multiply');
     const reconstruction = $('.multiply-layer[data-layer="objects"]');
-    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: reconstruction, motion: reconstruction, sim2real: $('.multiply-layer[data-layer="sim2real"]')};
+    const reconstructionAsset = assets[reconstruction.dataset.asset];
+    const stageStarts = reconstructionAsset.stageStarts;
+    const posters = {objects: reconstructionAsset.poster, motion: reconstructionAsset.motionPoster, sim2real: reconstructionAsset.sim2realPoster};
+    const layers = {256: $('.multiply-layer[data-layer="256"]'), objects: reconstruction, motion: reconstruction, sim2real: reconstruction};
     const layerVideos = [...new Set(Object.values(layers))];
     const positions = new WeakMap(); const pendingSeek = new WeakMap();
     const active = () => inView && !document.hidden && !dialogOpen && !reducedMotion.matches;
@@ -294,10 +296,10 @@
       const from = phase; phase = next;
       const spec = phases[next];
       grid.style.transform = spec.transform;
-      // Objects and references share one continuous clip. Only manual selection seeks;
-      // the automatic handoff keeps the same decoder, frame and playback clock.
-      if (layers[next] && !continuePlayback) pendingSeek.set(layers[next], next === 'motion' ? motionStart : 0);
-      reconstruction.poster = next === 'motion' ? assets[reconstruction.dataset.asset].motionPoster : assets[reconstruction.dataset.asset].poster;
+      // The three final stages share one clip, preserving both the pullback and tear reveal.
+      // Manual choices seek; automatic stage changes keep the same playback clock.
+      if (layers[next] && !continuePlayback) pendingSeek.set(layers[next], stageStarts[next] ?? 0);
+      reconstruction.poster = posters[next] || reconstructionAsset.poster;
       stage.dataset.phase = String(next);
       syncMedia();
       $$('[data-multiply-phase]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.multiplyPhase === String(next))));
@@ -340,7 +342,7 @@
         }, 420);
         return;
       }
-      setPhase(next, true, phase === 'objects' && next === 'motion');
+      setPhase(next, true, Boolean(layers[phase]) && layers[phase] === layers[next]);
       schedule();
     }
     layerVideos.forEach(video => {
@@ -350,7 +352,9 @@
       });
     });
     reconstruction.addEventListener('timeupdate', () => {
-      if (phase === 'objects' && !pendingSeek.has(reconstruction) && reconstruction.currentTime >= motionStart) advance();
+      if (pendingSeek.has(reconstruction)) return;
+      const boundary = phase === 'objects' ? stageStarts.motion : phase === 'motion' ? stageStarts.sim2real : null;
+      if (boundary !== null && reconstruction.currentTime >= boundary) advance();
     });
     // Manual choices replay the selected stage, including its exact start in the shared clip.
     $$('[data-multiply-phase]').forEach(button => button.addEventListener('click', () => {

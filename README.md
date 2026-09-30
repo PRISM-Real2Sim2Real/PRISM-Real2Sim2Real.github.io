@@ -48,15 +48,19 @@ at its original playback speed. Local review artifacts in `qa/` are not publishe
 
 ## Generation animation
 
-The reconstruction and kinematic stages use the continuous 16-second C segment
-from Twitter video v35. The stage label changes at 6.1 seconds without restarting
-the video. The opening bridge uses the original transparent PRISM logo extracted
-from `PRISM-arxiv.zip`, `figs_1st/_1_teaser.pdf`; the browser icon uses the same asset.
-The original 3D objects, pickup motion, and pullback to 49 kinematic references remain intact.
-Zero-shot Sim2Real uses v35's 3.5-second real-world ending. The reference and
-real-world stages advance on video playback events, and manual stage selections
-seek to their respective starts. The real-world mosaic includes repeated views;
-its tile count is not a count of distinct objects.
+Reconstructed 3D objects, Kinematic references, and Zero-shot Sim2Real share one
+19.5-second video, so both the pullback and the center tear play continuously.
+The opening uses the completed v40 video-wall-to-3D bridge with the original
+transparent paper logo; the rest comes from the completed Twitter v40 video,
+44.1–60.5 seconds. It includes the object/configuration captions, “With paired
+robot motion,” 49 kinematic references, and the real-world ending.
+
+Stage boundaries live in the media manifest: objects at 0, motion at 6.7, and
+Sim2Real at 16 seconds. The real-world ending remains 3.5 seconds. Manual stage
+selection seeks to the corresponding boundary; automatic changes preserve the
+same video and playback clock. The real-world mosaic includes repeated views;
+its tile count is not a count of distinct objects. The logo and browser icon come
+from `PRISM-arxiv.zip`, `figs_1st/_1_teaser.pdf`.
 
 ## Robustness results
 

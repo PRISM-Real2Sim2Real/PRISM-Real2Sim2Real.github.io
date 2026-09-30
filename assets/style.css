@@ -163,7 +163,7 @@ h1{max-width:880px;margin:24px auto 0;font-size:clamp(26px,3.3vw,38px);font-weig
 .multiply-stage[data-phase="256"] .multiply-layer[data-layer="256"],
 .multiply-stage[data-phase="objects"] .multiply-layer[data-layer="objects"],
 .multiply-stage[data-phase="motion"] .multiply-layer[data-layer="objects"],
-.multiply-stage[data-phase="sim2real"] .multiply-layer[data-layer="sim2real"]{opacity:1}
+.multiply-stage[data-phase="sim2real"] .multiply-layer[data-layer="objects"]{opacity:1}
 .multiply-stage.is-resetting .multiply-layer{opacity:0;transition-duration:.4s}
 .multiply-overlay{position:absolute;left:16px;bottom:14px;z-index:3;display:flex;align-items:baseline;gap:10px;padding:6px 12px;border-radius:6px;background:rgba(0,0,0,.5);color:#fff;pointer-events:none;transition:opacity .3s}
 .multiply-stage.is-resetting .multiply-overlay{opacity:0}
