@@ -1,5 +1,6 @@
 /* Media and scientific content are kept separate from interaction code. */
 window.PRISM_ASSETS = {
+  "applications-stairs-8x3": {"src": "assets/videos/applications-stairs-8x3.mp4", "poster": "assets/posters/applications-stairs-8x3.jpg", "duration": 5.016667, "width": 1920, "height": 960},
   "agents-smpl-comparison": {"src": "assets/videos/agents-smpl-comparison-v2.mp4", "poster": "assets/posters/agents-smpl-comparison-v2.jpg", "duration": 8, "width": 1920, "height": 624},
   "motivation-v52": {"src": "assets/videos/motivation-v52.mp4", "poster": "assets/posters/motivation-v52.jpg", "duration": 16.4, "width": 1920, "height": 1080},
   "robustness-repack": {"src": "assets/videos/robustness-repack.mp4", "poster": "assets/posters/robustness-repack.jpg", "duration": 15, "width": 1920, "height": 1080},

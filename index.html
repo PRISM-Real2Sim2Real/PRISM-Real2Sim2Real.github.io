@@ -6,8 +6,8 @@
 <meta name="description" content="How PRISM turns a handful of human demonstrations into counterfactual interaction videos—and a humanoid policy that picks up unfamiliar objects.">
 <meta property="og:type" content="website"><meta property="og:title" content="PRISM · Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation"><meta property="og:description" content="A little human experience, amplified through counterfactual video generation."><meta property="og:image" content="assets/posters/demo-hero.jpg?v=hero-4k-v8-20260927">
 <link rel="icon" href="assets/prism-logo.png?v=paper-20260929" type="image/png">
-<link rel="stylesheet" href="assets/style.css?v=concise-story-20260930"><link rel="stylesheet" href="assets/blog.css?v=numbered-sources-20260930">
-<script src="assets/content.js?v=agents-smpl-v2-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=concise-story-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=concise-story-20260930"><link rel="stylesheet" href="assets/blog.css?v=applications-20260930">
+<script src="assets/content.js?v=applications-20260930" defer></script><script src="assets/vendor/hls.light.min.js?v=1.7.3" defer></script><script src="assets/app.js?v=applications-20260930" defer></script><script src="assets/blog.js?v=structured-research-20260929" defer></script><script src="assets/hero-framing.js?v=hero-paper-title-20260930" defer></script>
 </head><body>
 <a class="skip-link" href="#results">Skip to the results</a>
 <header class="blog-header"><nav aria-label="Main navigation"><a href="#results">Results</a><a href="#challenge">Challenge</a><a href="#motivation">Generation</a><a href="#method">Method</a><a href="#robustness-generalization">Robustness</a><a href="#agents">Agents</a><a href="#citation">Citation</a></nav></header>
@@ -71,7 +71,31 @@
 <figure class="motivation-film media-group" id="video-curation" data-group="motivation" aria-label="From scarce usable demonstrations to counterfactual video generation">
   <video data-asset="motivation-v52" muted playsinline loop preload="none" poster="assets/posters/motivation-v52.jpg" width="1920" height="1080" aria-label="Internet examples reveal why usable demonstrations are scarce. A video model changes a box into a ladder, then scales four real recordings into 256 counterfactual videos."></video>
 </figure>
-<div class="article-copy section-bridge"><p>Our solution: Expand a few recordings into new interactions with a video model.</p></div></div></section><section class="section-space solution-section" id="motivation" aria-labelledby="motivation-title"><div class="section-shell"><h2 class="section-title" id="motivation-title"><span class="chapter-number" aria-hidden="true">03</span><span class="chapter-title">Counterfactual video generation</span></h2><div class="model-roles">
+<div class="article-copy section-bridge"><p>Our solution: Expand a few recordings into new interactions with a video model.</p></div>
+<details class="applications" id="applications">
+  <summary>See different applications <span class="applications-chevron" aria-hidden="true"></span></summary>
+  <div class="applications-content">
+    <figure class="application-example media-group" data-group="applications-scene" aria-labelledby="applications-scene-title">
+      <figcaption class="application-heading">
+        <div><h3 id="applications-scene-title">Human-scene interaction</h3><p>Vary the stairs</p></div>
+        <button type="button" class="button button-small" data-toggle-group="applications-scene" aria-controls="applications-scene-video" aria-pressed="false">Play</button>
+      </figcaption>
+      <div class="video-frame application-video application-video-stairs">
+        <video id="applications-scene-video" data-asset="applications-stairs-8x3" muted playsinline loop preload="none" poster="assets/posters/applications-stairs-8x3.jpg" width="1920" height="960" aria-label="Human-scene interaction: people climbing varied stairs in an 8 by 3 video grid."></video>
+      </div>
+    </figure>
+    <figure class="application-example media-group" data-group="applications-object" aria-labelledby="applications-object-title">
+      <figcaption class="application-heading">
+        <div><h3 id="applications-object-title">Human-object interaction</h3><p>Vary the object</p></div>
+        <button type="button" class="button button-small" data-toggle-group="applications-object" aria-controls="applications-object-video" aria-pressed="false">Play</button>
+      </figcaption>
+      <div class="video-frame application-video">
+        <video id="applications-object-video" data-asset="counterfactual-scroll-3x3" muted playsinline loop preload="none" poster="assets/posters/counterfactual-scroll-3x3.jpg" width="1920" height="1080" aria-label="Human-object interaction: people picking up varied objects in the scrolling 3 by 3 video grid."></video>
+      </div>
+    </figure>
+  </div>
+</details>
+</div></section><section class="section-space solution-section" id="motivation" aria-labelledby="motivation-title"><div class="section-shell"><h2 class="section-title" id="motivation-title"><span class="chapter-number" aria-hidden="true">03</span><span class="chapter-title">Counterfactual video generation</span></h2><div class="model-roles">
   <div><h3>The video model</h3><p>Video-to-video generation.</p></div>
   <div><h3>What PRISM does</h3><p>We sample interactions, then run real-to-sim.</p></div>
 </div>

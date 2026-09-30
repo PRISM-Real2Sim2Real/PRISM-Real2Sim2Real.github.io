@@ -136,3 +136,12 @@ The Agents comparison autoplays and loops without visible playback controls.
 Its text-only route explicitly withholds video from the agent. The takeaway
 emphasizes that video demonstrations still help and the agentic pipeline refines
 the Real2Sim reconstruction. The introduction states the pick-up, carry, and set-down task.
+
+## Application examples
+
+The solution statement is followed by a collapsed “See different applications”
+disclosure. Human-scene interaction (Vary the stairs) shows the supplied full-frame
+1920 × 960, 60 fps, 8×3 video. Human-object interaction (Vary the object) reuses
+the original eight-second scrolling 3×3 video in its original colors, looping
+independently without transitioning into reconstruction. Each has play/pause
+controls. Hidden and offscreen examples pause; reduced motion disables autoplay.

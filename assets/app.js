@@ -96,7 +96,7 @@
     if (!group) return;
     const epoch = ++group.epoch;
     const videos = $$('video', group.element);
-    const shouldPlay = group.playing && group.visible && !document.hidden && !dialogOpen;
+    const shouldPlay = group.playing && group.visible && !group.element.closest('details:not([open])') && !document.hidden && !dialogOpen;
     if (!shouldPlay) {
       videos.forEach(v => v.pause());
       refreshButton(group);
@@ -118,11 +118,16 @@
       if (!group) return;
       group.visible = entry.isIntersecting;
       // Posters remain useful when autoplay is off or reduced motion is requested.
-      if (group.visible) $$('video', group.element).forEach(loadMedia);
+      if (group.visible && !group.element.closest('details:not([open])')) $$('video', group.element).forEach(loadMedia);
       updateGroup(group);
     });
   }, {threshold: 0.06});
   groups.forEach(group => { if (group.name !== 'multiply') observer.observe(group.element); });
+
+  // Closing an application disclosure pauses its videos immediately.
+  $$('details.applications').forEach(details => details.addEventListener('toggle', () => {
+    $$('[data-group]', details).forEach(element => updateGroup(groups.get(element.dataset.group)));
+  }));
 
   $$('[data-toggle-group]').forEach(button => button.addEventListener('click', () => {
     const group = groups.get(button.dataset.toggleGroup);
