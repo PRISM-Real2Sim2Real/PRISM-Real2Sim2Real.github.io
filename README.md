@@ -38,8 +38,9 @@ Prioritize laptop and desktop reading. At widths of 1180px and above, use the fi
 
 The hero combines the approved v8 first-clip master with the approved chair and plush-dog edits, rebuilt before their previous lossy exports. It preserves 3840 × 2160 resolution and 60000/1001 fps, with 1603 frames (26.743383 seconds). The lossless archival master stays in the local Berkeley teaser folder; `assets/videos/hero-4k-v8/playlist.m3u8` serves a high-quality 4K H.264 rendition in short segments. Safari uses native HLS; other supported browsers use the locally bundled HLS.js 1.7.3. The hero retains the existing pause/play and looping behavior. `assets/hero-framing.js` restores the closer framing of the earlier edit at the original speed: the first segment uses an 80% crop, the chair segment a 75% crop, and the already-cropped plush-dog segment keeps its full frame. Framing follows the action and resets at the source clip boundaries.
 
-The hero also follows the approved Twitter opening captions (v36, with the v39
-plush-dog wording). White Arial Bold text sits at the top center, with a subtle
+The hero follows the latest Twitter opening: the v38 full paper title on two lines
+at 0–1.3 seconds, followed by the approved captions and v39 plush-dog wording,
+all retained in v54. White Arial Bold text sits at the top center, with a subtle
 outline/shadow and an “Autonomous 1X” label at the lower right. Caption changes
 follow the video's frame clock, including seeks, pauses, and loop restarts; the
 chair and dog transitions use the original clip boundaries. These responsive

@@ -73,7 +73,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-
 .hero-film video { object-fit: contain; transform-origin: 0 0; transform: translate(var(--hero-pan-x, -25%), var(--hero-pan-y, -12.5%)) scale(var(--hero-zoom, 1.25)); }
 .hero-caption-overlay { position: absolute; inset: 0; pointer-events: none; color: #fff; font-family: Arial, sans-serif; }
 .hero-timed-caption { position: absolute; top: 4.444%; left: 5%; width: 90%; text-align: center; text-wrap: balance; font-size: clamp(11px, 3.3333cqw, 64px); font-weight: 700; line-height: 1.14; -webkit-text-stroke: .1042cqw rgba(15, 22, 18, .82); paint-order: stroke fill; text-shadow: 0 .1563cqw .1563cqw rgba(5, 12, 8, .82); }
-.hero-timed-caption[data-wordmark="true"] { font-size: clamp(16px, 4.5833cqw, 88px); }
+.hero-timed-caption[data-title="true"] { white-space: pre-line; line-height: 1.25; }
 .hero-speed-label { position: absolute; right: 5%; bottom: 8.889%; font-size: clamp(9px, 2.7083cqw, 52px); font-weight: 700; line-height: 1.15; text-shadow: 0 1px 3px rgba(5, 12, 8, .65); }
 .film-control { right: 12px; bottom: 12px; border-radius: 4px; min-height: 32px; font-size: 13px; }
 .hero-film .film-control { left: 12px; right: auto; }

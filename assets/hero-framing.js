@@ -5,9 +5,9 @@
   const firstCut = 727 * 1001 / 60000;
   const secondCut = 1176 * 1001 / 60000;
   const caption = document.querySelector('#hero-timed-caption');
-  // Twitter's v36 opening and v39 dog wording, aligned to this hero's exact cuts.
+  // Twitter's v38 paper-title opening and v39 dog wording, retained in the latest v54.
   const captions = [
-    { start: 0, end: 1.3, text: 'PRISM', wordmark: true, fadeIn: false },
+    { start: 0, end: 1.3, text: 'Counterfactual Video Generation Enables\nScalable Humanoid Loco-Manipulation', openingTitle: true, fadeIn: false },
     { start: 1.45, end: 4.85, text: 'Our humanoid picks up, carries, and places objects.' },
     { start: 5, end: 7.4, text: 'All with a single policy.' },
     { start: 7.55, end: 9.65, text: 'Continuous task execution' },
@@ -30,7 +30,7 @@
     const cue = captions[index];
     if (index !== previousCaption) {
       caption.textContent = cue?.text || '';
-      caption.dataset.wordmark = String(Boolean(cue?.wordmark));
+      caption.dataset.title = String(Boolean(cue?.openingTitle));
       previousCaption = index;
     }
     const fade = index === 5 || index === 6 ? .12 : .16;
